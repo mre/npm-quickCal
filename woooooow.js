@@ -352,7 +352,7 @@
 
             if(alottedSlots[i].day === day) { 
 
-                originalSet.splice(originalSet.indexOf(alottedSlots[i].time), 1); //change array to object to reduce from 2N to O(1)*4
+                originalSet.splice(originalSet.indexOf(alottedSlots[i].time), 1); //change array to object to reduce from N to O(1)*4
 
                 stopCount++;
 
@@ -414,8 +414,7 @@
 
         var stopCount = 0;
 
-        for(let i = 0; i < alottedSlots.length; i++) {  //change array to object to reduce from 2N to O(1)*4
-
+        for(let i = 0; i < alottedSlots.length; i++) {  //change array to object to reduce from N to O(1)*4 -- maybe change indexOf to reduce 'N^2'
             if(stopCount === originalSet.length) { break; };
 
             if(alottedSlots[i].day === day) {  originalSet.splice(originalSet.indexOf(alottedSlots[i].time), 1); stopCount+=1; } 
