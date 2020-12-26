@@ -412,7 +412,7 @@
 
         var stopCount = 0;
 
-        for(let i = 0; i < alottedSlots.length; i++) {  //dont need this just need to loop through original set
+        for(let i = 0; i < alottedSlots.length; i++) {  //change array to object to reduce from 2N to O(1)*4
 
             if(stopCount === originalSet.length) { break; };
 
