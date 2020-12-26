@@ -77,8 +77,6 @@
     getCalendar(currentDate); 
     
 
-
-
     //display calendar
     function getCalendar(date) {
     
@@ -171,8 +169,6 @@
     }
     
     
-    
-    
     //go to today
     document.getElementById("today").onclick = today;
 
@@ -191,8 +187,6 @@
     }
     
     
-    
-    
     //move next in calendar
     document.getElementById("next").onclick = moveNext;
 
@@ -205,8 +199,6 @@
     }
     
     
-    
-    
     //move back in calendar
     document.getElementById("back").onclick = moveBack;
 
@@ -217,8 +209,6 @@
         getCalendar(new Date(currentYearG, currentIndexOfMonthG, 1));
 
     }
-    
-    
     
     
     //pass in a date
@@ -239,9 +229,7 @@
     }
     
     
-    
-    
-    //append number to string
+    //replace number to string on hover
     function addNumber(pushNum) {
 
         var dateString = document.getElementById("date");
@@ -255,8 +243,6 @@
         document.getElementById("date").innerText = arr;
 
     }
-    
-    
     
     
     //load in taken times for this month and year
@@ -286,7 +272,7 @@
                 
                 for(let i = 0; i < result.length; i++) {
                     
-                    alottedSlots.push({
+                    alottedSlots.push({ //change to objet to reduce lookup
 
                         year: result[i].year, 
 
@@ -311,8 +297,6 @@
         });
         
     }
-    
-    
     
     
     //on hover get booked events for each day
@@ -346,13 +330,13 @@
 
         var originalSet = ["6am", "9am", "3pm", "7pm"];  
                   
-        for(let i = 0; i < alottedSlots.length; i++) {  
+        for(let i = 0; i < alottedSlots.length; i++) { //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2
 
             if(stopCount === originalSet.length) { break; }
 
             if(alottedSlots[i].day === day) { 
 
-                originalSet.splice(originalSet.indexOf(alottedSlots[i].time), 1); //change array to object to reduce from N to O(1)*4
+                originalSet.splice(originalSet.indexOf(alottedSlots[i].time), 1); 
 
                 stopCount++;
 
@@ -364,8 +348,6 @@
         if(originalSet.length === 0) { b.innerText = "Booked"; b.style.color = "red";  } else { b.innerText = "Appointments available"; b.style.color = "green";  }
 
     }
-    
-    
     
     
     //displayForm when click on cell
@@ -414,7 +396,8 @@
 
         var stopCount = 0;
 
-        for(let i = 0; i < alottedSlots.length; i++) {  //change array to object to reduce from N to O(1)*4 -- maybe change indexOf to reduce 'N^2'
+        for(let i = 0; i < alottedSlots.length; i++) {  //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2
+		
             if(stopCount === originalSet.length) { break; };
 
             if(alottedSlots[i].day === day) {  originalSet.splice(originalSet.indexOf(alottedSlots[i].time), 1); stopCount+=1; } 
@@ -455,8 +438,6 @@
     }
     
     
-    
-    
     //go back to the calendar    
     function back() {
 
@@ -465,8 +446,6 @@
         document.getElementById("toggleDisplay").style.display = "block";
 
     }
-    
-    
     
     
     //check errors and submit form
@@ -548,8 +527,6 @@
     }
     
     
-    
-    
     //search if an email exists and show appointment time and password and cancel button
     function searchEmail(email) {
         
@@ -605,8 +582,6 @@
     }
     
     
-    
-    
     //show or hide button -- 
     function showOrHidePasswordAndCancelButton(showOrHide) {
         
@@ -646,16 +621,10 @@
     }
     
     
-    
-    
     function showPassword() {}
     
     
-    
-    
     function removeAppointment() {}
-    
-    
     
     
     function keepSearchTriesOnServerOverLoadRedirect() {}
