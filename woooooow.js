@@ -229,7 +229,7 @@
     }
     
     
-    //replace number to string on hover
+    //replace number in string on hover
     function addNumber(pushNum) {
 
         var dateString = document.getElementById("date");
