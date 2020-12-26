@@ -1,6 +1,4 @@
 
-    //uh oh ...atrains playing video games    
-
 
     //globals for viewing and interacting with calendar
     let currentDate = new Date();
@@ -631,8 +629,6 @@
 
 
 
-
-//fuuuuuuuuuuuuuuuuuuuuuck
 
 
     
