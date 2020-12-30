@@ -141,7 +141,7 @@
                     document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
                     document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
                     document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-}
+    }
 
 
     
@@ -186,7 +186,7 @@
     //display calendar
     getCalendar = (date) => {
     
-        //
+    
         this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); //might have to keep this if there is no function to get month name
         this.currentYearG = parseInt(date.toString().split(" ")[3].toLowerCase()); //change to getFullYear() unless this is faster
         this.currentIndexOfMonthG = this.amountOfDays[this.currentMonthNameG].index; //change to getMonth() to get correct index and remove values from object
