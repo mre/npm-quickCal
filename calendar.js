@@ -96,7 +96,8 @@
                 cssCells, 
                 cssDateText, 
                 cssDayText, 
-                cssGreetingMessage) => {
+                cssGreetingMessage
+                ) => {
                     document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
                     document.getElementById("backButton").style.cssText = `${cssBackButton}`;
                     document.getElementById("today").style.cssText = `${cssTodayButton}`;
@@ -126,7 +127,8 @@
                 cssCells, 
                 cssDateText, 
                 cssDayText, 
-                cssGreetingMessage) => {
+                cssGreetingMessage
+                ) => {
                     document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
                     document.getElementById("backButton").style.cssText = `${cssBackButton}`;
                     document.getElementById("today").style.cssText = `${cssTodayButton}`;
