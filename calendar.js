@@ -97,20 +97,20 @@
                 cssDateText, 
                 cssDayText, 
                 cssGreetingMessage) => {
-                document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-                document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-                document.getElementById("today").style.cssText = `${cssTodayButton}`;
-                document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-                document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-                document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-                document.getElementById("today").style.cssText = `${cssTodayButton}`;
-                document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-                document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+                    document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+                    document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+                    document.getElementById("today").style.cssText = `${cssTodayButton}`;
+                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+                    document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+                    document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+                    document.getElementById("today").style.cssText = `${cssTodayButton}`;
+                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
     }
 
     //call this after config to style the calendar with a single color theme...
@@ -127,20 +127,20 @@
                 cssDateText, 
                 cssDayText, 
                 cssGreetingMessage) => {
-                document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-                document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-                document.getElementById("today").style.cssText = `${cssTodayButton}`;
-                document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-                document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-                document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-                document.getElementById("today").style.cssText = `${cssTodayButton}`;
-                document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-                document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+                    document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+                    document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+                    document.getElementById("today").style.cssText = `${cssTodayButton}`;
+                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+                    document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+                    document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+                    document.getElementById("today").style.cssText = `${cssTodayButton}`;
+                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
 }
 
 
