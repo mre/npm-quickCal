@@ -2,7 +2,7 @@
     //might have to change all split and charat bull shit to date functions cause i thought it would improve big o.. b"O"y was i wrong /: 
     //can get rid of array to start on with getDay instead --- didnt know that /:
     //poop /:
-    //poopdeedeescoop depoop /:
+    //poopDeeDeeScoop deePoop /:
 
     class Calendar {
 
