@@ -9,9 +9,9 @@ a quickly configured calendar that saves all data
 <p> <code> calendar.default(getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) </code>  </p>
 <p>default parameters are </p>
 <ul>
-<li>getBookedFile: file path for server side -- the attached if statement variable is <b>getBooked</b> -- type is string</li>
-<li>apptFile: file path for server side -- the attached if statement is <b>insertIntoAppointment</b> -- type is string</li>
-<li>searchEmailFile: file path to check if email exists so you can remove email -- the attached if statement is <b>displayAppointmentTime</b> -- type is string</li>
+<li>getBookedFile: file path for server side to get list of bookings dynamically loaded -- the attached if statement variable is <b>getBooked</b> -- type is string</li>
+<li>apptFile: file path for server side to insert a new appointment -- the attached if statement is <b>insertIntoAppointment</b> -- type is string</li>
+<li>searchEmailFile: file path to check if email exists so user can remove their appointment -- the attached if statement is <b>displayAppointmentTime</b> -- type is string</li>
 <li>redirectUrl: url to redirect to -- will probablt get rid of this and just show check mark -- type is string</li>
 <li>timeList: list of times you decide in array format -- type is array</li>
 <li>redirectMessage: header message for redirect. I dont think i am going to add this -- type string</li>
