@@ -1,4 +1,7 @@
 
+    //might have to change all split and charat bull shit to date functions cause i thought it would improve big o.. b"O"y was i wrong /: 
+    //can get rid of array to start on with getDay instead --- didnt know that /:
+    //poop /:
 
     class Calendar {
 
@@ -27,6 +30,7 @@
             this.dontshowForm = true; 
             this.timeList = []; 
             this.redirectMessage = "message you want to show to your user on submission";
+            this.greetingMessage = "Let have some coffe over zoom";
             this.triggerStart();
         }
         
@@ -74,7 +78,7 @@
     }
 
     //define css properties -- must be after trigger.... passing in css text for different elements
-    style = (cssNext, cssBack, cssToday) => {
+    style = (cssNextButton, cssBackButton, cssTodayButton, cssSubmitButton, cssSaerchEmailInput, cssEmailInput, cssMessageInput, cssPasswordInput, cssCells, cssDateText, cssDayText, cssGreetingMessage) => {
         document.getElementById("nextButton").cssText = `${cssNext}`;
         document.getElementById("backButton").cssText = `${cssBack}`;
         document.getElementById("today").cssText = `${cssToday}`;
@@ -98,8 +102,8 @@
             <th scope="col">sunday</th>
           </tr>
           <tr>
-          <button id = "next">next</button>
-          <button id = "back" style = "margin-left: 5px">back</button>
+          <button id = "back">back</button>
+          <button id = "next" style = "margin-left: 5px">next</button>
           <button id = "today" style = "margin-left: 5px">today</button>
           <input type = "text" style = "margin-left: 5px" id = "searchKeyUp"> </input>
           <br>
@@ -188,7 +192,7 @@
 
         this.fileToGetBooked ? this.loadInTakenTimes() : this.showNoLoad("loading data not set.."); //doing this twice
         this.hideBackButton ? this.hideBackButtonNone() : this.showNoLoad("back button showing on same month and year..");
-        this.hidePassedDays ? this.hidePassedDaysNone() : this.showNoLoad("passed days not showing on month and year..");
+        this.hidePastDays ? this.hidePassedDaysNone() : this.showNoLoad("passed days not showing on month and year..");
 
     }
 
@@ -269,15 +273,35 @@
     }
 
     //hide back button
-    hideBackButtonNone = () => {}
+    hideBackButtonNone = () => {
+        var date = new Date();
+        var month = date.getMonth();
+        var year = date.getFullYear();
+        if(this.currentYearG <= year && this.currentIndexOfMonthG <= month) {
+             document.getElementById("back").hidden = true;
+         } else {
+            document.getElementById("back").hidden = false;
+         }
+    }
 
     //hide passed days
-    hidePassedDaysNone = () => {}
+    hidePassedDaysNone = () => {
+        var date = new Date();
+        var day = date.getDate();
+        var month = date.getMonth();
+        var year = date.getFullYear();
+        alert(day);
+        if(this.currentYearG == year && this.currentIndexOfMonthG == month) {
+            for(let i = 1; i < day; i++) {
+                document.getElementById(`highlight-${i}`).style.backgroundColor = "red";
+            }
+        }
+    }
     
     //on hover get booked events for each day
     eliminateBookedEvents = (day, year, monthIndex, monthName) => {
 
-        if(this.alottedSlots.length === 0) { return }
+        if(this.alottedSlots.length === 0) { return; }
         
         var date = new Date();
         var todayYear = parseInt(date.toString().split(" ")[3]);
@@ -302,7 +326,13 @@
         };
         
             
-        if(originalSet.length === 0) { b.innerText = "Booked"; b.style.color = "red";  } else { b.innerText = "Appointments available"; b.style.color = "green";  }
+        if(originalSet.length === 0) { 
+            b.innerText = "Booked";
+             b.style.color = "red"; 
+             } else { 
+                 b.innerText = "Appointments available";
+                  b.style.color = "green"; 
+             }
 
     }
     
@@ -362,12 +392,10 @@
             </div>
             <input id = "emailS" class = "form-control" placeholder = "email" style = "width: 40%; height: 40px; margin: auto">
             <p id = "emailError" style = "color: red"> </p>
-            <input id = "passwordS" class = "form-control" placeholder = "password" style = "width: 40%; height: 40px; margin: auto">
-            <br>
-            <textarea id = "messageS" class = "form-control" placeholder = "password" style = "width: 40%; height: 40px; margin: auto" rows = "5"></textarea>
-            <br>
-            <small> optional for viewing and canceling appointment </small>
+            <input id = "passwordS" class = "form-control" placeholder = "password" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px">
             <p id = "passwordErrorS" style = "color: red"> </p>
+            <textarea id = "messageS" class = "form-control" placeholder = "message" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px" rows = "5"></textarea>
+            <br>
             <br>
             <button class = "btn btn-lg" style = "" onclick = "submit()" >Schedule!</button>
             <br>
