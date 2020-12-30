@@ -54,3 +54,7 @@ a quickly configured calendar that saves all data
 <p>instead of referring to alotted slots i am only going to refer to the database when managing booked vs open appointments however the lookup I am planning to be O(1) * the timelist you have added in your configuration </p>
 <h1>Working Example</h1>
 <p>A working example will be shown when complete </p>
+<h1>Dependencies</h1>
+<p>jquery</p>
+<p>gsap</p>
+<p>bootstrap reccomended</p>
