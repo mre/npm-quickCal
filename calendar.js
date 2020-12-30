@@ -2,7 +2,6 @@
     //might have to change all split and charat bull shit to date functions cause i thought it would improve big o.. b"O"y was i wrong /: 
     //can get rid of array to start on with getDay instead --- didnt know that /:
     //poop /:
-    //anywhere where there is new date, create a function and return an object with all the information. avoid doing twice...
 
     class Calendar {
 
@@ -79,7 +78,18 @@
     }
 
     //define css properties -- must be after trigger.... passing in css text for different elements
-    style = (cssNextButton, cssBackButton, cssTodayButton, cssSubmitButton, cssSaerchEmailInput, cssEmailInput, cssMessageInput, cssPasswordInput, cssCells, cssDateText, cssDayText, cssGreetingMessage) => {
+    style = (cssNextButton,
+            cssBackButton,
+            cssTodayButton, 
+            cssSubmitButton, 
+            cssSaerchEmailInput, 
+            cssEmailInput, 
+            cssMessageInput, 
+            cssPasswordInput, 
+            cssCells, 
+            cssDateText, 
+            cssDayText, 
+            cssGreetingMessage) => {
         document.getElementById("nextButton").cssText = `${cssNext}`;
         document.getElementById("backButton").cssText = `${cssBack}`;
         document.getElementById("today").cssText = `${cssToday}`;
@@ -286,14 +296,14 @@
     }
 
     //hide passed days
-    hidePassedDaysNone = () => {
+    hidePassedDaysNone = () => { //consider doing this on the fly when loaded in...just "continue" inside of loop
         var date = new Date();
         var day = date.getDate();
         var month = date.getMonth();
         var year = date.getFullYear();
         if(this.currentYearG == year && this.currentIndexOfMonthG == month) {
             for(let i = 1; i < day; i++) {
-                document.getElementById(`highlight-${i}`).style.backgroundColor = "red";
+                document.getElementById(`highlight-${i}`).style.backgroundColor = "black";
             }
         }
     }
