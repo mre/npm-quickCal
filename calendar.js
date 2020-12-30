@@ -291,7 +291,6 @@
         var day = date.getDate();
         var month = date.getMonth();
         var year = date.getFullYear();
-        alert(day);
         if(this.currentYearG == year && this.currentIndexOfMonthG == month) {
             for(let i = 1; i < day; i++) {
                 document.getElementById(`highlight-${i}`).style.backgroundColor = "red";
