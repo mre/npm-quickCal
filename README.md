@@ -1,5 +1,6 @@
 # npm-quickCal
 a quickly configured calendar that saves all data
+<p> this package is not complete </p>
 <h1>How to use </h1>
 <p>call class calendar <code> let calendar = new Calendar() </code></p>
 <p>Next decide your configuration. You have two options, default or your own</p>
