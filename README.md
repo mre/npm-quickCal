@@ -35,7 +35,7 @@ a quickly configured calendar that saves all data
   SERVER SIDE
 </h1>
 <p>
-  one table with six rows
+  one table with seven rows
 </p>
 <p> day, time, month, monthName, year, email[client email], message[client message] </p>
 <p> post data is configured by you and variables for post are given for each file path </p>
