@@ -1,46 +1,42 @@
-    //first construcor will be there own constructor 
-    //next constructors will be default ones i create
-    //cal is being hit twice. one time for table other for calendar. get rid of the hit for the table header..
-    //chexk big o for split operations vs just using object functions for date
-    //hit init first then define all buttons and stuff
+
 
     class Calendar {
 
         defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) => {
-            this.fileToGetBooked = false; //getBookedFile
-            this.fileToPushAppointment = false; //appt file
-            this.searchEmailFilePath = false,  //search email file
-            this.hideBackButton = true; //hideBackButton -- boolean
-            this.hidePastDays = true; //hidePassedDays -- boolean
-            this.redirectUrl = null; //url to go to
-            this.dontshowForm = true; //if you should show form
-            this.timeList = []; //final
+            this.fileToGetBooked = false; 
+            this.fileToPushAppointment = false; 
+            this.searchEmailFilePath = false, 
+            this.hideBackButton = true; 
+            this.hidePastDays = true; 
+            this.redirectUrl = null; 
+            this.dontshowForm = true; 
+            this.timeList = []; 
             this.redirectMessage = "";
             this.triggerStart();
         }
 
-        //configure the calendar -- path: string, path: string, path: string, ui: boolean, ui: boolean, url: string message: string, dontshowForm: boolean -- leave regule to just show calendar
         config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
-            this.fileToGetBooked = false; //getBookedFile
-            this.fileToPushAppointment = false; //appt file
-            this.searchEmailFilePath = false,  //search email file
-            this.hideBackButton = false; //hideBackButton -- boolean
-            this.hidePastDays = false; //hidePassedDays -- boolean
-            this.redirectUrl = null; //url to go to
-            this.dontshowForm = true; //if you should show form
-            this.timeList = []; //final
+            this.fileToGetBooked = false; 
+            this.fileToPushAppointment = false; 
+            this.searchEmailFilePath = false,  
+            this.hideBackButton = false; 
+            this.hidePastDays = false; 
+            this.redirectUrl = null; 
+            this.dontshowForm = true; 
+            this.timeList = []; 
             this.redirectMessage = "message you want to show to your user on submission";
             this.triggerStart();
         }
         
-
+        
+        //set events, globals then display calendar
         triggerStart = () => {
             this.events(); 
             this.globals();
             this.getCalendar(new Date());
         }
 
-        //onclicks tied to next three functions
+        //static event listeners
         events = () => {
             this.skeleton = document.getElementById("skeleton");
             this.fillSkeleton(); 
@@ -75,14 +71,15 @@
         }
     }
 
-    //define css properties dynamically -- must be after trigger....
+    //define css properties -- must be after trigger.... passing in css text for different elements
     style = (cssNext, cssBack, cssToday) => {
         document.getElementById("nextButton").cssText = `${cssNext}`;
         document.getElementById("backButton").cssText = `${cssBack}`;
         document.getElementById("today").cssText = `${cssToday}`;
     }
 
-
+    
+    //fill the calendar
     fillSkeleton = () => {
         this.skeleton.style.cssText = `margin: auto; text-align: center`;
         this.skeleton.innerHTML = `
@@ -367,6 +364,8 @@
             <p id = "emailError" style = "color: red"> </p>
             <input id = "passwordS" class = "form-control" placeholder = "password" style = "width: 40%; height: 40px; margin: auto">
             <br>
+            <textarea id = "messageS" class = "form-control" placeholder = "password" style = "width: 40%; height: 40px; margin: auto" rows = "5"></textarea>
+            <br>
             <small> optional for viewing and canceling appointment </small>
             <p id = "passwordErrorS" style = "color: red"> </p>
             <br>
@@ -407,7 +406,9 @@
         var monthIndex = document.getElementById("monthIndexS");
         var year = document.getElementById("yearS");
         var email = document.getElementById("emailS");
-        var time = $('input[name="timeS"]:checked' ).val(); //replace with loop and get checked to avoid loading in jquery -- moves to one dependency -- gsap
+        var password = document.getElementById("passwordS");
+        var message = document.getElementById("messageS"); //meed to add this in
+        var time = $('input[name="timeS"]:checked' ).val(); //replace with loop and get checked to avoid loading in jquery -- moves to one dependency -- now only gsap
         
         var count = 0;
 
@@ -427,7 +428,9 @@
                 monthIndex: parseInt(monthIndex.value),
                 year: parseInt(year.value),
                 email: email.value,
-                time: time
+                time: time,
+                password: password.value,
+                message: message.value
             },
             dataType: "json",
             success: function(result, status, xhr) {
@@ -448,7 +451,7 @@
     }
     
     
-    //search if an email exists and show appointment time and password and cancel button
+    //search if an email exists and show appointment time and password and cancel button -- if password good, remove
     searchEmail = (email) => {
 
         if(this.searchEmailFilePath === false) { return; }
