@@ -9,8 +9,8 @@ a quickly configured calendar that saves all data
 <p> <code> calendar.default(getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) </code>  </p>
 <p>default parameters are </p>
 <ul>
-<li>getBookedFile: file path for server side -- using ajax -- the attached if statement variable is <b>getBooked</b> -- type is string</li>
-<li>apptFile: file path for server side -- using ajax -- the attached if statement is <b>insertIntoAppointment</b> -- type is string</li>
+<li>getBookedFile: file path for server side -- the attached if statement variable is <b>getBooked</b> -- type is string</li>
+<li>apptFile: file path for server side -- the attached if statement is <b>insertIntoAppointment</b> -- type is string</li>
 <li>searchEmailFile: file path to check if email exists so you can remove email -- the attached if statement is <b>displayAppointmentTime</b> -- type is string</li>
 <li>redirectUrl: url to redirect to -- will probablt get rid of this and just show check mark -- type is string</li>
 <li>timeList: list of times you decide in array format -- type is array</li>
@@ -29,8 +29,14 @@ a quickly configured calendar that saves all data
 <li>hidePassedDays: boolean for hiding passed days on this month and year </li>
 <li>dontshowform: boolean for only displaying calendar </li>
 </ul>
-
+ 
+<h1>
+  Styling
+</h1>
+<p>
+  To style different elements call <code> calendar.style(cssNext, cssBack, cssToday, cssInput, cssTableCell, cssMessageInput, cssPassword, cssEmail, cssSubmitButton, cssRadioTimes) </code>
 </p>
+<p>you can define the cssText for each element by typeing the css string for example "display: block; cursor: pointer" ... ect</p>
 
 <h1>
   SERVER SIDE
