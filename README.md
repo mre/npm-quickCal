@@ -45,6 +45,4 @@ a quickly configured calendar that saves all data
   one table with seven rows
 </p>
 <p> day, time, month, monthName, year, email[client email], message[client message] </p>
-<p> post data is configured by you and variables for post are given for each file path </p>
-
-<p> and thats it - server side files will be shown in more than one language</p>
+<p> and thats it - server side files will be shown in more than one language... c#, php, nodejs, java ..maybe Go but i doubt it </p>
