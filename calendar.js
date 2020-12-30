@@ -114,20 +114,11 @@
                     document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
     }
 
-    //call this after config to style the calendar with a single color theme...
+    //default configuration settings ... black, white ...oter colors if anything else return error
     defaultStyle = (
-                cssNextButton,
-                cssBackButton,
-                cssTodayButton, 
-                cssSubmitButton, 
-                cssSearchEmailInput, 
-                cssEmailInput, 
-                cssMessageInput, 
-                cssPasswordInput, 
-                cssCells, 
-                cssDateText, 
-                cssDayText, 
-                cssGreetingMessage
+                color, 
+                font, 
+                input
                 ) => {
                     document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
                     document.getElementById("backButton").style.cssText = `${cssBackButton}`;
