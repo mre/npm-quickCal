@@ -6,7 +6,7 @@
     //poopDeeDeeScoop /:
     //poopDeeDeeScoop deePoop /:
     //poopDeeDeeScoop deePoop deeScoop deePoop /:
-    //rumble with lips with fast finish -- upward alliance
+    //rumble with lips with upward finish 
 
     class Calendar {
 
