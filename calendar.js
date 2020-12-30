@@ -139,14 +139,14 @@
     //display calendar
     getCalendar = (date) => {
     
-        
+        //get rid of all these shitty split operations... use the date functions damnit. wheres my machete.... know what bert, fuck it im grabbin my shotgun.
         this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); 
         this.currentYearG = parseInt(date.toString().split(" ")[3].toLowerCase());
         this.currentIndexOfMonthG = this.amountOfDays[this.currentMonthNameG].index; 
 
     
         var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).toString().split(" ")[0].toLocaleLowerCase(); 
-        var arrayOfDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]; 
+        var arrayOfDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]; //replace with getDay
         startOn = arrayOfDays.indexOf(startOn) + 1;
 
     
