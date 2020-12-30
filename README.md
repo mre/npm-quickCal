@@ -1,12 +1,12 @@
 # npm-quickCal
 a quickly configured calendar that saves all data
 <p> this package is not complete </p>
+<p> This wil generate an accurate calendar for you where you have 10 configuration settings set to load, save, remove and display CORRECT information for every user </p>
 <h1>How to use </h1>
 <p>call class calendar <code> let calendar = new Calendar() </code></p>
 <p>Next decide your configuration. You have two options, default or your own</p>
 <h2> for default type: </h2>
 <p> <code> calendar.default(getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) </code>  </p>
-<p> This wil generate an accurate calendar for you where you have 10 configuration settings set to load, save and display CORRECT information </p>
 <p>default parameters are </p>
 <ul>
 <li>getBookedFile: file path for server side -- using ajax -- the attached if statement variable is <u>getBooked</u> -- type is string</li>
