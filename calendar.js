@@ -120,6 +120,9 @@
           <br>
           <br>
           <small id = "date" style = "margin-left: 5px"> </small>
+          <br>
+          <br>
+          <small id = "errorBooked"> </small>
           </tr>
         </thead>
         <tbody id = "calendar">
@@ -311,7 +314,7 @@
     //on hover get booked events for each day
     eliminateBookedEvents = (day, year, monthIndex, monthName) => {
 
-        if(this.alottedSlots.length === 0) { return; }
+        //if(this.alottedSlots.length === 0) { return; }
         
         var date = new Date();
         var todayYear = parseInt(date.toString().split(" ")[3]);
