@@ -1,7 +1,7 @@
 
     //might have to change all split and charat bull shit to date functions cause i thought it would improve big o.. b"O"y was i wrong /: 
     //can get rid of array to start on with getDay instead --- didnt know that /:
-    //stick the things happening twice in a function
+    //stick the things happening twice in a function...mostly where new date... just call the function with the set object
     //poop /:
     //poopDeeDeeScoop deePoop /:
 
