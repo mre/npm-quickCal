@@ -63,7 +63,7 @@
             this.currentMonthNameG = null;
             this.currentYearG = null;
             this.alottedSlots = [];
-            this.amountOfDays = {
+            this.amountOfDays = { //dont need this -- check date functions for amount of days in month and for the getMonth(); /: -- used date string first because thought would improve big o /: dumb
             jan: { month: 31, index: 0 },
             feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28, index: 1 },
             mar: { month: 31, index: 2 },
