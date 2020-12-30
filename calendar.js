@@ -143,10 +143,10 @@
     //display calendar
     getCalendar = (date) => {
     
-        //get rid of all these shitty split operations... use the date functions damnit. Wheres my machete.... know what, fuck it wheres my revolver. grab it from the den will ya. GAWD DAMNIT HES GONE. Je**... get k*** and bait em at the shack. we gone get em.
-        this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); 
-        this.currentYearG = parseInt(date.toString().split(" ")[3].toLowerCase());
-        this.currentIndexOfMonthG = this.amountOfDays[this.currentMonthNameG].index; 
+        //
+        this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); //might have to keep this if there is no function
+        this.currentYearG = parseInt(date.toString().split(" ")[3].toLowerCase()); //getFullYear unless this is faster
+        this.currentIndexOfMonthG = this.amountOfDays[this.currentMonthNameG].index; //could not find amount of days
 
     
         var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).toString().split(" ")[0].toLocaleLowerCase(); 
