@@ -52,3 +52,5 @@ a quickly configured calendar that saves all data
 <p> It is dynamic set with the upper bound of rows being (the dynamic(yes it is) amount of days for the year and month) * (the amount of times allocated in your configuration for each day, also dynamic)</p>
 <p> so if the amount of days in the month is 30 and your configuration has 3 times set that is... daysN*timesN or up to 90 sets loaded in at once if a booked schedule </p>
 <p>instead of referring to alotted slots i am only going to refer to the database when managing booked vs open appointments however the lookup I am planning to be O(1) * the timelist you have added in your configuration </p>
+<h1>Working Example</h1>
+<p>A working example will be shown when complete </p>
