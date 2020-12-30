@@ -4,7 +4,7 @@ a quickly configured calendar that saves all data
 <p>call class calendar <code> let calendar = new Calendar() </code></p>
 <p>Next decide your configuration. You have two options, default or your own</p>
 <h2> for default type: </h2>
-<p> <code> calendar.default() </code>  </p>
+<p> <code> calendar.default(getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) </code>  </p>
 <p> This wil generate an accurate calendar for you where you have 10 configuration settings set to load, save and display CORRECT information </p>
 <p>default parameters are </p>
 <ul>
@@ -16,7 +16,7 @@ a quickly configured calendar that saves all data
 <li>redirectMessage: header message for redirect. I dont think i am going to add this | type string</li>
 </ul>
 <h2> for configured type: </h2>
-<p>
+<p> <code> calendar.configure(getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) </code> </p>
 <ul>
 <li>getBookedFile: file path for server side -- using ajax | the attached if statement variable is <u>getBooked</u> | type is get booked</li>
 <li>apptFile: file path for server side -- using ajax | the attached if statement is <u>insertIntoAppointment</u> | type is string</li>
