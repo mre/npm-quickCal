@@ -288,9 +288,7 @@
         var b = document.getElementById("errorBooked");
             
 
-        if((monthIndex < todayMonthIndex && year === todayYear) ||
-            (year < todayYear) || 
-            (monthIndex === todayMonthIndex && year === todayYear && day < todayDay)) {
+        if((monthIndex < todayMonthIndex && year === todayYear) || (year < todayYear) ||  (monthIndex === todayMonthIndex && year === todayYear && day < todayDay)) {
             b.innerText = "X"; b.style.color = "red";
             return;
         }
