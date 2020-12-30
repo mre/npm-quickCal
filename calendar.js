@@ -139,7 +139,7 @@
     //display calendar
     getCalendar = (date) => {
     
-        //get rid of all these shitty split operations... use the date functions damnit. wheres my machete.... know what bert, fuck it im grabbin my shotgun.
+        //get rid of all these shitty split operations... use the date functions damnit. Wheres my machete.... know what, fuck it wheres my revolver. grab it from the den will ya. GAWD DAMNIT HES GONE. Je**... get k*** and bait em at the shack. we gone get em.
         this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); 
         this.currentYearG = parseInt(date.toString().split(" ")[3].toLowerCase());
         this.currentIndexOfMonthG = this.amountOfDays[this.currentMonthNameG].index; 
