@@ -251,7 +251,7 @@
                 this.alottedSlots = [];
     
                 for(let i = 0; i < result.length; i++) { 
-                    this.alottedSlots.push({ //change to objet to reduce lookup
+                    this.alottedSlots.push({ //change to object to reduce lookup -- { {day, time}, {} } -- do a search for these and return a boolean then add to times -- resuces to O(timelist)
                         year: result[i].year, 
                         monthName: result[i].monthName,
                         monthIndex: result[i].monthIndex,
@@ -296,7 +296,7 @@
             return;
         }
 
-        var originalSet = ["6am", "9am", "3pm", "7pm"];  
+        var originalSet = ["6am", "9am", "3pm", "7pm"];  //set this to the time set global
                   
         for(let i = 0; i < this.alottedSlots.length; i++) { //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)
             if(this.alottedSlots[i].day === day) { 
@@ -343,7 +343,7 @@
         ${getDayName} ${monthName} ${day} ${year}
         </h1>`;
 
-        var originalSet = ["6am", "9am", "3pm", "7pm"];  
+        var originalSet = ["6am", "9am", "3pm", "7pm"]; // set this to the timelist global  
 
         for(let i = 0; i < this.alottedSlots.length; i++) {  //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)	
             if(this.alottedSlots[i].day === day) {  
