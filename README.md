@@ -57,4 +57,4 @@ a quickly configured calendar that saves all data
 <h1>Dependencies</h1>
 <p>jquery</p>
 <p>gsap</p>
-<p>bootstrap reccomended</p>
+<p>bootstrap recommended</p>
