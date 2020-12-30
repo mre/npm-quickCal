@@ -248,7 +248,7 @@
                 this.alottedSlots = [];
     
                 for(let i = 0; i < result.length; i++) { 
-                    this.alottedSlots.push({ //change to object to reduce lookup -- { {day, time}, {} } -- do a search for these and return a boolean then add to times -- resuces to O(timelist)
+                    this.alottedSlots.push({ //change to object to reduce lookup -- { {day, time}, {} } -- do a search for these and return a boolean then add to times -- resuces to O(1)
                         year: result[i].year, 
                         monthName: result[i].monthName,
                         monthIndex: result[i].monthIndex,
