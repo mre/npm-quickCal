@@ -46,3 +46,7 @@ a quickly configured calendar that saves all data
 </p>
 <p> day, time, month, monthName, year, email[client email], message[client message] </p>
 <p> and thats it - server side files will be shown in more than one language... c#, php, nodejs, java ..maybe Go but i doubt it </p>
+
+<h1>Time complexity </h1>
+<p> every move in the calendar meaning pressing button today next and back will result in a new set loaded in. </p>
+<p> It is dynamic set with the upper bound of rows being (the dynamic amount of days for the year and month) * (the amount of times allocated in your configuration for each day)</p>
