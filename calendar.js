@@ -67,7 +67,7 @@
             this.currentMonthNameG = null;
             this.currentYearG = null;
             this.alottedSlots = [];
-            this.amountOfDays = { //dont need this -- check date functions for amount of days in month and for the getMonth(); /: -- used date string first because thought would improve big o /: dumb
+            this.amountOfDays = { //need this for getting amount of days. do not need for index...anywhere you see.index replace with getMonth()
             jan: { month: 31, index: 0 },
             feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28, index: 1 },
             mar: { month: 31, index: 2 },
@@ -145,14 +145,14 @@
     getCalendar = (date) => {
     
         //
-        this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); //might have to keep this if there is no function
-        this.currentYearG = parseInt(date.toString().split(" ")[3].toLowerCase()); //getFullYear unless this is faster
-        this.currentIndexOfMonthG = this.amountOfDays[this.currentMonthNameG].index; //could not find amount of days
+        this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); //might have to keep this if there is no function to get month name
+        this.currentYearG = parseInt(date.toString().split(" ")[3].toLowerCase()); //change to getFullYear() unless this is faster
+        this.currentIndexOfMonthG = this.amountOfDays[this.currentMonthNameG].index; //change to getMonth() to get correct index and remove values from object
 
     
-        var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).toString().split(" ")[0].toLocaleLowerCase(); 
-        var arrayOfDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]; //replace with getDay
-        startOn = arrayOfDays.indexOf(startOn) + 1;
+        var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).toString().split(" ")[0].toLocaleLowerCase(); //replace all with geyDay()
+        var arrayOfDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]; //replace all with getDay()
+        startOn = arrayOfDays.indexOf(startOn) + 1; //replace all with getDay()
 
     
         this.cal.innerHTML = ``;
@@ -182,7 +182,7 @@
 
         }
     
-        let days = this.amountOfDays[this.currentMonthNameG].month; 
+        let days = this.amountOfDays[this.currentMonthNameG].month; //find function to get amount of days in month.
     
         for(let i = 1; i <= days; i++) {
 
@@ -225,7 +225,7 @@
     //go to today
     today = () => {
         var date = new Date();
-        var day = date.toString().split(" ")[2];
+        var day = date.toString().split(" ")[2]; //getDate() i believe this gets the correct day
         this.getCalendar(date);
         var string = "highlight-"+day;
         document.getElementById(string).style.backgroundColor = "lightblue";
@@ -324,9 +324,9 @@
         //if(this.alottedSlots.length === 0) { return; }
         
         var date = new Date();
-        var todayYear = parseInt(date.toString().split(" ")[3]);
-        var todayMonthIndex = this.amountOfDays[date.toString().split(" ")[1].toLowerCase()].index; 
-        var todayDay = parseInt(date.toString().split(" ")[2]);
+        var todayYear = parseInt(date.toString().split(" ")[3]); //getFullYear()
+        var todayMonthIndex = this.amountOfDays[date.toString().split(" ")[1].toLowerCase()].index; //do getMonth()
+        var todayDay = parseInt(date.toString().split(" ")[2]); //getDate() i think
 
         
         var b = document.getElementById("errorBooked");
@@ -363,9 +363,9 @@
         if(this.dontshowForm === false) { return; }
 
         var date = new Date();
-        var todayYear = parseInt(date.toString().split(" ")[3]);
-        var todayMonthIndex = this.amountOfDays[date.toString().split(" ")[1].toLowerCase()].index; 
-        var todayDay = parseInt(date.toString().split(" ")[2]);
+        var todayYear = parseInt(date.toString().split(" ")[3]); //getFullYear()
+        var todayMonthIndex = this.amountOfDays[date.toString().split(" ")[1].toLowerCase()].index;  //getMonth()
+        var todayDay = parseInt(date.toString().split(" ")[2]); //getDate()
             
 
         if((monthIndex < todayMonthIndex && year === todayYear) ||  (year < todayYear) ||  (monthIndex === todayMonthIndex && year === todayYear && day < todayDay)) {
@@ -374,7 +374,7 @@
             return;
         }
 
-        var getDayName = new Date(year, monthIndex, day).toString().split(" ")[0];
+        var getDayName = new Date(year, monthIndex, day).toString().split(" ")[0]; //find function to get the name of the day...
 
         var temp = ``;
 
