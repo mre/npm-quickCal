@@ -2,6 +2,7 @@
 
     class Calendar {
 
+        //default configuration that allows every functionality of calendar
         defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) => {
             this.fileToGetBooked = false; 
             this.fileToPushAppointment = false; 
@@ -15,6 +16,7 @@
             this.triggerStart();
         }
 
+        //your pre configured set
         config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
             this.fileToGetBooked = false; 
             this.fileToPushAppointment = false; 
