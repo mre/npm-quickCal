@@ -94,6 +94,7 @@
         document.getElementById("nextButton").cssText = `${cssNext}`;
         document.getElementById("backButton").cssText = `${cssBack}`;
         document.getElementById("today").cssText = `${cssToday}`;
+        //for the cells do classList.add(whatever)
     }
 
     
