@@ -7,7 +7,6 @@
     //poopDeeDeeScoop deePoop /:
     //poopDeeDeeScoop deePoop deeScoop deePoop /:
     //naaaaa naaaa naa na-na-na-naaaaa na-na-na-naaaaaaa heyyyyy juuuuuuuuuuuuuuuuuuuuuuude. /: -- oops
-    //ching chong walla walla bing bong
 
     class Calendar {
 
