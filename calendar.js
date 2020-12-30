@@ -2,6 +2,7 @@
     //might have to change all split and charat bull shit to date functions cause i thought it would improve big o.. b"O"y was i wrong /: 
     //can get rid of array to start on with getDay instead --- didnt know that /:
     //poop /:
+    //anywhere where there is new date, create a function and return an object with all the information. avoid doing twice...
 
     class Calendar {
 
