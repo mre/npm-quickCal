@@ -3,7 +3,9 @@
     //can get rid of array to start on with getDay instead --- didnt know that /:
     //stick the things happening twice in a function...mostly where new date... just call the function with the set object
     //poop /:
+    //poopDeeDeeScoop /:
     //poopDeeDeeScoop deePoop /:
+    //poopDeeDeeScoop deePoop deeScoop deePoop /:
 
     class Calendar {
 
