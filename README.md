@@ -1,7 +1,7 @@
 # npm-quickCal
 a quickly configured calendar that saves all data
 <p> this package is not complete </p>
-<p> This wil generate an accurate calendar for you where you have 10 configuration settings set to load, save, remove and display CORRECT information for every user </p>
+<p> This wil generate an accurate calendar for you where you have 10 configuration settings set to load, save, remove and display CORRECT information for every user all the way down to the time of the appointment you set </p>
 <h1>How to use </h1>
 <p>call class calendar <code> let calendar = new Calendar() </code></p>
 <p>Next decide your configuration. You have two options, default or your own</p>
