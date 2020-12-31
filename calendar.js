@@ -348,18 +348,21 @@
         }
     }
     
-    //on hover get booked events for each day
+    //on hover get booked events for each day -- if none showing up eturn appointments available
     eliminateBookedEvents = (day, year, monthIndex, monthName) => {
+        
+        var b = document.getElementById("errorBooked");
 
-        //if(this.alottedSlots.length === 0) { return; }
+        if(this.alottedSlots.length === 0) {                  
+            b.innerText = "Appointments available";
+            b.style.color = "green";
+            return; 
+        }
         
         var date = new Date();
         var todayYear = parseInt(date.toString().split(" ")[3]); //getFullYear()
         var todayMonthIndex = this.amountOfDays[date.toString().split(" ")[1].toLowerCase()].index; //do getMonth()
         var todayDay = parseInt(date.toString().split(" ")[2]); //getDate() i think
-
-        
-        var b = document.getElementById("errorBooked");
             
 
         if((monthIndex < todayMonthIndex && year === todayYear) || (year < todayYear) ||  (monthIndex === todayMonthIndex && year === todayYear && day < todayDay)) {
@@ -486,14 +489,21 @@
         var email = document.getElementById("emailS");
         var password = document.getElementById("passwordS");
         var message = document.getElementById("messageS"); //meed to add this in
-        var time = $('input[name="timeS"]:checked' ).val(); //replace with loop and get checked to avoid loading in jquery -- moves to one dependency -- now only gsap
+        var time = $('input[name="timeS"]:checked' ).val(); 
         
         var count = 0;
-
-        if(time === undefined) { count++; alert("please select a time") };
-        if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value)) { count++; document.getElementById("emailError").innerText = "*Please enter a valid email"; };
         
-        if(count > 0) { return; }
+        if(time === undefined) { 
+            count++; 
+            document.getElementById("errorTime").innerText = "Please select a time" 
+        };
+        
+        if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value)) {
+            count++; 
+            document.getElementById("emailError").innerText = "*Please enter a valid email";
+        };
+        
+        if(count > 0) { return; };
         
         $.ajax({
             type: "POST",
