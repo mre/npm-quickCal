@@ -6,6 +6,7 @@
 
     class Calendar {
 
+        
         //default configuration that allows every functionality of calendar
         defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) => {
             this.fileToGetBooked = false; 
