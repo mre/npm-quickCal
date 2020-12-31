@@ -63,19 +63,19 @@
             this.currentYearG = null;
             this.alottedSlots = [];
             this.amountOfDays = { //need this for getting amount of days. do not need for index...anywhere you see.index replace with getMonth()
-            jan: { month: 31, index: 0 },
-            feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28, index: 1 },
-            mar: { month: 31, index: 2 },
-            apr: { month: 30, index: 3 },
-            may: { month: 31, index: 4 },
-            jun: { month: 30, index: 5 },
-            jul: { month: 31, index: 6 },
-            aug: { month: 31, index: 7 },
-            sep: { month: 30, index: 8 },
-            oct: { month: 31, index: 9 },
-            nov: { month: 30, index: 10 },
-            dec: { month: 31, index: 11 },
-        }
+                jan: { month: 31, index: 0 },
+                feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28, index: 1 },
+                mar: { month: 31, index: 2 },
+                apr: { month: 30, index: 3 },
+                may: { month: 31, index: 4 },
+                jun: { month: 30, index: 5 },
+                jul: { month: 31, index: 6 },
+                aug: { month: 31, index: 7 },
+                sep: { month: 30, index: 8 },
+                oct: { month: 31, index: 9 },
+                nov: { month: 30, index: 10 },
+                dec: { month: 31, index: 11 },
+            }
     }
 
     //define css properties -- must be after trigger.... passing in css text for different elements
@@ -212,7 +212,7 @@
 
         }
     
-        let days = this.amountOfDays[this.currentMonthNameG].month; //find function to get amount of days in month.
+        let days = this.amountOfDays[this.currentMonthNameG].month; //find function to get amount of days in month or just continue using this
     
         for(let i = 1; i <= days; i++) {
 
