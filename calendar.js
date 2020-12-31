@@ -75,7 +75,7 @@
                 nov: { month: 30, index: 10 },
                 dec: { month: 31, index: 11 },
             }
-    }
+        }
 
     //define css properties -- must be after trigger.... passing in css text for different elements
     configStyle = (
