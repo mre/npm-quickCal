@@ -20,6 +20,7 @@
             this.triggerStart();
         }
 
+        
         //your pre configured set
         config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
             this.fileToGetBooked = false; 
@@ -35,6 +36,7 @@
             this.triggerStart();
         }
         
+        
         //set events, globals then display calendar
         triggerStart = () => {
             this.events(); 
@@ -42,6 +44,7 @@
             this.getCalendar(new Date());
         }
 
+        
         //static event listeners
         events = () => {
             this.skeleton = document.getElementById("skeleton");
@@ -53,6 +56,7 @@
             document.getElementById("searchKeyUp").onkeyup = (e) => { this.searchEmail(e.target.value); }; //loaded on set
         }
 
+        
         //set the globals
         globals = () => {
             this.currentDate = new Date();
@@ -77,6 +81,7 @@
             }
         }
 
+        
     //define css properties -- must be after trigger.... passing in css text for different elements
     configStyle = (
                 cssNextButton,
@@ -108,6 +113,7 @@
                     document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
     }
 
+    
     //default configuration settings ... black, white ...oter colors if anything else return error
     defaultStyle = (color, font, input) => {
                     document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
@@ -126,6 +132,7 @@
                     document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
     }
 
+    
     //fill the calendar
     fillSkeleton = () => {
         this.skeleton.style.cssText = `margin: auto; text-align: center`;
@@ -163,6 +170,7 @@
       `;
     }
 
+    
     //display calendar
     getCalendar = (date) => {
     
@@ -236,10 +244,12 @@
 
     }
 
+    
     //show configuration properties not showing
     showNoLoad = (message) => {
         console.log(message);
     }
+    
     
     //go to today
     today = () => {
@@ -310,6 +320,7 @@
         });
     }
 
+    
     //hide back button
     hideBackButtonNone = () => {
         var date = new Date();
@@ -322,6 +333,7 @@
          }
     }
 
+    
     //hide passed days
     hidePassedDaysNone = () => { //consider doing this on the fly when loaded in...just "continue" inside of loop
         var date = new Date();
@@ -334,6 +346,7 @@
             }
         }
     }
+    
     
     //on hover get booked events for each day -- if none showing up eturn appointments available
     eliminateBookedEvents = (day, year, monthIndex, monthName) => {
@@ -373,6 +386,7 @@
                   b.style.color = "green"; 
              }
     }
+    
     
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
@@ -555,6 +569,7 @@
         
     }
     
+    
     //show or hide button -- 
     showOrHidePasswordAndCancelButton = (showOrHide) => {
         
@@ -589,5 +604,6 @@
     
     
     keepSearchTriesOnServerOverLoadRedirect() {}
+
 
     }
