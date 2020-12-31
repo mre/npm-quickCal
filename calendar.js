@@ -15,7 +15,7 @@
             this.hidePastDays = true; 
             this.redirectUrl = null; 
             this.dontshowForm = true; 
-            this.timeList = ["6am", "9am", "3am", "7am"]; //specially selected 
+            this.timeList = ["6am", "9am", "3am", "7am"]; //highly specialized selected times
             this.redirectMessage = "";
             this.triggerStart();
         }
