@@ -1,5 +1,4 @@
 # npm-quickCal
-a calendar you can quickly configure
 <p> <b>this package is not complete</b> </p>
 <p> This will generate an accurate calendar for you where you can to load, save, remove and display CORRECT information for every user all the way down to the time of the appointment... times do not have to be formatted in any way but recommended is just saying [1am, 1:30am] ect.. the list of times can be anything you want them to be but must be strings.  </p>
 <h1>How to use </h1>
