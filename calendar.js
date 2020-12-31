@@ -2,12 +2,7 @@
     //might have to change all split and charat bull shit to date functions cause i thought it would improve big o.. b"O"y was i wrong /: 
     //can get rid of array to start on with getDay instead --- didnt know that /:
     //stick the things happening twice in a function...mostly where new date... just call the function with the set object
-    //poop /:
-    //poopDeeDeeScoop /:
-    //poopDeeDeeScoop deePoop /:
-    //poopDeeDeeScoop deePoop deeScoop deePoop /:
-    //naaaaa naaaa naa na-na-na-naaaaa na-na-na-naaaaaaa heyyyyy juuuuuuuuuuuuuuuuuuuuuuude. /: -- oops
-    //yup. have to change all the split bs i thought would be faster. 
+    //replace all document.getElementById with global...
 
     class Calendar {
 
