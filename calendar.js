@@ -15,7 +15,7 @@
             this.hidePastDays = true; 
             this.redirectUrl = null; 
             this.dontshowForm = true; 
-            this.timeList = []; 
+            this.timeList = ["6am", "9am", "3am", "7am"]; //specially selected 
             this.redirectMessage = "";
             this.triggerStart();
         }
@@ -239,7 +239,8 @@
         }
         
         elem.append(tr)
-        document.getElementById("date").innerText = `${this.currentIndexOfMonthG+1}/${this.currentYearG} | ${this.currentMonthNameG.toUpperCase()} ${this.currentDayG} ${this.currentYearG}`;
+        document.getElementById("date").innerText = `
+        ${this.currentIndexOfMonthG+1}/${this.currentYearG} | ${this.currentMonthNameG.toUpperCase()} ${this.currentDayG} ${this.currentYearG}`;
 
         this.fileToGetBooked ? this.loadInTakenTimes() : this.showNoLoad("loading data not set.."); //doing this twice
         this.hideBackButton ? this.hideBackButtonNone() : this.showNoLoad("back button showing on same month and year..");
@@ -370,7 +371,7 @@
             return;
         }
 
-        var originalSet = ["6am", "9am", "3pm", "7pm"];  //set this to the time set global
+        var originalSet = this.timeList;  //set this to the time set global
                   
         for(let i = 0; i < this.alottedSlots.length; i++) { //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)
             if(this.alottedSlots[i].day === day) { 
@@ -419,11 +420,9 @@
         <input hidden id = "monthNameS" value = "${monthName}" />
         <input hidden id = "dayNameS" value = "${getDayName}" />
         <div class = "col-md-12">
-        <h1>
-        ${getDayName} ${monthName} ${day} ${year}
-        </h1>`;
+        <h1> ${getDayName} ${monthName} ${day} ${year} </h1>`;
 
-        var originalSet = ["6am", "9am", "3pm", "7pm"]; // set this to the timelist global  
+        var originalSet = this.timeList; // set this to the timelist global  
 
         for(let i = 0; i < this.alottedSlots.length; i++) {  //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)	
             if(this.alottedSlots[i].day === day) {  
