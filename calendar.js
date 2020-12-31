@@ -35,7 +35,6 @@
             this.triggerStart();
         }
         
-        
         //set events, globals then display calendar
         triggerStart = () => {
             this.events(); 
@@ -110,11 +109,7 @@
     }
 
     //default configuration settings ... black, white ...oter colors if anything else return error
-    defaultStyle = (
-                color, 
-                font, 
-                input
-                ) => {
+    defaultStyle = (color, font, input) => {
                     document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
                     document.getElementById("backButton").style.cssText = `${cssBackButton}`;
                     document.getElementById("today").style.cssText = `${cssTodayButton}`;
@@ -131,8 +126,6 @@
                     document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
     }
 
-
-    
     //fill the calendar
     fillSkeleton = () => {
         this.skeleton.style.cssText = `margin: auto; text-align: center`;
@@ -170,27 +163,22 @@
       `;
     }
 
-
     //display calendar
     getCalendar = (date) => {
-    
     
         this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); //might have to keep this if there is no function to get month name
         this.currentYearG = parseInt(date.toString().split(" ")[3].toLowerCase()); //change to getFullYear() unless this is faster
         this.currentIndexOfMonthG = this.amountOfDays[this.currentMonthNameG].index; //change to getMonth() to get correct index and remove values from object
 
-    
         var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).toString().split(" ")[0].toLocaleLowerCase(); //replace all with geyDay()
         var arrayOfDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]; //replace all with getDay()
         startOn = arrayOfDays.indexOf(startOn) + 1; //replace all with getDay()
 
-    
         this.cal.innerHTML = ``;
         var elem = this.cal;
         var thCount = 0;
         var tr = document.createElement("TR");
 
-    
         for(let i = 1; i < startOn; i++) {  
 
             if(thCount === 7) { 
@@ -312,8 +300,7 @@
                         monthIndex: result[i].monthIndex,
                         day: result[i].day,
                         time: result[i].time
-                    });
-                    
+                    });   
                 }
                 
             },
@@ -321,7 +308,6 @@
                 console.log("no rows"); 
             },
         });
-        
     }
 
     //hide back button
@@ -378,7 +364,6 @@
                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
         };
-        
             
         if(originalSet.length === 0) { 
             b.innerText = "Booked";
@@ -387,9 +372,7 @@
                  b.innerText = "Appointments available";
                   b.style.color = "green"; 
              }
-
     }
-    
     
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
@@ -401,7 +384,6 @@
         var todayMonthIndex = this.amountOfDays[date.toString().split(" ")[1].toLowerCase()].index;  //getMonth()
         var todayDay = parseInt(date.toString().split(" ")[2]); //getDate()
             
-
         if((monthIndex < todayMonthIndex && year === todayYear) ||  (year < todayYear) ||  (monthIndex === todayMonthIndex && year === todayYear && day < todayDay)) {
             var element = document.getElementById("errorShake");
             TweenMax.to(element, 0.1, {x:"+=20", yoyo:true, repeat:5});
@@ -455,12 +437,10 @@
             <small id = "goBackToCalendar" style = "" >calendar</small>
         </div>`;
                    
-        //change
         document.getElementById("toggleDisplayB").innerHTML = temp;
         document.getElementById("emailS").focus();
         document.getElementById("emailS").select();
 
-        //show
         document.getElementById("toggleDisplayB").style.display = "block";
         document.getElementById("toggleDisplay").style.display = "none";
         document.getElementById("goBackToCalendar").onclick = this.goBackToCalendar;
@@ -540,7 +520,7 @@
     
     //search if an email exists and show appointment time and password and cancel button -- if password good, remove
     searchEmail = (email) => {
-
+        
         if(this.searchEmailFilePath === false) { return; }
         
         if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {  
@@ -574,7 +554,6 @@
         });
         
     }
-    
     
     //show or hide button -- 
     showOrHidePasswordAndCancelButton = (showOrHide) => {
