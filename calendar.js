@@ -15,7 +15,7 @@
             this.hidePastDays = true; 
             this.redirectUrl = null; 
             this.dontshowForm = true; 
-            this.timeList = ["6am", "9am", "3am", "7am"]; //highly specialized selected times
+            this.timeList = ["6am", "9am", "3am", "7am"]; //highly specialized selected times -- what? whats so funny? I dont get it?
             this.redirectMessage = "";
             this.triggerStart();
         }
