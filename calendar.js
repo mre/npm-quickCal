@@ -16,7 +16,7 @@
             this.hidePastDays = true; 
             this.redirectUrl = null; 
             this.dontshowForm = true; 
-            this.timeList = ["6am", "9am", "3pm", "7pm"]; //highly specialized hand selected times -- what? whats so funny? I dont get it? ...ps it means...shhhhhh hehehehehe naughty america -- capitalize that mother f'ing a bitch what the f
+            this.timeList = ["6am", "9am", "3pm", "7pm"];
             this.redirectMessage = "";
             this.triggerStart();
         }
