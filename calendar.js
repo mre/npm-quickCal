@@ -20,7 +20,7 @@ class Calendar {
 
         
     //your pre configured set for calendar
-    config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, greetingMessage, dontShowForm, stripePublicKey) => {
+    config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, greetingMessage, dontShowForm) => {
         this.fileToGetBooked = getBookedFile; 
         this.fileToPushAppointment = apptFile; 
         this.searchEmailFilePath = searchEmailFile,  
