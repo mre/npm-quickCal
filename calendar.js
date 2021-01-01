@@ -344,6 +344,7 @@
                 
                 this.alottedSlots = [];
     
+                /possibly assign {result[i].monthIndex-result[i].day: { info }} -- might reduce lookup on split or im probably just missing something stupid
                 for(let i = 0; i < result.length; i++) { 
                     this.alottedSlots.push({ //change to object to reduce lookup -- { {day, time}, {} } -- do a search for these and return a boolean then add to times -- resuces to O(1)
                         year: result[i].year, 
