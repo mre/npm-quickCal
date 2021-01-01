@@ -284,18 +284,11 @@ class Calendar {
         this.hidePastDays ? this.hidePassedDaysNone() : this.showNoLoad("passed days not showing on month and year..");
 
     }
-
-    
-    //show configuration properties not showing
-    showNoLoad = (message) => {
-        console.log(message);
-    }
     
     
     //go to today
     today = () => {
-        var date = new Date();
-        this.getCalendar(date);
+        this.getCalendar(new Date());
         var string = "highlight-"+date.getDate();
         document.getElementById(string).style.backgroundColor = "lightblue";
     }
@@ -396,7 +389,8 @@ class Calendar {
         if((monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
          (year < this.todaysDate().year) ||
          (monthIndex === this.todaysDate().month && year === this.todaysDate().year && day < this.todaysDate().day)) {
-            b.innerText = "X"; b.style.color = "red";
+            b.innerText = "X"; 
+            b.style.color = "red";
             return;
         }
 
@@ -453,7 +447,10 @@ class Calendar {
             } 
         };
                   
-        if(originalSet.length === 0) { back(); return; } 
+        if(originalSet.length === 0) { 
+            back(); 
+            return; 
+        } 
                   
         for(let i = 0; i < originalSet.length; i++) {
             temp +=`
@@ -477,6 +474,8 @@ class Calendar {
         <small id = "goBackToCalendar" style = "" >calendar</small>
         <p>Lets have some coffee ☕ ...over zoom</p>
         </div>`;
+
+        //create elmeent then html then append element
                    
         document.getElementById("toggleDisplayB").innerHTML = temp;
         document.getElementById("emailS").focus();
@@ -629,13 +628,19 @@ class Calendar {
         var date = new Date();
         return {
             startDay: date.getDay(),
-            monthIndex: date.getMonth(),
+            month: date.getMonth(),
             year: date.getFullYear(),
             day: date.getDate()
         };
     }
+
+
+    //show configuration properties not showing
+    showNoLoad = (message) => {
+        console.log(message);
+    }
     
-    
+
     showPassword() {}
     
     
