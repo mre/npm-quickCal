@@ -36,7 +36,13 @@
   To style different elements call <code> calendar.style(cssNext, cssBack, cssToday, cssInput, cssTableCell, cssMessageInput, cssPassword, cssEmail, cssSubmitButton, cssRadioTimes) </code>
 </p>
 <p>you can define the cssText for each element by typeing the css string for example "display: block; cursor: pointer" ... ect</p>
-
+<p>there will be a default and configured style configuration option as well as a class configured option.
+ <code>
+  let calendar = new Calendar();
+  calendar.defaultStyle("display: block; margin: cool", "margin-top: awesome")
+  calendar.classes(["btn", "btn-lg"])
+ </code>
+prob dont need arry for this.... but whatver not important
 <h1>
   SERVER SIDE
 </h1>
