@@ -1,5 +1,6 @@
 
 //clean up the post data information and add more config properties maybe 
+//clean up bottom looks ugly
 //add stripe config
 //start on server
 
