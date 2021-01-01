@@ -160,7 +160,7 @@
     }
 
 
-    //default configuration settings ... black, white ...oter colors if anything else return error
+    //configured classes -- just say class name is string. get rid of array
     defaultClasses = () => {
         var nextButton = ["btn", "btn-lg"];
         var nextButton = ["btn", "btn-lg"];
