@@ -2,7 +2,7 @@ class Calendar {
 
         
     //default configuration that allows every functionality of calendar
-    defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage, greetingMessage, stripePublicKey) => {
+    defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage, greetingMessage) => {
         this.fileToGetBooked = false; 
         this.fileToPushAppointment = false; 
         this.searchEmailFilePath = false, 
@@ -18,7 +18,7 @@ class Calendar {
     }
 
         
-    //your pre configured set
+    //your pre configured set for calendar
     config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, greetingMessage, dontShowForm, stripePublicKey) => {
         this.fileToGetBooked = getBookedFile; 
         this.fileToPushAppointment = apptFile; 
@@ -32,6 +32,118 @@ class Calendar {
         this.greetingMessage = greetingMessage;
         this.triggerStart();
     }
+    
+    //your configuration for styling calendar
+    configStyle = (
+        cssNextButton,
+        cssBackButton,
+        cssTodayButton, 
+        cssSubmitButton, 
+        cssSearchEmailInput, 
+        cssEmailInput, 
+        cssMessageInput, 
+        cssPasswordInput, 
+        cssCells, 
+        cssDateText, 
+        cssDayText, 
+        cssGreetingMessage) => {
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("todayButton").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("today").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+    }
+
+
+    //your configuration for adding classes
+    configClasses = (                
+        cssNextButtonArr,
+        cssBackButtonArr,
+        cssTodayButtonArr, 
+        cssSubmitButtonArr, 
+        cssSearchEmailInputArr, 
+        cssEmailInputArr, 
+        cssMessageInputArr, 
+        cssPasswordInputArr, 
+        cssCellsArrArr, 
+        cssDateTextArr, 
+        cssDayTextArr, 
+        cssGreetingMessageArr) => {
+        for(let i = 0; i < cssNextButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+    }
+
+
+    //default configuration settings for style
+    defaultStyle = (color, font, input) => {
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("today").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("today").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        //info box = th.style.cssText = ` padding: 7px border: 1px solid black; width: 10px; height: 10px;`;
+    }
+
+
+    //default configuration for classes
+    defaultClasses = () => {
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+    }
+    
+    
+    //set up a configuration in stripe
+    stripeConfig = (pubKey, price, theme) => { //price must match back end or pull from id value in db -- idfk im tired as shit and dont want to do this
+        this.publicKey = pubKey;
+        this.price = price;
+        this.theme = theme;
+    } 
         
         
     //set events, globals then display calendar
@@ -76,111 +188,6 @@ class Calendar {
         nov: { month: 30 },
         dec: { month: 31 },
         }
-    }
-
-
-    //define css properties -- must be after trigger.... passing in css text for different elements
-    configStyle = (
-        cssNextButton,
-        cssBackButton,
-        cssTodayButton, 
-        cssSubmitButton, 
-        cssSearchEmailInput, 
-        cssEmailInput, 
-        cssMessageInput, 
-        cssPasswordInput, 
-        cssCells, 
-        cssDateText, 
-        cssDayText, 
-        cssGreetingMessage) => {
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("todayButton").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("today").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-    }
-
-
-    //configure classes -- just say class name is string. get rid of array
-    configClasses = (                
-        cssNextButtonArr,
-        cssBackButtonArr,
-        cssTodayButtonArr, 
-        cssSubmitButtonArr, 
-        cssSearchEmailInputArr, 
-        cssEmailInputArr, 
-        cssMessageInputArr, 
-        cssPasswordInputArr, 
-        cssCellsArrArr, 
-        cssDateTextArr, 
-        cssDayTextArr, 
-        cssGreetingMessageArr) => {
-        for(let i = 0; i < cssNextButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-    }
-
-
-    //default configuration settings ... black, white ...oter colors if anything else return error
-    defaultStyle = (color, font, input) => {
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("today").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("today").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        //info box = th.style.cssText = ` padding: 7px border: 1px solid black; width: 10px; height: 10px;`;
-    }
-
-
-    //configured classes -- just say class name is string. get rid of array
-    defaultClasses = () => {
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
     }
 
     
@@ -650,9 +657,6 @@ class Calendar {
     
     
     keepSearchTriesOnServerOverLoadRedirect() {}
-
-    
-    stripeConfig() {} //https://www.youtube.com/watch?v=RTfAUVU1N68
 
 
     liveChat() {}
