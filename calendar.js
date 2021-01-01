@@ -1,4 +1,3 @@
-
     //might have to change all split and charat bull shit to date functions cause i thought it would improve big o.. b"O"y was i wrong /: 
     //can get rid of array to start on with getDay instead --- didnt know that /:
     //stick the things happening twice in a function...mostly where new date... just call the function with the set object
@@ -16,7 +15,7 @@
             this.hidePastDays = true; 
             this.redirectUrl = null; 
             this.dontshowForm = true; 
-            this.timeList = ["6am", "9am", "3pm", "7pm"];
+            this.timeList = ["6am", "9am", "3pm", "7pm", "9pm"];
             this.redirectMessage = "";
             this.triggerStart();
         }
@@ -82,89 +81,146 @@
             }
         }
 
-        
+
     //define css properties -- must be after trigger.... passing in css text for different elements
     configStyle = (
-                cssNextButton,
-                cssBackButton,
-                cssTodayButton, 
-                cssSubmitButton, 
-                cssSearchEmailInput, 
-                cssEmailInput, 
-                cssMessageInput, 
-                cssPasswordInput, 
-                cssCells, 
-                cssDateText, 
-                cssDayText, 
-                cssGreetingMessage
-                ) => {
-                    document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-                    document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-                    document.getElementById("today").style.cssText = `${cssTodayButton}`;
-                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-                    document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-                    document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-                    document.getElementById("today").style.cssText = `${cssTodayButton}`;
-                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        cssNextButton,
+        cssBackButton,
+        cssTodayButton, 
+        cssSubmitButton, 
+        cssSearchEmailInput, 
+        cssEmailInput, 
+        cssMessageInput, 
+        cssPasswordInput, 
+        cssCells, 
+        cssDateText, 
+        cssDayText, 
+        cssGreetingMessage) => {
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("todayButton").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("today").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
     }
 
-    
+
+    //configure classes
+    configClasses = (                
+        cssNextButtonArr,
+        cssBackButtonArr,
+        cssTodayButtonArr, 
+        cssSubmitButtonArr, 
+        cssSearchEmailInputArr, 
+        cssEmailInputArr, 
+        cssMessageInputArr, 
+        cssPasswordInputArr, 
+        cssCellsArrArr, 
+        cssDateTextArr, 
+        cssDayTextArr, 
+        cssGreetingMessageArr) => {
+        for(let i = 0; i < cssNextButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+    }
+
+
     //default configuration settings ... black, white ...oter colors if anything else return error
     defaultStyle = (color, font, input) => {
-                    document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-                    document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-                    document.getElementById("today").style.cssText = `${cssTodayButton}`;
-                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-                    document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-                    document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-                    document.getElementById("today").style.cssText = `${cssTodayButton}`;
-                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-                    document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-                    document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("today").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("today").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+    }
+
+
+    //default configuration settings ... black, white ...oter colors if anything else return error
+    defaultClasses = () => {
+        var nextButton = ["btn", "btn-lg"];
+        var nextButton = ["btn", "btn-lg"];
+        var nextButton = ["btn", "btn-lg"];
+        var nextButton = ["btn", "btn-lg"];
+        var nextButton = ["btn", "btn-lg"];
+        var nextButton = ["btn", "btn-lg"];
+        var nextButton = ["btn", "btn-lg"];
+        var nextButton = ["btn", "btn-lg"];
+        var nextButton = ["btn", "btn-lg"];
+        var nextButton = ["btn", "btn-lg"];
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
     }
 
     
     //fill the calendar
     fillSkeleton = () => {
-        this.skeleton.style.cssText = `margin: auto; text-align: center`;
+        this.skeleton.style.cssText = `margin: auto; text-align: center; font-family: Times New Roman", Times, serif;`;
         this.skeleton.innerHTML = `
         <div id = "toggleDisplay">
-        <table class="table table-dark" style = "margin-right: auto; margin-left: auto; text-align: center; border-spacing: 0px;" id = "errorShake">
+        <div style = "margin-bottom: 0px;">
+        <button id = "back" class = "btn" style = "color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px"><</button>
+        <button id = "next" class = "btn" style = "margin-left: 5px; color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px ">></button>
+        <button id = "today" class = "btn" style = "margin-left: 5px; color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px">today</button>
+        </div>
+        <div style = "margin-bottom: 10px;">
+        <small id = "date" style = "margin-left: 5px"></small>
+        <small id = "errorBooked"> </small>
+        </div>
+        <div style = "margin-bottom: 10px;">
+        <input type = "text" id = "searchKeyUp"> </input>
+        </div>
+        <table class="table table-dark" style = "margin-right: auto; margin-left: auto; border-spacing: 0px;" id = "errorShake">
         <thead>
-          <tr>
-            <th scope="col">monday</th>
-            <th scope="col">tuesday</th>
-            <th scope="col">wednsday</th>
-            <th scope="col">thursday</th>
-            <th scope="col">friday</th>
-            <th scope="col">saturday</th>
-            <th scope="col">sunday</th>
-          </tr>
-          <tr>
-          <button id = "back">back</button>
-          <button id = "next" style = "margin-left: 5px">next</button>
-          <button id = "today" style = "margin-left: 5px">today</button>
-          <input type = "text" style = "margin-left: 5px" id = "searchKeyUp"> </input>
-          <br>
-          <br>
-          <small id = "date" style = "margin-left: 5px"> </small>
-          <br>
-          <br>
-          <small id = "errorBooked"> </small>
-          </tr>
+        <tr>
+          <th scope="col">mon</th>
+          <th scope="col">tue</th>
+          <th scope="col">wed</th>
+          <th scope="col">thu</th>
+          <th scope="col">fri</th>
+          <th scope="col">sat</th>
+          <th scope="col">sun</th>
+        </tr>
         </thead>
         <tbody id = "calendar">
         </tbody>
+        <tfoot>
+        <thead>
+        </thead>
+        </tfoot>
       </table>
       </div>
       <div id = "toggleDisplayB"></div>
@@ -343,7 +399,7 @@
         var year = date.getFullYear();
         if(this.currentYearG == year && this.currentIndexOfMonthG == month) {
             for(let i = 1; i < day; i++) {
-                document.getElementById(`highlight-${i}`).style.backgroundColor = "black";
+                document.getElementById(`highlight-${i}`).innerText = "x";
             }
         }
     }
@@ -446,7 +502,7 @@
             <textarea id = "messageS" class = "form-control" placeholder = "message" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px" rows = "5"></textarea>
             <br>
             <br>
-            <button class = "btn btn-lg" style = "" onclick = "submit()" >Schedule!</button>
+            <button id = "submitButton" class = "btn btn-lg" style = "" onclick = "submit()" >Schedule!</button>
             <br>
             <br>
             <small id = "goBackToCalendar" style = "" >calendar</small>
@@ -596,6 +652,17 @@
         }
         
     }
+
+    todaysDate = () => {
+        var date = new Date();
+        return {
+            startDay: date.getDay(),
+            monthIndex: date.month(),
+            year: date.getFullYear(),
+
+            //look for month name somehwere
+        };
+    }
     
     
     showPassword() {}
@@ -607,4 +674,4 @@
     keepSearchTriesOnServerOverLoadRedirect() {}
 
 
-    }
+}
