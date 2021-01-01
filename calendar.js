@@ -42,7 +42,7 @@ class Calendar {
     }
 
         
-        //static event listeners
+    //static event listeners
     events = () => {
         this.skeleton = document.getElementById("skeleton");
         this.fillSkeleton(); 
