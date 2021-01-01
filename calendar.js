@@ -1,7 +1,3 @@
-    //might have to change all split and charat bull shit to date functions cause i thought it would improve big o.. b"O"y was i wrong /: 
-    //can get rid of array to start on with getDay instead --- didnt know that /:
-    //stick the things happening twice in a function...mostly where new date... just call the function with the set object
-    //replace all document.getElementById with global...
 
     class Calendar {
 
@@ -32,7 +28,7 @@
             this.dontshowForm = true; 
             this.timeList = []; 
             this.redirectMessage = "message you want to show to your user on submission";
-            this.greetingMessage = "Let have some coffe over zoom";
+            this.greetingMessage = "Lets have some coffe over zoom";
             this.triggerStart();
         }
         
@@ -66,18 +62,18 @@
             this.currentYearG = null;
             this.alottedSlots = [];
             this.amountOfDays = { //need this for getting amount of days. do not need for index...anywhere you see.index replace with getMonth()
-                jan: { month: 31, index: 0 },
-                feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28, index: 1 },
-                mar: { month: 31, index: 2 },
-                apr: { month: 30, index: 3 },
-                may: { month: 31, index: 4 },
-                jun: { month: 30, index: 5 },
-                jul: { month: 31, index: 6 },
-                aug: { month: 31, index: 7 },
-                sep: { month: 30, index: 8 },
-                oct: { month: 31, index: 9 },
-                nov: { month: 30, index: 10 },
-                dec: { month: 31, index: 11 },
+            jan: { month: 31 },
+            feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28 },
+            mar: { month: 31 },
+            apr: { month: 30 },
+            may: { month: 31 },
+            jun: { month: 30 },
+            jul: { month: 31 },
+            aug: { month: 31 },
+            sep: { month: 30 },
+            oct: { month: 31 },
+            nov: { month: 30 },
+            dec: { month: 31 },
             }
         }
 
@@ -157,21 +153,22 @@
         document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
         document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
         document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        //info box = th.style.cssText = ` padding: 7px border: 1px solid black; width: 10px; height: 10px;`;
     }
 
 
     //configured classes -- just say class name is string. get rid of array
     defaultClasses = () => {
-        var nextButton = ["btn", "btn-lg"];
-        var nextButton = ["btn", "btn-lg"];
-        var nextButton = ["btn", "btn-lg"];
-        var nextButton = ["btn", "btn-lg"];
-        var nextButton = ["btn", "btn-lg"];
-        var nextButton = ["btn", "btn-lg"];
-        var nextButton = ["btn", "btn-lg"];
-        var nextButton = ["btn", "btn-lg"];
-        var nextButton = ["btn", "btn-lg"];
-        var nextButton = ["btn", "btn-lg"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
+        var nextButton = ["btn", "btn-light"];
         for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
         for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
         for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
@@ -231,13 +228,11 @@
     //display calendar
     getCalendar = (date) => {
     
-        this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); //might have to keep this if there is no function to get month name
-        this.currentYearG = parseInt(date.toString().split(" ")[3].toLowerCase()); //change to getFullYear() unless this is faster
-        this.currentIndexOfMonthG = this.amountOfDays[this.currentMonthNameG].index; //change to getMonth() to get correct index and remove values from object
+        this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); 
+        this.currentYearG = date.getFullYear(); 
+        this.currentIndexOfMonthG = date.getMonth(); 
 
-        var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).toString().split(" ")[0].toLocaleLowerCase(); //replace all with geyDay()
-        var arrayOfDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]; //replace all with getDay()
-        startOn = arrayOfDays.indexOf(startOn) + 1; //replace all with getDay()
+        var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).getDay(); 
 
         this.cal.innerHTML = ``;
         var elem = this.cal;
@@ -255,11 +250,6 @@
             var th = document.createElement("TH");
             th.className = "infoBox";
             th.innerText = "x";
-            th.style.cssText = `            
-            padding: 7px;
-            border: 1px solid black;
-            width: 10px;
-            height: 10px;`;
             tr.append(th); 
             thCount+=1; 
 
@@ -278,11 +268,6 @@
             var th = document.createElement("TH");
             th.className = `infoBox`;
             th.id = `highlight-${i}`;
-            th.style.cssText = `            
-            padding: 7px;
-            border: 1px solid black;
-            width: 10px;
-            height: 10px;`;
             th.innerText = i;
             th.onclick = () => { this.showForm(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG); };
             th.onmouseover = () => { this.addNumber(i); this.eliminateBookedEvents(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG);  }
@@ -311,9 +296,8 @@
     //go to today
     today = () => {
         var date = new Date();
-        var day = date.toString().split(" ")[2]; //getDate() i believe this gets the correct day
         this.getCalendar(date);
-        var string = "highlight-"+day;
+        var string = "highlight-"+date.getDate();
         document.getElementById(string).style.backgroundColor = "lightblue";
     }
     
@@ -345,7 +329,7 @@
     //load in taken times for this month and year
     loadInTakenTimes = () => {
 
-        if(this.fileToGetBooked === false) { return };
+        if(this.fileToGetBooked === false)  return ;
         
         $.ajax({
             type: "POST",
@@ -380,7 +364,7 @@
     
     //hide back button
     hideBackButtonNone = () => {
-        var date = new Date();
+        var date = new Date(); //change to function at bottom
         var month = date.getMonth();
         var year = date.getFullYear();
         if(this.currentYearG <= year && this.currentIndexOfMonthG <= month) {
@@ -393,7 +377,7 @@
     
     //hide passed days
     hidePassedDaysNone = () => { //consider doing this on the fly when loaded in...just "continue" inside of loop
-        var date = new Date();
+        var date = new Date(); //change to function at bottom
         var day = date.getDate();
         var month = date.getMonth();
         var year = date.getFullYear();
@@ -416,10 +400,10 @@
             return; 
         }
         
-        var date = new Date();
-        var todayYear = parseInt(date.toString().split(" ")[3]); //getFullYear()
-        var todayMonthIndex = this.amountOfDays[date.toString().split(" ")[1].toLowerCase()].index; //do getMonth()
-        var todayDay = parseInt(date.toString().split(" ")[2]); //getDate() i think
+        var date = new Date(); //change to function at bottom
+        var todayYear = date.getFullYear(); 
+        var todayMonthIndex = date.getMonth(); 
+        var todayDay = date.getDate(); 
             
 
         if((monthIndex < todayMonthIndex && year === todayYear) || (year < todayYear) ||  (monthIndex === todayMonthIndex && year === todayYear && day < todayDay)) {
@@ -448,20 +432,22 @@
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
 
-        if(this.dontshowForm === false) { return; }
+        if(this.dontshowForm === false)  return; 
 
-        var date = new Date();
-        var todayYear = parseInt(date.toString().split(" ")[3]); //getFullYear()
-        var todayMonthIndex = this.amountOfDays[date.toString().split(" ")[1].toLowerCase()].index;  //getMonth()
-        var todayDay = parseInt(date.toString().split(" ")[2]); //getDate()
+        var date = new Date(); //change to function at bottom
+        var todayYear = date.getFullYear(); 
+        var todayMonthIndex = date.getMonth(); 
+        var todayDay = date.getDate(); 
             
-        if((monthIndex < todayMonthIndex && year === todayYear) ||  (year < todayYear) ||  (monthIndex === todayMonthIndex && year === todayYear && day < todayDay)) {
+        if((monthIndex < todayMonthIndex && year === todayYear) ||
+        (monthIndex === todayMonthIndex && year === todayYear && day < todayDay) ||
+        (year < todayYear)) {
             var element = document.getElementById("errorShake");
             TweenMax.to(element, 0.1, {x:"+=20", yoyo:true, repeat:5});
             return;
         }
 
-        var getDayName = new Date(year, monthIndex, day).toString().split(" ")[0]; //find function to get the name of the day...
+        var getDayName = new Date(year, monthIndex, day).toString().split(" ")[0];
 
         var temp = ``;
 
@@ -493,19 +479,19 @@
                   
         temp += 
         `<p></p>
-            <p>Lets have some coffee ☕ ...over zoom</p>
-            </div>
-            <input id = "emailS" class = "form-control" placeholder = "email" style = "width: 40%; height: 40px; margin: auto">
-            <p id = "emailError" style = "color: red"> </p>
-            <input id = "passwordS" class = "form-control" placeholder = "password" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px">
-            <p id = "passwordErrorS" style = "color: red"> </p>
-            <textarea id = "messageS" class = "form-control" placeholder = "message" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px" rows = "5"></textarea>
-            <br>
-            <br>
-            <button id = "submitButton" class = "btn btn-lg" style = "" onclick = "submit()" >Schedule!</button>
-            <br>
-            <br>
-            <small id = "goBackToCalendar" style = "" >calendar</small>
+        </div>
+        <input id = "emailS" class = "form-control" placeholder = "email" style = "width: 40%; height: 40px; margin: auto">
+        <p id = "emailError" style = "color: red"> </p>
+        <input id = "passwordS" class = "form-control" placeholder = "password" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px">
+        <p id = "passwordErrorS" style = "color: red"> </p>
+        <textarea id = "messageS" class = "form-control" placeholder = "message" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px" rows = "5"></textarea>
+        <br>
+        <br>
+        <button id = "submitButton" class = "btn btn-lg" style = "" onclick = "submit()" >Schedule!</button>
+        <br>
+        <br>
+        <small id = "goBackToCalendar" style = "" >calendar</small>
+        <p>Lets have some coffee ☕ ...over zoom</p>
         </div>`;
                    
         document.getElementById("toggleDisplayB").innerHTML = temp;
@@ -529,7 +515,7 @@
     //check errors and submit form
     submit = () => {
 
-        if(this.fileToPushAppointment === false) { return; }
+        if(this.fileToPushAppointment === false)  return; 
         
         var day = document.getElementById("dayS");
         var dayName = document.getElementById("dayNameS");
@@ -553,7 +539,7 @@
             document.getElementById("emailError").innerText = "*Please enter a valid email";
         };
         
-        if(count > 0) { return; };
+        if(count > 0)  return;
         
         $.ajax({
             type: "POST",
@@ -592,7 +578,7 @@
     //search if an email exists and show appointment time and password and cancel button -- if password good, remove
     searchEmail = (email) => {
         
-        if(this.searchEmailFilePath === false) { return; }
+        if(this.searchEmailFilePath === false) return; 
         
         if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {  
             document.getElementById("removePassword") ? document.getElementById("removePassword").remove() : ""; 
@@ -632,15 +618,15 @@
         
         if(typeof(showOrHide) === "object") {   
 
-            if(document.getElementsByClassName("checkAddedOnDelay")[0]) { return; } 
+            if(document.getElementsByClassName("checkAddedOnDelay")[0])  return; 
 
             var html = `
-                <br>
-                <h2>Your appointment is on <b> ${showOrHide[0].dayName} ${showOrHide[0].monthName} ${showOrHide[0].day} ${showOrHide[0].year} </b> at <b> ${showOrHide[0].time} </b> </h2>
-                <button class = "btn" style = "background-color: red; border-radius: 0px; color: white; box-shadow: 2px 2px 2px black" id = "remove" onclick = "showPassword()">Remove Appointment</button>
+            <br>
+            <h2>Your appointment is on <b> ${showOrHide[0].dayName} ${showOrHide[0].monthName} ${showOrHide[0].day} ${showOrHide[0].year} </b> at <b> ${showOrHide[0].time} </b> </h2>
+            <button class = "btn" style = "background-color: red; border-radius: 0px; color: white; box-shadow: 2px 2px 2px black" id = "remove" onclick = "showPassword()">Remove Appointment</button>
             `;
 
-            var elem = document.createElement("DIV"); //appending to avoid document re rendering
+            var elem = document.createElement("DIV"); 
             elem.setAttribute("id", "removePassword");
             elem.classList.add("checkAddedOnDelay");
             elem.innerHTML = html;
@@ -652,15 +638,14 @@
         }
         
     }
-
+ 
+    //whenevr you call new date refer to this
     todaysDate = () => {
         var date = new Date();
         return {
             startDay: date.getDay(),
-            monthIndex: date.month(),
+            monthIndex: date.getMonth(),
             year: date.getFullYear(),
-
-            //look for month name somehwere
         };
     }
     
