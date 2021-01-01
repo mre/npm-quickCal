@@ -2,7 +2,7 @@ class Calendar {
 
         
     //default configuration that allows every functionality of calendar
-    defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) => {
+    defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage, greetingMessage, stripePublicKey) => {
         this.fileToGetBooked = false; 
         this.fileToPushAppointment = false; 
         this.searchEmailFilePath = false, 
@@ -11,23 +11,25 @@ class Calendar {
         this.redirectUrl = null; 
         this.dontshowForm = true; 
         this.timeList = ["6am", "9am", "3pm", "7pm", "9pm"];
-        this.redirectMessage = "";
+        this.redirectMessage = "Thank you for scheduling an appointment";
+        this.greetingMessage = "Schedule an appointment below!" ;
+        this.publicKey = false;
         this.triggerStart();
     }
 
         
     //your pre configured set
-    config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
-        this.fileToGetBooked = false; 
-        this.fileToPushAppointment = false; 
-        this.searchEmailFilePath = false,  
-        this.hideBackButton = false; 
-        this.hidePastDays = false; 
-        this.redirectUrl = null; 
-        this.dontshowForm = true; 
-        this.timeList = []; 
-        this.redirectMessage = "message you want to show to your user on submission";
-        this.greetingMessage = "Lets have some coffe over zoom";
+    config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, greetingMessage, dontShowForm, stripePublicKey) => {
+        this.fileToGetBooked = getBookedFile; 
+        this.fileToPushAppointment = apptFile; 
+        this.searchEmailFilePath = searchEmailFile,  
+        this.hideBackButton = hideBackButton; 
+        this.hidePastDays = hidePastDays; 
+        this.redirectUrl = redirectUrl; 
+        this.dontshowForm = dontShowForm; 
+        this.timeList = timelist; //must be array
+        this.redirectMessage = redirectMessage;
+        this.greetingMessage = greetingMessage;
         this.triggerStart();
     }
         
