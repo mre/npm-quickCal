@@ -1,6 +1,7 @@
 
 //clean up the post data information and add more config properties maybe 
 //add stripe config
+//start on server
 
 
 
