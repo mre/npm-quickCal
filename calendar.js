@@ -375,6 +375,15 @@ class Calendar {
             success: function(result, status, xhr) {
                 
                 this.alottedSlots = [];
+                   
+                   //guarenteed to be unique and also reduces look up. he iz z fucking genius. replace below -- at least i think it does /: -- poop
+//                    alottedSlots[result[i].day+"-"+result[i].time] = {                        
+//                         year: result[i].year, 
+//                         monthName: result[i].monthName,
+//                         monthIndex: result[i].monthIndex,
+//                         day: result[i].day,
+//                         time: result[i].time  
+//                    };
     
                 for(let i = 0; i < result.length; i++) { 
                     this.alottedSlots.push({ //change to object to reduce lookup -- { {day-time: {} } -- do a search for these and return a boolean then add to times -- reduces to O(1)
