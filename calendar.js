@@ -1,8 +1,6 @@
 class Calendar {
-        
-    //i operate on a more civil level than you
-
-        
+       
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CONFIG CALENDAR, STYLE, CLASSES, AND STRIPE
     //default configuration that allows every functionality of calendar
     defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage, greetingMessage) => {
         this.fileToGetBooked = false; 
@@ -147,7 +145,7 @@ class Calendar {
         this.theme = theme;
     } 
         
-        
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////SET EVERYTHING UP AND START
     //set events, globals then display calendar
     triggerStart = () => {
         this.events(); 
@@ -235,6 +233,7 @@ class Calendar {
     }
 
     
+    //FUNCTIONS OF CALENDAR ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //display calendar
     getCalendar = (date) => {
     
@@ -652,16 +651,16 @@ class Calendar {
     }
     
 
-    showPassword() {}
+    showPassword = () => {}
     
     
-    removeAppointment() {}
+    removeAppointment = () => {}
     
     
-    keepSearchTriesOnServerOverLoadRedirect() {}
+    keepSearchTriesOnServerOverLoadRedirect = () => {}
 
 
-    liveChat() {}
+    liveChat = () => {}
 
     //clean up clean up everybody do your share clean up clean up
 
