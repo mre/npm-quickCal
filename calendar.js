@@ -1,5 +1,4 @@
-
-    class Calendar {
+class Calendar {
 
         
     //default configuration that allows every functionality of calendar
@@ -364,10 +363,7 @@
     
     //hide back button
     hideBackButtonNone = () => {
-        var date = new Date(); //change to function at bottom
-        var month = date.getMonth();
-        var year = date.getFullYear();
-        if(this.currentYearG <= year && this.currentIndexOfMonthG <= month) {
+        if(this.currentYearG <= this.todaysDate().year && this.currentIndexOfMonthG <= this.todaysDate().month) {
              document.getElementById("back").hidden = true;
          } else {
             document.getElementById("back").hidden = false;
@@ -377,12 +373,8 @@
     
     //hide passed days
     hidePassedDaysNone = () => { //consider doing this on the fly when loaded in...just "continue" inside of loop
-        var date = new Date(); //change to function at bottom
-        var day = date.getDate();
-        var month = date.getMonth();
-        var year = date.getFullYear();
-        if(this.currentYearG == year && this.currentIndexOfMonthG == month) {
-            for(let i = 1; i < day; i++) {
+        if(this.currentYearG == this.todaysDate().year && this.currentIndexOfMonthG == this.todaysDate().month) {
+            for(let i = 1; i < this.todaysDate().day; i++) {
                 document.getElementById(`highlight-${i}`).innerText = "x";
             }
         }
@@ -399,14 +391,11 @@
             b.style.color = "green";
             return; 
         }
-        
-        var date = new Date(); //change to function at bottom
-        var todayYear = date.getFullYear(); 
-        var todayMonthIndex = date.getMonth(); 
-        var todayDay = date.getDate(); 
             
 
-        if((monthIndex < todayMonthIndex && year === todayYear) || (year < todayYear) ||  (monthIndex === todayMonthIndex && year === todayYear && day < todayDay)) {
+        if((monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
+         (year < this.todaysDate().year) ||
+         (monthIndex === this.todaysDate().month && year === this.todaysDate().year && day < this.todaysDate().day)) {
             b.innerText = "X"; b.style.color = "red";
             return;
         }
@@ -433,15 +422,10 @@
     showForm = (day, year, monthIndex, monthName) => {
 
         if(this.dontshowForm === false)  return; 
-
-        var date = new Date(); //change to function at bottom
-        var todayYear = date.getFullYear(); 
-        var todayMonthIndex = date.getMonth(); 
-        var todayDay = date.getDate(); 
             
-        if((monthIndex < todayMonthIndex && year === todayYear) ||
-        (monthIndex === todayMonthIndex && year === todayYear && day < todayDay) ||
-        (year < todayYear)) {
+        if((monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
+        (monthIndex === this.todaysDate().month && year === this.todaysDate().year && day < this.todaysDate().day) ||
+        (year < this.todaysDate().year)) {
             var element = document.getElementById("errorShake");
             TweenMax.to(element, 0.1, {x:"+=20", yoyo:true, repeat:5});
             return;
@@ -639,6 +623,7 @@
         
     }
  
+
     //whenevr you call new date refer to this
     todaysDate = () => {
         var date = new Date();
@@ -646,6 +631,7 @@
             startDay: date.getDay(),
             monthIndex: date.getMonth(),
             year: date.getFullYear(),
+            day: date.getDate()
         };
     }
     
@@ -660,6 +646,11 @@
 
     
     stripeConfig() {} //https://www.youtube.com/watch?v=RTfAUVU1N68
+
+
+    liveChat() {}
+
+    //clean up clean up everybody do your share clean up clean up
 
 
 }
