@@ -1,3 +1,9 @@
+
+//clean up the post data information and add more config properties maybe 
+//add stripe config
+
+
+
 class Calendar {
        
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CONFIG CALENDAR, STYLE, CLASSES, AND STRIPE
@@ -638,12 +644,11 @@ class Calendar {
 
     //whenevr you call new date refer to this
     todaysDate = () => {
-        var date = new Date();
         return {
-            startDay: date.getDay(),
-            month: date.getMonth(),
-            year: date.getFullYear(),
-            day: date.getDate()
+            startDay: new Date().getDay(),
+            month: new Date().getMonth(),
+            year: new Date().getFullYear(),
+            day: new Date().getDate()
         };
     }
 
@@ -654,15 +659,16 @@ class Calendar {
     }
     
 
+    //show passwoed from on key up email
     showPassword = () => {}
     
-    
+    //submit remove appointment if no good return error
     removeAppointment = () => {}
     
-    
+    //prevent overload -- obf
     keepSearchTriesOnServerOverLoadRedirect = () => {}
 
-
+    //over kill
     liveChat = () => {}
 
 }
