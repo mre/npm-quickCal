@@ -113,7 +113,7 @@
     }
 
 
-    //configure classes
+    //configure classes -- just say class name is string. get rid of array
     configClasses = (                
         cssNextButtonArr,
         cssBackButtonArr,
