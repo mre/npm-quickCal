@@ -658,5 +658,8 @@
     
     keepSearchTriesOnServerOverLoadRedirect() {}
 
+    
+    stripeConfig() {} //https://www.youtube.com/watch?v=RTfAUVU1N68
+
 
 }
