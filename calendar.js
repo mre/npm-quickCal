@@ -22,7 +22,6 @@ class Calendar {
         this.timeList = ["6am", "9am", "3pm", "7pm", "9pm"];
         this.redirectMessage = "Thank you for scheduling an appointment";
         this.greetingMessage = "Schedule an appointment below!" ;
-        this.publicKey = false;
         this.triggerStart();
     }
 
