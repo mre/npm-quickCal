@@ -2,80 +2,80 @@
     class Calendar {
 
         
-        //default configuration that allows every functionality of calendar
-        defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) => {
-            this.fileToGetBooked = false; 
-            this.fileToPushAppointment = false; 
-            this.searchEmailFilePath = false, 
-            this.hideBackButton = true; 
-            this.hidePastDays = true; 
-            this.redirectUrl = null; 
-            this.dontshowForm = true; 
-            this.timeList = ["6am", "9am", "3pm", "7pm", "9pm"];
-            this.redirectMessage = "";
-            this.triggerStart();
-        }
+    //default configuration that allows every functionality of calendar
+    defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) => {
+        this.fileToGetBooked = false; 
+        this.fileToPushAppointment = false; 
+        this.searchEmailFilePath = false, 
+        this.hideBackButton = true; 
+        this.hidePastDays = true; 
+        this.redirectUrl = null; 
+        this.dontshowForm = true; 
+        this.timeList = ["6am", "9am", "3pm", "7pm", "9pm"];
+        this.redirectMessage = "";
+        this.triggerStart();
+    }
 
         
-        //your pre configured set
-        config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
-            this.fileToGetBooked = false; 
-            this.fileToPushAppointment = false; 
-            this.searchEmailFilePath = false,  
-            this.hideBackButton = false; 
-            this.hidePastDays = false; 
-            this.redirectUrl = null; 
-            this.dontshowForm = true; 
-            this.timeList = []; 
-            this.redirectMessage = "message you want to show to your user on submission";
-            this.greetingMessage = "Lets have some coffe over zoom";
-            this.triggerStart();
-        }
+    //your pre configured set
+    config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
+        this.fileToGetBooked = false; 
+        this.fileToPushAppointment = false; 
+        this.searchEmailFilePath = false,  
+        this.hideBackButton = false; 
+        this.hidePastDays = false; 
+        this.redirectUrl = null; 
+        this.dontshowForm = true; 
+        this.timeList = []; 
+        this.redirectMessage = "message you want to show to your user on submission";
+        this.greetingMessage = "Lets have some coffe over zoom";
+        this.triggerStart();
+    }
         
         
-        //set events, globals then display calendar
-        triggerStart = () => {
-            this.events(); 
-            this.globals();
-            this.getCalendar(new Date());
-        }
+    //set events, globals then display calendar
+    triggerStart = () => {
+        this.events(); 
+        this.globals();
+        this.getCalendar(new Date());
+    }
 
         
         //static event listeners
-        events = () => {
-            this.skeleton = document.getElementById("skeleton");
-            this.fillSkeleton(); 
-            this.cal = document.getElementById("calendar");
-            document.getElementById("today").onclick = this.today;
-            document.getElementById("next").onclick = this.next;
-            document.getElementById("back").onclick = this.back;  
-            document.getElementById("searchKeyUp").onkeyup = (e) => { this.searchEmail(e.target.value); }; //loaded on set
-        }
+    events = () => {
+        this.skeleton = document.getElementById("skeleton");
+        this.fillSkeleton(); 
+        this.cal = document.getElementById("calendar");
+        document.getElementById("today").onclick = this.today;
+        document.getElementById("next").onclick = this.next;
+        document.getElementById("back").onclick = this.back;  
+        document.getElementById("searchKeyUp").onkeyup = (e) => { this.searchEmail(e.target.value); }; //loaded on set
+    }
 
         
-        //set the globals
-        globals = () => {
-            this.currentDate = new Date();
-            this.currentDayG = 1;
-            this.currentIndexOfMonthG = null; 
-            this.currentMonthNameG = null;
-            this.currentYearG = null;
-            this.alottedSlots = [];
-            this.amountOfDays = { //need this for getting amount of days. do not need for index...anywhere you see.index replace with getMonth()
-            jan: { month: 31 },
-            feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28 },
-            mar: { month: 31 },
-            apr: { month: 30 },
-            may: { month: 31 },
-            jun: { month: 30 },
-            jul: { month: 31 },
-            aug: { month: 31 },
-            sep: { month: 30 },
-            oct: { month: 31 },
-            nov: { month: 30 },
-            dec: { month: 31 },
-            }
+    //set the globals
+    globals = () => {
+        this.currentDate = new Date();
+        this.currentDayG = 1;
+        this.currentIndexOfMonthG = null; 
+        this.currentMonthNameG = null;
+        this.currentYearG = null;
+        this.alottedSlots = [];
+        this.amountOfDays = { //need this for getting amount of days. do not need for index...anywhere you see.index replace with getMonth()
+        jan: { month: 31 },
+        feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28 },
+        mar: { month: 31 },
+        apr: { month: 30 },
+        may: { month: 31 },
+        jun: { month: 30 },
+        jul: { month: 31 },
+        aug: { month: 31 },
+        sep: { month: 30 },
+        oct: { month: 31 },
+        nov: { month: 30 },
+        dec: { month: 31 },
         }
+    }
 
 
     //define css properties -- must be after trigger.... passing in css text for different elements
@@ -344,7 +344,6 @@
                 
                 this.alottedSlots = [];
     
-                /possibly assign {result[i].monthIndex-result[i].day: { info }} -- might reduce lookup on split or im probably just missing something stupid
                 for(let i = 0; i < result.length; i++) { 
                     this.alottedSlots.push({ //change to object to reduce lookup -- { {day, time}, {} } -- do a search for these and return a boolean then add to times -- resuces to O(1)
                         year: result[i].year, 
