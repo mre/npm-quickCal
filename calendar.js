@@ -427,6 +427,13 @@ class Calendar {
         }
 
         var originalSet = this.timeList;  //set this to the time set global
+           
+        // for(let i = 0; i < originalSet; i++) {
+        //     var combine = originalSet[i]+"-"+day;
+        //     if(this.alottedSlots[combine]) { 
+        //         originalSet.splice(originalSet[i]); 
+        //     }
+        // }
                   
         for(let i = 0; i < this.alottedSlots.length; i++) { //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)
             if(this.alottedSlots[i].day === day) { 
