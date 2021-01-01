@@ -373,6 +373,8 @@ class Calendar {
             },
             dataType: "json",
             success: function(result, status, xhr) {
+                   
+                //this.alottedSlots = {};   
                 
                 this.alottedSlots = [];
                    
