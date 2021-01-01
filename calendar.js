@@ -432,7 +432,7 @@ class Calendar {
         // for(let i = 0; i < originalSet.length; i++) {
         //     var combine = originalSet[i]+"-"+day;
         //     if(this.alottedSlots[combine]) { 
-        //         originalSet.splice(originalSet[i]); 
+        //         originalSet.splice(originalSet[i], 1); 
         //     }
         // }
                   
