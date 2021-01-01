@@ -428,7 +428,8 @@ class Calendar {
 
         var originalSet = this.timeList;  //set this to the time set global
            
-        // for(let i = 0; i < originalSet; i++) {
+        //this i think will reduce the look up -- day and time are the only needed things to guarentee unique  
+        // for(let i = 0; i < originalSet.length; i++) {
         //     var combine = originalSet[i]+"-"+day;
         //     if(this.alottedSlots[combine]) { 
         //         originalSet.splice(originalSet[i]); 
