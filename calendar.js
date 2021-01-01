@@ -64,7 +64,7 @@ class Calendar {
     }
 
 
-    //your configuration for adding classes
+    //your configuration for adding classes -- rid array
     configClasses = (                
         cssNextButtonArr,
         cssBackButtonArr,
@@ -112,7 +112,7 @@ class Calendar {
     }
 
 
-    //default configuration for classes
+    //default configuration for classes -- rid array
     defaultClasses = () => {
         var nextButton = ["btn", "btn-light"];
         var nextButton = ["btn", "btn-light"];
