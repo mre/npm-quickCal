@@ -1,6 +1,7 @@
 class Calendar {
        
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CONFIG CALENDAR, STYLE, CLASSES, AND STRIPE
+       
     //default configuration that allows every functionality of calendar
     defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage, greetingMessage) => {
         this.fileToGetBooked = false; 
@@ -146,6 +147,7 @@ class Calendar {
     } 
         
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////SET EVERYTHING UP AND START
+    
     //set events, globals then display calendar
     triggerStart = () => {
         this.events(); 
@@ -234,6 +236,7 @@ class Calendar {
 
     
     //FUNCTIONS OF CALENDAR ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     //display calendar
     getCalendar = (date) => {
     
@@ -328,42 +331,6 @@ class Calendar {
     }
     
     
-    //load in taken times for this month and year
-    loadInTakenTimes = () => {
-
-        if(this.fileToGetBooked === false)  return ;
-        
-        $.ajax({
-            type: "POST",
-            url: this.fileToGetBooked,
-            data: {
-                getBooked: "true",
-                globalYear: this.currentYearG,
-                globalMonthIndex: this.currentIndexOfMonthG
-            },
-            dataType: "json",
-            success: function(result, status, xhr) {
-                
-                this.alottedSlots = [];
-    
-                for(let i = 0; i < result.length; i++) { 
-                    this.alottedSlots.push({ //change to object to reduce lookup -- { {day, time}, {} } -- do a search for these and return a boolean then add to times -- resuces to O(1)
-                        year: result[i].year, 
-                        monthName: result[i].monthName,
-                        monthIndex: result[i].monthIndex,
-                        day: result[i].day,
-                        time: result[i].time
-                    });   
-                }
-                
-            },
-            error: function(xhr, status, error) {
-                console.log("no rows"); 
-            },
-        });
-    }
-
-    
     //hide back button
     hideBackButtonNone = () => {
         if(this.currentYearG <= this.todaysDate().year && this.currentIndexOfMonthG <= this.todaysDate().month) {
@@ -381,6 +348,42 @@ class Calendar {
                 document.getElementById(`highlight-${i}`).innerText = "x";
             }
         }
+    }
+    
+    
+    //load in taken times for this month and year
+    loadInTakenTimes = () => {
+
+        if(this.fileToGetBooked === false)  return;
+        
+        $.ajax({
+            type: "POST",
+            url: this.fileToGetBooked,
+            data: {
+                getBooked: "true",
+                globalYear: this.currentYearG,
+                globalMonthIndex: this.currentIndexOfMonthG
+            },
+            dataType: "json",
+            success: function(result, status, xhr) {
+                
+                this.alottedSlots = [];
+    
+                for(let i = 0; i < result.length; i++) { 
+                    this.alottedSlots.push({ //change to object to reduce lookup -- { {day-time: {} } -- do a search for these and return a boolean then add to times -- reduces to O(1)
+                        year: result[i].year, 
+                        monthName: result[i].monthName,
+                        monthIndex: result[i].monthIndex,
+                        day: result[i].day,
+                        time: result[i].time
+                    });   
+                }
+                
+            },
+            error: function(xhr, status, error) {
+                console.log("no rows"); 
+            },
+        });
     }
     
     
@@ -662,7 +665,11 @@ class Calendar {
 
     liveChat = () => {}
 
-    //clean up clean up everybody do your share clean up clean up
-
-
 }
+
+
+//should i create wrappers i hate js classes
+
+
+
+
