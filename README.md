@@ -51,7 +51,12 @@ prob dont need arry for this.... but whatver not important
 </p>
 <p> day, time, month, monthName, year, email[client email], message[client message] </p>
 <p> and thats it - server side files will only be in node js ... but can easily be dine in other languages </p>
-
+<h1>Stripe</h1>
+<p>There will be a payment configuration object available to accept payment that integrates with the back end and stripe</p>
+<h1>chat</h1>
+<p>not guarenteed but chat available under calendar</p>
+<h1>Dashboard</h1>
+<p>dashboard to manage all chat and appointments</p>
 <h1>Time complexity </h1>
 <p> every move in the calendar meaning pressing button today next and back will result in a new set loaded in. </p>
 <p> It is a dynamic set with the upper bound of rows being (the dynamic amount of days for the year and month from db) * (the amount of times allocated in your configuration for each day in db)</p>
