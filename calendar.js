@@ -1,11 +1,4 @@
 
-//clean up the post data information and add more config properties maybe 
-//clean up bottom looks ugly
-//add stripe config
-//start on server
-//shick fucking beeners dude
-
-
 
 class Calendar {
        
@@ -13,16 +6,16 @@ class Calendar {
        
     //default configuration that allows every functionality of calendar
     defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage, greetingMessage) => {
-        this.fileToGetBooked = false; 
-        this.fileToPushAppointment = false; 
-        this.searchEmailFilePath = false, 
+        this.fileToGetBooked = getBookedFile; 
+        this.fileToPushAppointment = apptFile; 
+        this.searchEmailFilePath = searchEmailFile, 
         this.hideBackButton = true; 
         this.hidePastDays = true; 
-        this.redirectUrl = null; 
-        this.dontshowForm = true; 
-        this.timeList = ["6am", "9am", "3pm", "7pm", "9pm"];
-        this.redirectMessage = "Thank you for scheduling an appointment";
-        this.greetingMessage = "Schedule an appointment below!" ;
+        this.redirectUrl = redirectUrl; 
+        this.displayForm = true; //have to set this
+        this.timeList = timeList;
+        this.redirectMessage = redirectMessage;
+        this.greetingMessage = greetingMessage;
         this.triggerStart();
     }
 
@@ -35,7 +28,7 @@ class Calendar {
         this.hideBackButton = hideBackButton; 
         this.hidePastDays = hidePastDays; 
         this.redirectUrl = redirectUrl; 
-        this.dontshowForm = dontShowForm; 
+        this.displayForm = dontShowForm; 
         this.timeList = timelist; //must be array
         this.redirectMessage = redirectMessage;
         this.greetingMessage = greetingMessage;
@@ -148,7 +141,7 @@ class Calendar {
     
     
     //set up a configuration in stripe
-    stripeConfig = (pubKey, price, theme) => { //price must match back end or pull from id value in db -- idfk im tired as shit and dont want to do this
+    stripeConfig = (pubKey, price, theme) => { 
         this.publicKey = pubKey;
         this.price = price;
         this.theme = theme;
@@ -184,7 +177,7 @@ class Calendar {
         this.currentMonthNameG = null;
         this.currentYearG = null;
         this.alottedSlots = [];
-        this.amountOfDays = { //need this for getting amount of days. do not need for index...anywhere you see.index replace with getMonth()
+        this.amountOfDays = { 
         jan: { month: 31 },
         feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28 },
         mar: { month: 31 },
@@ -310,7 +303,7 @@ class Calendar {
     //go to today
     today = () => {
         this.getCalendar(new Date());
-        var string = "highlight-"+date.getDate();
+        var string = "highlight-"+new Date().getDate();
         document.getElementById(string).style.backgroundColor = "lightblue";
     }
     
@@ -374,27 +367,16 @@ class Calendar {
             },
             dataType: "json",
             success: function(result, status, xhr) {
-                   
-                //this.alottedSlots = {};   
-                
+
                 this.alottedSlots = [];
                    
-                   //guarenteed to be unique and also reduces look up. he iz z fucking genius. replace below -- at least i think it does /: -- poop
-//                    alottedSlots[result[i].day+"-"+result[i].time] = {                        
-//                         year: result[i].year, 
-//                         monthName: result[i].monthName,
-//                         monthIndex: result[i].monthIndex,
-//                         day: result[i].day,
-//                         time: result[i].time  
-//                    };
-    
-                for(let i = 0; i < result.length; i++) { 
-                    this.alottedSlots.push({ //change to object to reduce lookup -- { {day-time: {} } -- do a search for these and return a boolean then add to times -- reduces to O(1)
-                        year: result[i].year, 
-                        monthName: result[i].monthName,
-                        monthIndex: result[i].monthIndex,
-                        day: result[i].day,
-                        time: result[i].time
+                for(let i = 0; i < result.rows.length; i++) { 
+                    this.alottedSlots.push({ 
+                        year: result.rows[i].year, 
+                        monthName: result.rows[i].monthName,
+                        monthIndex: result.rows[i].monthIndex,
+                        day: result.rows[i].day,
+                        time: result.rows[i].time
                     });   
                 }
                 
@@ -416,27 +398,16 @@ class Calendar {
             b.style.color = "green";
             return; 
         }
-            
 
-        if((monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
-         (year < this.todaysDate().year) ||
-         (monthIndex === this.todaysDate().month && year === this.todaysDate().year && day < this.todaysDate().day)) {
+        if(this.checkBeforeToday(day, year, monthIndex, monthName)) {
             b.innerText = "X"; 
             b.style.color = "red";
             return;
         }
 
-        var originalSet = this.timeList;  //set this to the time set global
-           
-        //this i think will reduce the look up -- day and time are the only needed things to guarentee unique  
-        // for(let i = 0; i < originalSet.length; i++) {
-        //     var combine = originalSet[i]+"-"+day;
-        //     if(this.alottedSlots[combine]) { 
-        //         originalSet.splice(originalSet[i], 1); 
-        //     }
-        // }
+        var originalSet = this.timeList; 
                   
-        for(let i = 0; i < this.alottedSlots.length; i++) { //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)
+        for(let i = 0; i < this.alottedSlots.length; i++) {
             if(this.alottedSlots[i].day === day) { 
                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
@@ -444,10 +415,10 @@ class Calendar {
             
         if(originalSet.length === 0) { 
             b.innerText = "Booked";
-             b.style.color = "red"; 
-             } else { 
-                 b.innerText = "Appointments available";
-                  b.style.color = "green"; 
+            b.style.color = "red"; 
+            } else { 
+                b.innerText = "Appointments available";
+                b.style.color = "green"; 
              }
     }
     
@@ -455,11 +426,9 @@ class Calendar {
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
 
-        if(this.dontshowForm === false)  return; 
+        if(this.displayForm === false)  return; 
             
-        if((monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
-        (monthIndex === this.todaysDate().month && year === this.todaysDate().year && day < this.todaysDate().day) ||
-        (year < this.todaysDate().year)) {
+        if(this.checkBeforeToday(day, year, monthIndex, monthName)) {
             var element = document.getElementById("errorShake");
             TweenMax.to(element, 0.1, {x:"+=20", yoyo:true, repeat:5});
             return;
@@ -470,18 +439,19 @@ class Calendar {
         var temp = ``;
 
         temp += `
-        <div class = "row container" style = "text-align: center">
-        <input hidden id = "monthIndexS" value = "${monthIndex}" />
-        <input hidden id = "dayS" value = "${day}" />
-        <input hidden id = "yearS" value = "${year}" />
-        <input hidden id = "monthNameS" value = "${monthName}" />
-        <input hidden id = "dayNameS" value = "${getDayName}" />
-        <div class = "col-md-12">
-        <h1> ${getDayName} ${monthName} ${day} ${year} </h1>`;
+            <div class = "row container" style = "text-align: center">
+            <input hidden id = "monthIndexS" value = "${monthIndex}" />
+            <input hidden id = "dayS" value = "${day}" />
+            <input hidden id = "yearS" value = "${year}" />
+            <input hidden id = "monthNameS" value = "${monthName}" />
+            <input hidden id = "dayNameS" value = "${getDayName}" />
+            <div class = "col-md-12">
+            <h1> ${getDayName} ${monthName} ${day} ${year} </h1>
+        `;
 
-        var originalSet = this.timeList; // set this to the timelist global  
+        var originalSet = this.timeList; 
 
-        for(let i = 0; i < this.alottedSlots.length; i++) {  //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)	
+        for(let i = 0; i < this.alottedSlots.length; i++) {  	
             if(this.alottedSlots[i].day === day) {  
                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
@@ -499,23 +469,23 @@ class Calendar {
         };
                   
         temp += 
-        `<p></p>
-        </div>
-        <input id = "emailS" class = "form-control" placeholder = "email" style = "width: 40%; height: 40px; margin: auto">
-        <p id = "emailError" style = "color: red"> </p>
-        <input id = "passwordS" class = "form-control" placeholder = "password" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px">
-        <p id = "passwordErrorS" style = "color: red"> </p>
-        <textarea id = "messageS" class = "form-control" placeholder = "message" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px" rows = "5"></textarea>
-        <br>
-        <br>
-        <button id = "submitButton" class = "btn btn-lg" style = "" onclick = "submit()" >Schedule!</button>
-        <br>
-        <br>
-        <small id = "goBackToCalendar" style = "" >calendar</small>
-        <p>Lets have some coffee ☕ ...over zoom</p>
-        </div>`;
-
-        //create elmeent then html then append element
+            `<p id = "timeErrorS" style = "color: red"></p>
+            </div>
+            <input id = "emailS" class = "form-control" placeholder = "email" style = "width: 40%; height: 40px; margin: auto">
+            <p id = "emailErrorS" style = "color: red"> </p>
+            <input id = "passwordS" class = "form-control" placeholder = "password" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px">
+            <p id = "passwordErrorS" style = "color: red"> </p>
+            <textarea id = "messageS" class = "form-control" placeholder = "message" style = "width: 40%; height: 40px; margin: auto; margin-top: 10px" rows = "5"></textarea>
+            <p id = "messageErrorS" style = "color: red"></p>
+            <br>
+            <br>
+            <button id = "submitButton" class = "btn btn-lg" style = "" >Schedule!</button>
+            <br>
+            <br>
+            <small id = "goBackToCalendar" style = "" >calendar</small>
+            <p>Lets have some coffee ☕ ...over zoom</p>
+            </div>
+        `;
                    
         document.getElementById("toggleDisplayB").innerHTML = temp;
         document.getElementById("emailS").focus();
@@ -524,6 +494,7 @@ class Calendar {
         document.getElementById("toggleDisplayB").style.display = "block";
         document.getElementById("toggleDisplay").style.display = "none";
         document.getElementById("goBackToCalendar").onclick = this.goBackToCalendar;
+        document.getElementById("submitButton").onclick = this.submit;
 
     }
     
@@ -547,22 +518,39 @@ class Calendar {
         var year = document.getElementById("yearS");
         var email = document.getElementById("emailS");
         var password = document.getElementById("passwordS");
-        var message = document.getElementById("messageS"); //meed to add this in
+        var message = document.getElementById("messageS"); 
         var time = $('input[name="timeS"]:checked' ).val(); 
+           
+        //call function for error on all data
+
+        document.getElementById("timeErrorS").innerText = ""; 
+        document.getElementById("emailErrorS").innerText = "";
+        document.getElementById("messageErrorS").innerText = "";
+        document.getElementById("passwordErrorS").innerText = "";
         
         var count = 0;
         
         if(time === undefined) { 
             count++; 
-            document.getElementById("errorTime").innerText = "Please select a time" 
+            document.getElementById("timeErrorS").innerText = "Please select a time"; 
         };
         
         if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value)) {
             count++; 
-            document.getElementById("emailError").innerText = "*Please enter a valid email";
+            document.getElementById("emailErrorS").innerText = "*Please enter a valid email";
         };
+
+        if(message.value.length < 10) { 
+            count++;
+            document.getElementById("messageErrorS").innerText = "Message must be more at least 10 characters";
+         }
+
+         if(password.value.length < 3) { 
+            count++;
+            document.getElementById("passwordErrorS").innerText = "Password must be at least 3 characters";
+         }
         
-        if(count > 0)  return;
+         if(count > 0)  return;
         
         $.ajax({
             type: "POST",
@@ -628,7 +616,7 @@ class Calendar {
                 
             },
             error: function(xhr, status, error) {
-                alert(error);
+                console.log(error);
             },
 
         });
@@ -662,6 +650,7 @@ class Calendar {
         
     }
  
+    //EXTENSIONS ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //whenevr you call new date refer to this
     todaysDate = () => {
@@ -674,29 +663,36 @@ class Calendar {
     }
 
 
-    //show configuration properties not showing
-    showNoLoad = (message) => {
-        console.log(message);
+    checkBeforeToday = (day, year, monthIndex, monthName) => {
+        if((monthIndex === this.todaysDate().month && year === this.todaysDate().year && day < this.todaysDate().day) ||
+        (monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
+        (year < this.todaysDate().year)) {
+            return true;
+        }
+        return false;
     }
-    
 
+    //wow man this sucks
+
+    //grab and push in
+    showCheckMark = () => {}
+
+    //show configuration properties not showing
+    showNoLoad = (message) => { console.log(message); }
+    
     //show passwoed from on key up email
     showPassword = () => {}
     
     //submit remove appointment if no good return error
     removeAppointment = () => {}
-    
+
     //prevent overload -- obf
     keepSearchTriesOnServerOverLoadRedirect = () => {}
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////// live chatshow
 
     //over kill
     liveChat = () => {}
 
 }
-
-
-//should i create wrappers i hate js classes
-
-
-
 
