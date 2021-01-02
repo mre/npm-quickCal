@@ -50,7 +50,7 @@ prob dont need arry for this.... but whatver not important
   one table with seven rows
 </p>
 <p> day, time, month, monthName, year, email[client email], message[client message] </p>
-<p> and thats it - server side files will be shown in more than one language... c#, php, nodejs, java ..maybe Go but i doubt it </p>
+<p> and thats it - server side files will only be in node js ... but can easily be dine in other languages </p>
 
 <h1>Time complexity </h1>
 <p> every move in the calendar meaning pressing button today next and back will result in a new set loaded in. </p>
