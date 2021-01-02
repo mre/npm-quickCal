@@ -3,6 +3,7 @@
 //clean up bottom looks ugly
 //add stripe config
 //start on server
+//shick fucking beeners dude
 
 
 
