@@ -694,7 +694,5 @@ class Calendar {
     //over kill
     liveChat = () => {}
     
-    //theyll probably say i got this from somewhere. theyll convince themselves that. Thats good because thats false memory. Longer false memory when turned true makes you feel like a bigger piece of shit. good luck.
-
 }
 
