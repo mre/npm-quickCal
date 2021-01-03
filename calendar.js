@@ -1,14 +1,15 @@
 
+//add a sort by row for date on end for dashboard... 
 
 class Calendar {
        
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CONFIG CALENDAR, STYLE, CLASSES, AND STRIPE
        
     //default configuration that allows every functionality of calendar
-    defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage, greetingMessage) => {
+    defaultConfig = (getBookedFile, apptFile, searchAppointmentFile, redirectUrl, timeList, redirectMessage, greetingMessage) => {
         this.fileToGetBooked = getBookedFile; 
         this.fileToPushAppointment = apptFile; 
-        this.searchEmailFilePath = searchEmailFile, 
+        this.searchAppointmentFilePath = searchAppointmentFile, 
         this.hideBackButton = true; 
         this.hidePastDays = true; 
         this.redirectUrl = redirectUrl; 
@@ -21,10 +22,10 @@ class Calendar {
 
         
     //your pre configured set for calendar
-    config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, greetingMessage, dontShowForm) => {
+    config = (getBookedFile, apptFile, searchAppointmentFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, greetingMessage, dontShowForm) => {
         this.fileToGetBooked = getBookedFile; 
         this.fileToPushAppointment = apptFile; 
-        this.searchEmailFilePath = searchEmailFile,  
+        this.searchEmailFilePath = searchAppointmentFile,  
         this.hideBackButton = hideBackButton; 
         this.hidePastDays = hidePastDays; 
         this.redirectUrl = redirectUrl; 
@@ -165,7 +166,12 @@ class Calendar {
         document.getElementById("today").onclick = this.today;
         document.getElementById("next").onclick = this.next;
         document.getElementById("back").onclick = this.back;  
-        document.getElementById("searchKeyUp").onkeyup = (e) => { this.searchEmail(e.target.value); }; //loaded on set
+        document.getElementById("searchMyAppointment").onclick = () => { 
+            this.displayAppointmentInformation(
+                document.getElementById("displayAppointmentEmail").value,
+                document.getElementById("displayAppointmentPassword").value
+            );
+        }
     }
 
         
@@ -208,9 +214,6 @@ class Calendar {
         <small id = "date" style = "margin-left: 5px"></small>
         <small id = "errorBooked"> </small>
         </div>
-        <div style = "margin-bottom: 10px;">
-        <input type = "text" id = "searchKeyUp"> </input>
-        </div>
         <table class="table table-dark" style = "margin-right: auto; margin-left: auto; border-spacing: 0px;" id = "errorShake">
         <thead>
         <tr>
@@ -226,12 +229,21 @@ class Calendar {
         <tbody id = "calendar">
         </tbody>
         <tfoot>
-        <thead>
-        </thead>
         </tfoot>
-      </table>
-      </div>
-      <div id = "toggleDisplayB"></div>
+        </table>
+
+        <div style = "margin-bottom: 10px; margin-top: 20px;">
+        <input placeholder = "email" type = "text" id = "displayAppointmentEmail"> </input>
+        <br>
+        <br>
+        <input placeholder = "password" id = "displayAppointmentPassword" type = "password"> </input>
+        <br>
+        <br>
+        <button id = "searchMyAppointment"> Search Appointment </button>
+        </div>
+
+        </div>
+        <div id = "toggleDisplayB"></div>
       `;
     }
 
@@ -386,52 +398,6 @@ class Calendar {
         }
 
     }
-    
-    
-    //load in taken times for this month and year
-    loadInTakenTimes = () => {
-
-        if(this.fileToGetBooked === false)  return;
-        
-        $.ajax({
-
-            type: "POST",
-
-            url: this.fileToGetBooked,
-
-            data: {
-                getBooked: "true",
-                globalYear: this.currentYearG,
-                globalMonthIndex: this.currentIndexOfMonthG
-            },
-
-            dataType: "json",
-
-            success: function(result, status, xhr) {
-
-                this.alottedSlots = [];
-                   
-                for(let i = 0; i < result.rows.length; i++) { 
-                    this.alottedSlots.push({ 
-                        year: result.rows[i].year, 
-                        monthName: result.rows[i].monthName,
-                        monthIndex: result.rows[i].monthIndex,
-                        day: result.rows[i].day,
-                        time: result.rows[i].time
-                    });   
-                }
-                
-            },
-
-            error: function(xhr, status, error) {
-
-                console.log("no rows"); 
-                
-            },
-
-        });
-    }
-
 
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
@@ -514,6 +480,7 @@ class Calendar {
         document.getElementById("toggleDisplay").style.display = "block";
     }
     
+
     //check errors and submit form
     submit = () => {
 
@@ -596,15 +563,59 @@ class Calendar {
     }
     
     
-    //search if an email exists and show appointment time and password and cancel button -- if password good, remove
-    searchEmail = (email) => {
+    //load in taken times for this month and year
+    loadInTakenTimes = () => {
 
-        alert(email);
+        if(this.fileToGetBooked === false)  return;
+        
+        $.ajax({
+
+            type: "POST",
+
+            url: this.fileToGetBooked,
+
+            data: {
+                getBooked: "true",
+                globalYear: this.currentYearG,
+                globalMonthIndex: this.currentIndexOfMonthG
+            },
+
+            dataType: "json",
+
+            success: function(result, status, xhr) {
+
+                this.alottedSlots = [];
+                   
+                for(let i = 0; i < result.rows.length; i++) { 
+                    this.alottedSlots.push({ 
+                        year: result.rows[i].year, 
+                        monthName: result.rows[i].monthName,
+                        monthIndex: result.rows[i].monthIndex,
+                        day: result.rows[i].day,
+                        time: result.rows[i].time
+                    });   
+                }
+                
+            },
+
+            error: function(xhr, status, error) {
+
+                console.log("no rows"); 
+                
+            },
+
+        });
+    }
+    
+    
+    //search if an email exists and show appointment time and password and cancel button -- if password good, remove
+    displayAppointmentInformation = (email, password) => {
+
         
         if(this.searchEmailFilePath === false) return; 
         
         if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {  
-            document.getElementById("removePassword") ? document.getElementById("removePassword").remove() : ""; 
+            if(document.getElementById("removePassword")) { document.getElementById("removePassword").remove() }; 
             return;
         };
 
@@ -612,24 +623,19 @@ class Calendar {
 
             type: "POST",
 
-            url: this.searchEmailFilePath, 
+            url: this.searchAppointmentFilePath, 
 
             data: {
-                displayAppointmentTime: "true",
+                displayAppointmentInformation: "true",
                 email: email,
             },
 
             dataType: "json",
 
             success: function(result, status, xhr) {
+
+                //grab appointment information
                 
-                if(result.length > 0) { 
-                    showOrHidePasswordAndCancelButton(result);
-                } else if(result === 0) {
-                    showOrHidePasswordAndCancelButton(0);
-                } else {
-                    showOrHidePasswordAndCancelButton(0);
-                }
                 
             },
 
@@ -640,33 +646,6 @@ class Calendar {
             },
 
         });
-        
-    }
-    
-    
-    //show or hide button -- 
-    showOrHidePasswordAndCancelButton = (showOrHide) => {
-        
-        if(typeof(showOrHide) === "object") {   
-
-            if(document.getElementsByClassName("checkAddedOnDelay")[0])  return; 
-
-            var html = `
-            <br>
-            <h2>Your appointment is on <b> ${showOrHide[0].dayName} ${showOrHide[0].monthName} ${showOrHide[0].day} ${showOrHide[0].year} </b> at <b> ${showOrHide[0].time} </b> </h2>
-            <button class = "btn" style = "background-color: red; border-radius: 0px; color: white; box-shadow: 2px 2px 2px black" id = "remove" onclick = "showPassword()">Remove Appointment</button>
-            `;
-
-            var elem = document.createElement("DIV"); 
-            elem.setAttribute("id", "removePassword");
-            elem.classList.add("checkAddedOnDelay");
-            elem.innerHTML = html;
-            document.getElementById("pushPasswordOption").append(elem);
-
-        } else {
-            document.getElementById("removePassword") ? document.getElementById("removePassword").remove() : ""; 
-            return;
-        }
         
     }
  
@@ -715,4 +694,3 @@ class Calendar {
     liveChat = () => {}
 
 }
-
