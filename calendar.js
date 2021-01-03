@@ -433,10 +433,7 @@ class Calendar {
             } 
         };
                   
-        if(originalSet.length === 0) { 
-            back(); 
-            return; 
-        } 
+        if(originalSet.length === 0) { return this.goBackToCalendar() };
                   
         for(let i = 0; i < originalSet.length; i++) {
             temp +=`
@@ -562,6 +559,9 @@ class Calendar {
         
     }
     
+     //grab and push in
+    showCheckMark = () => {}
+    
     
     //load in taken times for this month and year
     loadInTakenTimes = () => {
@@ -648,6 +648,9 @@ class Calendar {
         });
         
     }
+    
+    //submit remove appointment if no good return error
+    removeAppointment = () => {}
  
     //EXTENSIONS ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -672,19 +675,6 @@ class Calendar {
         return false;
     }
 
-
-    //grab and push in
-    showCheckMark = () => {}
-
-    //show configuration properties not showing
-    showNoLoad = (message) => { console.log(message); }
-    
-    //show passwoed from on key up email
-    showPassword = () => {}
-    
-    //submit remove appointment if no good return error
-    removeAppointment = () => {}
-
     //prevent overload -- obf
     keepSearchTriesOnServerOverLoadRedirect = () => {}
 
@@ -692,5 +682,8 @@ class Calendar {
 
     //over kill
     liveChat = () => {}
+
+    //show configuration properties not showing
+    showNoLoad = (message) => { console.log(message); }
 
 }
