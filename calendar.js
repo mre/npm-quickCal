@@ -257,6 +257,7 @@ class Calendar {
         this.currentYearG = date.getFullYear(); 
         this.currentIndexOfMonthG = date.getMonth(); 
 
+        //day to start on
         var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).getDay(); 
 
         this.cal.innerHTML = ``;
@@ -264,6 +265,7 @@ class Calendar {
         var thCount = 0;
         var tr = document.createElement("TR");
 
+        //loop to before start on day and display x
         for(let i = 1; i < startOn; i++) {  
 
             if(thCount === 7) { 
@@ -280,8 +282,10 @@ class Calendar {
 
         }
     
+        //get amount of days in month
         let days = this.amountOfDays[this.currentMonthNameG].month; 
     
+        //loop through and append each day
         for(let i = 1; i <= days; i++) {
 
             if(thCount === 7) { 
@@ -383,12 +387,14 @@ class Calendar {
 
         var originalSet = this.timeList; 
                   
+        //going through set for month and year... if day in this set splice the time at that index... avoid using object..look at history   ** key is the timelist -- keep copy on back end and use includes to verify allowed time
         for(let i = 0; i < this.alottedSlots.length; i++) {
             if(this.alottedSlots[i].day === day) { 
                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
         };
             
+        //if available or not   
         if(originalSet.length === 0) { 
             b.innerText = "Booked";
             b.style.color = "red"; 
