@@ -268,7 +268,7 @@ class Calendar {
 
         }
     
-        let days = this.amountOfDays[this.currentMonthNameG].month; //find function to get amount of days in month or just continue using this
+        let days = this.amountOfDays[this.currentMonthNameG].month; 
     
         for(let i = 1; i <= days; i++) {
 
@@ -350,45 +350,9 @@ class Calendar {
             }
         }
     }
-    
-    
-    //load in taken times for this month and year
-    loadInTakenTimes = () => {
 
-        if(this.fileToGetBooked === false)  return;
-        
-        $.ajax({
-            type: "POST",
-            url: this.fileToGetBooked,
-            data: {
-                getBooked: "true",
-                globalYear: this.currentYearG,
-                globalMonthIndex: this.currentIndexOfMonthG
-            },
-            dataType: "json",
-            success: function(result, status, xhr) {
 
-                this.alottedSlots = [];
-                   
-                for(let i = 0; i < result.rows.length; i++) { 
-                    this.alottedSlots.push({ 
-                        year: result.rows[i].year, 
-                        monthName: result.rows[i].monthName,
-                        monthIndex: result.rows[i].monthIndex,
-                        day: result.rows[i].day,
-                        time: result.rows[i].time
-                    });   
-                }
-                
-            },
-            error: function(xhr, status, error) {
-                console.log("no rows"); 
-            },
-        });
-    }
-    
-    
-    //on hover get booked events for each day -- if none showing up eturn appointments available
+    //on hover get booked events for each day -- if none showing up eturn appointments available -- consider running singleton operations
     eliminateBookedEvents = (day, year, monthIndex, monthName) => {
         
         var b = document.getElementById("errorBooked");
@@ -416,13 +380,59 @@ class Calendar {
         if(originalSet.length === 0) { 
             b.innerText = "Booked";
             b.style.color = "red"; 
-            } else { 
-                b.innerText = "Appointments available";
-                b.style.color = "green"; 
-             }
+        } else { 
+            b.innerText = "Appointments available"; // consider displaying availabilities before onclick 
+            b.style.color = "green"; 
+        }
+
     }
     
     
+    //load in taken times for this month and year
+    loadInTakenTimes = () => {
+
+        if(this.fileToGetBooked === false)  return;
+        
+        $.ajax({
+
+            type: "POST",
+
+            url: this.fileToGetBooked,
+
+            data: {
+                getBooked: "true",
+                globalYear: this.currentYearG,
+                globalMonthIndex: this.currentIndexOfMonthG
+            },
+
+            dataType: "json",
+
+            success: function(result, status, xhr) {
+
+                this.alottedSlots = [];
+                   
+                for(let i = 0; i < result.rows.length; i++) { 
+                    this.alottedSlots.push({ 
+                        year: result.rows[i].year, 
+                        monthName: result.rows[i].monthName,
+                        monthIndex: result.rows[i].monthIndex,
+                        day: result.rows[i].day,
+                        time: result.rows[i].time
+                    });   
+                }
+                
+            },
+
+            error: function(xhr, status, error) {
+
+                console.log("no rows"); 
+                
+            },
+
+        });
+    }
+
+
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
 
@@ -497,14 +507,12 @@ class Calendar {
         document.getElementById("submitButton").onclick = this.submit;
 
     }
-    
-    
+
     //go back to the calendar    
     goBackToCalendar = () => {
         document.getElementById("toggleDisplayB").style.display = "none";
         document.getElementById("toggleDisplay").style.display = "block";
     }
-    
     
     //check errors and submit form
     submit = () => {
@@ -520,8 +528,6 @@ class Calendar {
         var password = document.getElementById("passwordS");
         var message = document.getElementById("messageS"); 
         var time = $('input[name="timeS"]:checked' ).val(); 
-           
-        //call function for error on all data
 
         document.getElementById("timeErrorS").innerText = ""; 
         document.getElementById("emailErrorS").innerText = "";
@@ -552,9 +558,12 @@ class Calendar {
         
          if(count > 0)  return;
         
-        $.ajax({
+         $.ajax({
+
             type: "POST",
+
             url: this.fileToPushAppointment, 
+
             data: {
                 insertIntoAppointment: "true",
                 day: parseInt(day.value),
@@ -567,20 +576,21 @@ class Calendar {
                 password: password.value,
                 message: message.value
             },
+
             dataType: "json",
+
             success: function(result, status, xhr) {
 
-                if(result === "This user already exists") { 
-                    document.getElementById("emailError").innerText = "*Appointment already in place, please cancel.";
-                    return;
-                }
-                
-                location.replace(`${this.redirectUrl}?show='${this.redirectMessage}'`);
+                alert("show check mark");
                 
             },
+
             error: function(xhr, status, error) {
+
                 console.log(error);
+
             },
+
         });
         
     }
@@ -588,6 +598,8 @@ class Calendar {
     
     //search if an email exists and show appointment time and password and cancel button -- if password good, remove
     searchEmail = (email) => {
+
+        alert(email);
         
         if(this.searchEmailFilePath === false) return; 
         
@@ -597,13 +609,18 @@ class Calendar {
         };
 
         $.ajax({
+
             type: "POST",
+
             url: this.searchEmailFilePath, 
+
             data: {
                 displayAppointmentTime: "true",
                 email: email,
             },
+
             dataType: "json",
+
             success: function(result, status, xhr) {
                 
                 if(result.length > 0) { 
@@ -615,8 +632,11 @@ class Calendar {
                 }
                 
             },
+
             error: function(xhr, status, error) {
+
                 console.log(error);
+
             },
 
         });
@@ -663,6 +683,7 @@ class Calendar {
     }
 
 
+    //check for before today 
     checkBeforeToday = (day, year, monthIndex, monthName) => {
         if((monthIndex === this.todaysDate().month && year === this.todaysDate().year && day < this.todaysDate().day) ||
         (monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
@@ -672,7 +693,6 @@ class Calendar {
         return false;
     }
 
-    //wow man this sucks
 
     //grab and push in
     showCheckMark = () => {}
@@ -693,6 +713,6 @@ class Calendar {
 
     //over kill
     liveChat = () => {}
-    
+
 }
 
