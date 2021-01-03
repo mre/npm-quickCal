@@ -1,6 +1,3 @@
-
-//add a sort by row for date on end for dashboard... 
-
 class Calendar {
        
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CONFIG CALENDAR, STYLE, CLASSES, AND STRIPE
@@ -205,44 +202,59 @@ class Calendar {
         this.skeleton.style.cssText = `margin: auto; text-align: center; font-family: Times New Roman", Times, serif;`;
         this.skeleton.innerHTML = `
         <div id = "toggleDisplay">
+
         <div style = "margin-bottom: 0px;">
-        <button id = "back" class = "btn" style = "color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px"><</button>
-        <button id = "next" class = "btn" style = "margin-left: 5px; color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px ">></button>
-        <button id = "today" class = "btn" style = "margin-left: 5px; color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px">today</button>
+            <button id = "back" class = "btn" style = "color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px"><</button>
+            <button id = "next" class = "btn" style = "margin-left: 5px; color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px ">></button>
+            <button id = "today" class = "btn" style = "margin-left: 5px; color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px">today</button>
         </div>
+
         <div style = "margin-bottom: 10px;">
-        <small id = "date" style = "margin-left: 5px"></small>
-        <small id = "errorBooked"> </small>
+            <small id = "date" style = "margin-left: 5px"></small>
+            <small id = "errorBooked"> </small>
         </div>
+
         <table class="table table-dark" style = "margin-right: auto; margin-left: auto; border-spacing: 0px;" id = "errorShake">
+
         <thead>
-        <tr>
-          <th scope="col">mon</th>
-          <th scope="col">tue</th>
-          <th scope="col">wed</th>
-          <th scope="col">thu</th>
-          <th scope="col">fri</th>
-          <th scope="col">sat</th>
-          <th scope="col">sun</th>
-        </tr>
+            <tr>
+            <th scope="col">mon</th>
+            <th scope="col">tue</th>
+            <th scope="col">wed</th>
+            <th scope="col">thu</th>
+            <th scope="col">fri</th>
+            <th scope="col">sat</th>
+            <th scope="col">sun</th>
+            </tr>
         </thead>
-        <tbody id = "calendar">
-        </tbody>
-        <tfoot>
-        </tfoot>
+
+        <tbody id = "calendar"></tbody>
+
+        <tfoot></tfoot>
+
         </table>
 
         <div style = "margin-bottom: 10px; margin-top: 20px;">
-        <input placeholder = "email" type = "text" id = "displayAppointmentEmail"> </input>
-        <br>
-        <br>
-        <input placeholder = "password" id = "displayAppointmentPassword" type = "password"> </input>
-        <br>
-        <br>
-        <button id = "searchMyAppointment"> Search Appointment </button>
+            <input placeholder = "email" type = "text" id = "displayAppointmentEmail"> </input>
+            <br>
+            <br>
+            <input placeholder = "password" id = "displayAppointmentPassword" type = "password"> </input>
+            <br>
+            <br>
+            <button id = "searchMyAppointment"> Search Appointment </button>
+        </div>
+
+        <div id = "appointmentInfo" hidden>
+            <p id = "time"></p>
+            <p id = "day"></p>
+            <p id = "month"></p>
+            <p id = "year"></p>
+            <p "message"></p>
+            <button id = "appointmentId"></button>
         </div>
 
         </div>
+        
         <div id = "toggleDisplayB"></div>
       `;
     }
@@ -257,7 +269,6 @@ class Calendar {
         this.currentYearG = date.getFullYear(); 
         this.currentIndexOfMonthG = date.getMonth(); 
 
-        //day to start on
         var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).getDay(); 
 
         this.cal.innerHTML = ``;
@@ -265,7 +276,6 @@ class Calendar {
         var thCount = 0;
         var tr = document.createElement("TR");
 
-        //loop to before start on day and display x
         for(let i = 1; i < startOn; i++) {  
 
             if(thCount === 7) { 
@@ -282,10 +292,8 @@ class Calendar {
 
         }
     
-        //get amount of days in month
         let days = this.amountOfDays[this.currentMonthNameG].month; 
     
-        //loop through and append each day
         for(let i = 1; i <= days; i++) {
 
             if(thCount === 7) { 
@@ -387,14 +395,12 @@ class Calendar {
 
         var originalSet = this.timeList; 
                   
-        //going through set for month and year... if day in this set splice the time at that index... avoid using object..look at history   ** key is the timelist -- keep copy on back end and use includes to verify allowed time
         for(let i = 0; i < this.alottedSlots.length; i++) {
             if(this.alottedSlots[i].day === day) { 
                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
         };
             
-        //if available or not   
         if(originalSet.length === 0) { 
             b.innerText = "Booked";
             b.style.color = "red"; 
@@ -565,9 +571,6 @@ class Calendar {
         
     }
     
-     //grab and push in
-    showCheckMark = () => {}
-    
     
     //load in taken times for this month and year
     loadInTakenTimes = () => {
@@ -621,7 +624,7 @@ class Calendar {
         if(this.searchEmailFilePath === false) return; 
         
         if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {  
-            if(document.getElementById("removePassword")) { document.getElementById("removePassword").remove() }; 
+            //please fill in email
             return;
         };
 
@@ -641,8 +644,7 @@ class Calendar {
             success: function(result, status, xhr) {
 
                 //grab appointment information
-                
-                
+                 
             },
 
             error: function(xhr, status, error) {
@@ -654,9 +656,6 @@ class Calendar {
         });
         
     }
-    
-    //submit remove appointment if no good return error
-    removeAppointment = () => {}
  
     //EXTENSIONS ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -680,6 +679,13 @@ class Calendar {
         }
         return false;
     }
+
+
+    //grab and push in
+    showCheckMark = () => {}
+    
+    //submit remove appointment if no good return error
+    removeAppointment = () => {}
 
     //prevent overload -- obf
     keepSearchTriesOnServerOverLoadRedirect = () => {}
