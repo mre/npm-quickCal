@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -11,24 +7,19 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <div id = "skeleton">
-
-        </div>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
-        <script src="index.js"></script>
+        <br>
+        <br>
+        <div id = "skeleton" style = "margin-top: 120px;"></div>
+        <script src="/javascripts/calendar.js"></script>
         <script>
-            let ca = new Calendar();
-            ca.config();
-            //ca.defaultConfig;
-            //ca.style("wow: blue;")
+            let cal = new Calendar();
+            cal.defaultConfig("/", "/", "/", "www.index.com", ["3am", "3:30am", "4am", "430am"], "Thank you for your message", "How can we help you?");
+            //set style
+            //set stripe
+            //set chat
         </script>
     </body>
 </html>
