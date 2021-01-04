@@ -1,5 +1,4 @@
-
-//should add for times user can not book. 
+//module exports this.
 
 class Calendar {
        
@@ -204,6 +203,7 @@ class Calendar {
     fillSkeleton = () => {
         this.skeleton.style.cssText = `margin: auto; text-align: center; font-family: Times New Roman", Times, serif;`;
         this.skeleton.innerHTML = `
+
         <div id = "toggleDisplay">
 
         <div style = "margin-bottom: 0px;">
@@ -257,8 +257,9 @@ class Calendar {
         </div>
 
         </div>
-        
+
         <div id = "toggleDisplayB"></div>
+
       `;
     }
 
@@ -379,7 +380,7 @@ class Calendar {
     }
 
 
-    //on hover get booked events for each day -- if none showing up eturn appointments available -- consider running singleton operations
+    //on hover get booked events for each day -- if none showing up return appointments available -- consider running singleton operations
     eliminateBookedEvents = (day, year, monthIndex, monthName) => {
         
         var b = document.getElementById("errorBooked");
@@ -607,6 +608,9 @@ class Calendar {
                         time: result.rows[i].time
                     });   
                 }
+
+                console.log(this.alottedSlots);
+
                 
             },
 
@@ -622,6 +626,7 @@ class Calendar {
     
     //search if an email exists and show appointment time and password and cancel button -- if password good, remove
     displayAppointmentInformation = (email, password) => {
+
 
         
         if(this.searchEmailFilePath === false) return; 
@@ -640,13 +645,14 @@ class Calendar {
             data: {
                 displayAppointmentInformation: "true",
                 email: email,
+                password: password
             },
 
             dataType: "json",
 
             success: function(result, status, xhr) {
 
-                //grab appointment information
+                console.log(result.valid.rows);
                  
             },
 
@@ -694,9 +700,6 @@ class Calendar {
     keepSearchTriesOnServerOverLoadRedirect = () => {}
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////// live chatshow
-
-    //over kill
-    liveChat = () => {}
 
     //show configuration properties not showing
     showNoLoad = (message) => { console.log(message); }
