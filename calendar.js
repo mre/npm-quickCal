@@ -373,7 +373,7 @@ class Calendar {
         
         var b = document.getElementById("errorBooked");
 
-        if(this.alottedSlots.rows === undefined || this.alottedSlots.rows.length === 0) {                  
+        if(this.alottedSlots.length === 0) {                  
             b.innerText = "Appointments available";
             b.style.color = "green";
             return; 
@@ -387,9 +387,9 @@ class Calendar {
 
         var originalSet = this.timeList; 
                   
-        for(let i = 0; i < this.alottedSlots.rows.length; i++) {
-            if(this.alottedSlots.rows[i].day === day) { 
-                originalSet.splice(originalSet.indexOf(this.alottedSlots.rows[i].time), 1); 
+        for(let i = 0; i < this.alottedSlots.length; i++) {
+            if(this.alottedSlots[i].day === day) { 
+                originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
         };
             
@@ -405,6 +405,8 @@ class Calendar {
 
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
+
+        console.log(this.alottedSlots);
 
         if(this.displayForm === false)  return; 
             
@@ -429,19 +431,16 @@ class Calendar {
             <h1> ${getDayName} ${monthName} ${day} ${year} </h1>
         `;
 
-        console.log(this.timeList); //why is this changing -- something to do with hoisting
-
-        var originalSet = this.timeList; 
+        var originalSet = this.timeList; //why the f is timeList removing value when on left side
 
         var compareDay = day.toString();
 
-        if(this.alottedSlots.rows !== undefined) {
-            for(let i = 0; i < this.alottedSlots.rows.length; i++) {  
-                if(this.alottedSlots.rows[i].day === compareDay) {  
-                    originalSet.splice(originalSet.indexOf(this.alottedSlots.rows[i].time), 1); 
-                } 
-            };
-        }
+        for(let i = 0; i < this.alottedSlots.length; i++) {  
+            if(this.alottedSlots[i].day === compareDay) {  
+                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
+            } 
+        };
+        
 
         if(originalSet.length === 0) { return this.goBackToCalendar() };
                   
@@ -571,11 +570,11 @@ class Calendar {
     
     
     //load in taken times for this month and year -- global affecting ajax request wtf
-    loadInTakenTimes = async() => {
+    loadInTakenTimes = () => {
 
         if(this.fileToGetBooked === false)  return;
         
-        this.alottedSlots = await $.ajax({
+        $.ajax({
 
             type: "POST",
 
@@ -589,12 +588,12 @@ class Calendar {
 
             dataType: "json",
 
-            success: function(result, status, xhr) { //whoops just () => here avoids await
+            success: (result, status, xhr) => {
 
-                let temp = [];
+                this.alottedSlots = [];
                    
                 for(let i = 0; i < result.rows.length; i++) { 
-                    temp.push({ 
+                    this.alottedSlots.push({ 
                         year: result.rows[i].year, 
                         monthName: result.rows[i].monthName,
                         monthIndex: result.rows[i].monthIndex,
@@ -602,16 +601,14 @@ class Calendar {
                         time: result.rows[i].time
                     });   
                 }
-
-                return temp;
                 
             },
 
-            error: function(xhr, status, error) {
+            error: (xhr, status, error) => {
 
                 console.log("error");
 
-                return [];
+                this.alottedSlots =  [];
                 
             },
 
