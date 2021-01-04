@@ -429,7 +429,7 @@ class Calendar {
             <h1> ${getDayName} ${monthName} ${day} ${year} </h1>
         `;
 
-        console.log(this.timeList); //why is this changing
+        console.log(this.timeList); //why is this changing -- something to do with hoisting
 
         var originalSet = this.timeList; 
 
