@@ -1,4 +1,5 @@
 //module exports this.
+//change response.rows on server to just response to aoid extra .rows and error handling. dumb
 
 class Calendar {
        
