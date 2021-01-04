@@ -589,7 +589,7 @@ class Calendar {
 
             dataType: "json",
 
-            success: function(result, status, xhr) {
+            success: function(result, status, xhr) { //whoops just () => here avoids await
 
                 let temp = [];
                    
