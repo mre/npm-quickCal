@@ -21,7 +21,7 @@ class Calendar {
 
         
     //your pre configured set for calendar
-    config = (getBookedFile, apptFile, searchAppointmentFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, greetingMessage, dontShowForm) => {
+    config = (getBookedFile, apptFile, searchAppointmentFile, hidePastDays, hideBackButton, timeList, redirectUrl, redirectMessage, greetingMessage, dontShowForm) => {
         this.fileToGetBooked = getBookedFile; 
         this.fileToPushAppointment = apptFile; 
         this.searchEmailFilePath = searchAppointmentFile,  
@@ -29,7 +29,7 @@ class Calendar {
         this.hidePastDays = hidePastDays; 
         this.redirectUrl = redirectUrl; 
         this.displayForm = dontShowForm; 
-        this.timeList = timelist; //must be array
+        this.timeList = timeList; //must be array
         this.redirectMessage = redirectMessage;
         this.greetingMessage = greetingMessage;
         this.triggerStart();
@@ -382,6 +382,8 @@ class Calendar {
 
     //on hover get booked events for each day -- if none showing up return appointments available -- consider running singleton operations
     eliminateBookedEvents = (day, year, monthIndex, monthName) => {
+
+        console.log(this.alottedSlots);
         
         var b = document.getElementById("errorBooked");
 
@@ -442,6 +444,8 @@ class Calendar {
         `;
 
         var originalSet = this.timeList; 
+
+        console.log(this.alottedSlots);
 
         for(let i = 0; i < this.alottedSlots.length; i++) {  	
             if(this.alottedSlots[i].day === day) {  
@@ -576,12 +580,12 @@ class Calendar {
     }
     
     
-    //load in taken times for this month and year
-    loadInTakenTimes = () => {
+    //load in taken times for this month and year -- global affecting ajax request wtf
+    loadInTakenTimes = async() => {
 
         if(this.fileToGetBooked === false)  return;
         
-        $.ajax({
+        this.alottedSlots = await $.ajax({
 
             type: "POST",
 
@@ -597,10 +601,10 @@ class Calendar {
 
             success: function(result, status, xhr) {
 
-                this.alottedSlots = [];
+                let temp = [];
                    
-                for(let i = 0; i < result.rows.length; i++) { 
-                    this.alottedSlots.push({ 
+                for(let i = 0; i < result.rows.length; i++) {
+                    temp.push({ 
                         year: result.rows[i].year, 
                         monthName: result.rows[i].monthName,
                         monthIndex: result.rows[i].monthIndex,
@@ -609,26 +613,26 @@ class Calendar {
                     });   
                 }
 
-                console.log(this.alottedSlots);
-
+                return temp;
                 
             },
 
             error: function(xhr, status, error) {
 
-                console.log("no rows"); 
+                console.log("error");
+
+                return [];
                 
             },
 
         });
+
     }
     
     
     //search if an email exists and show appointment time and password and cancel button -- if password good, remove
     displayAppointmentInformation = (email, password) => {
 
-
-        
         if(this.searchEmailFilePath === false) return; 
         
         if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {  
@@ -686,7 +690,7 @@ class Calendar {
         (year < this.todaysDate().year)) {
             return true;
         }
-        return false;
+            return false;
     }
 
 
