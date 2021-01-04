@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 var conn = require("../db/conn");
@@ -50,7 +49,6 @@ router.post("/", function(req, res, next) {
             if (err) {
                 console.log(err.stack);
             } else {
-                console.log(response.rows);
                 return res.json({
                     rows: response.rows
                 });
@@ -63,28 +61,26 @@ router.post("/", function(req, res, next) {
     //search the appointments set
     if (req.body.displayAppointmentInformation === "true") {
 
-        const query = {
-            text: 'SELECT email, time, day, dayName year, monthName, monthIndex FROM appointments',
-            rowMode: 'array',
-        }
+        const text = 'SELECT "email", "time", "day", "dayName", "year", "monthName", "monthIndex" FROM appointments WHERE password = $1 AND email = $2';
+        const values = [req.body.password, req.body.email];
 
-        conn.query(query, (err, response) => {
+        conn.query(text, values, (err, response) => {
             if (err) {
                 console.log(err.stack);
             } else {
-                console.log(response.rows);
-                return res.json({
-                    rows: response.rows
-                });
+                return res.json({ valid: response });
             }
             conn.end()
-        })
+        });
 
     }
 
 
 });
 
+
+
+//do some shit with sockets
 
 
 module.exports = router;
