@@ -431,7 +431,7 @@ class Calendar {
             <h1> ${getDayName} ${monthName} ${day} ${year} </h1>
         `;
 
-        var originalSet = this.timeList; //why the f is timeList removing value when on left side
+        var originalSet = this.timeList; //why the f is timeList removing value when on right side .. like wtf dude... like trents gonna be pissed. like dude he needs his beanies organized dude. fucking stupid dude.
 
         var compareDay = day.toString();
 
