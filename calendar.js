@@ -605,7 +605,7 @@ class Calendar {
 
                 let temp = [];
                    
-                for(let i = 0; i < result.rows.length; i++) {
+                for(let i = 0; i < result.rows.length; i++) { //why are u pulling rows. get rid of .rows you zucking idiot. z is z zucking gini
                     temp.push({ 
                         year: result.rows[i].year, 
                         monthName: result.rows[i].monthName,
