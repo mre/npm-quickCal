@@ -382,12 +382,10 @@ class Calendar {
 
     //on hover get booked events for each day -- if none showing up return appointments available -- consider running singleton operations
     eliminateBookedEvents = (day, year, monthIndex, monthName) => {
-
-        console.log(this.alottedSlots);
         
         var b = document.getElementById("errorBooked");
 
-        if(this.alottedSlots.length === 0) {                  
+        if(this.alottedSlots.rows === undefined || this.alottedSlots.rows.length === 0) {                  
             b.innerText = "Appointments available";
             b.style.color = "green";
             return; 
@@ -401,9 +399,9 @@ class Calendar {
 
         var originalSet = this.timeList; 
                   
-        for(let i = 0; i < this.alottedSlots.length; i++) {
-            if(this.alottedSlots[i].day === day) { 
-                originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
+        for(let i = 0; i < this.alottedSlots.rows.length; i++) {
+            if(this.alottedSlots.rows[i].day === day) { 
+                originalSet.splice(originalSet.indexOf(this.alottedSlots.rows[i].time), 1); 
             } 
         };
             
@@ -445,14 +443,17 @@ class Calendar {
 
         var originalSet = this.timeList; 
 
-        console.log(this.alottedSlots);
+        var compareDay = day.toString();
 
-        for(let i = 0; i < this.alottedSlots.length; i++) {  	
-            if(this.alottedSlots[i].day === day) {  
-                originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
-            } 
-        };
-                  
+        if(this.alottedSlots.rows !== undefined) {
+            for(let i = 0; i < this.alottedSlots.rows.length; i++) {  
+                if(this.alottedSlots.rows[i].day === compareDay) {  
+                    console.log(day);
+                    originalSet.splice(originalSet.indexOf(this.alottedSlots.rows[i].time), 1); 
+                } 
+            };
+        }
+
         if(originalSet.length === 0) { return this.goBackToCalendar() };
                   
         for(let i = 0; i < originalSet.length; i++) {
@@ -612,6 +613,8 @@ class Calendar {
                         time: result.rows[i].time
                     });   
                 }
+
+                console.log(temp);
 
                 return temp;
                 
