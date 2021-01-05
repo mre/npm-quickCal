@@ -44,6 +44,7 @@ class quickCalFrontEnd {
         this.triggerStart();
     }
     
+    
     //your configuration for styling calendar
     configStyle = (
         cssNextButton,
@@ -155,7 +156,8 @@ class quickCalFrontEnd {
         this.price = price;
         this.theme = theme;
     } 
-        
+      
+    
     /*
 
         initing everything
@@ -165,6 +167,7 @@ class quickCalFrontEnd {
         *first hit
         
     */
+    
     
     //set events, globals then display calendar
     triggerStart = () => {
@@ -278,6 +281,7 @@ class quickCalFrontEnd {
         *remove before
 
     */
+    
     
     //display calendar
     getCalendar = (date) => {
@@ -428,6 +432,7 @@ class quickCalFrontEnd {
 
     }
 
+    
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
 
@@ -503,6 +508,7 @@ class quickCalFrontEnd {
 
     }
 
+    
     //go back to the calendar    
     goBackToCalendar = () => {
         document.getElementById("toggleDisplayB").style.display = "none";
@@ -685,6 +691,7 @@ class quickCalFrontEnd {
         
     }
 
+    
     //submit remove appointment if no good return error
     removeAppointment = () => {}
 
@@ -697,6 +704,7 @@ class quickCalFrontEnd {
         
     */
 
+    
     //whenevr you call new date refer to this
     todaysDate = () => {
         return {
@@ -718,9 +726,11 @@ class quickCalFrontEnd {
             return false;
     }
 
+    
     //prevent overload -- obf
     keepSearchTriesOnServerOverLoadRedirect = () => {}
 
+    
     //show configuration properties not showing
     showNoLoad = (message) => { console.log(message); }
 
@@ -735,6 +745,7 @@ class quickCalFrontEnd {
         *check for email on insert
         
     */
+
 
 quickCalBackEnd =  {
 
@@ -753,7 +764,7 @@ quickCalBackEnd =  {
         });
     },
 
-    //grab booked appointments -- select where month and year -- 
+    //grab booked appointments
     getBooked: (globalMonthIndex, globalYear) => {
         const text = 'SELECT * FROM appointments WHERE "monthIndex" = $1 AND "year" = $2';
         const values = [globalMonthIndex, globalYear];
@@ -784,7 +795,8 @@ quickCalBackEnd =  {
               this.endConn();
         });
     },
-
+       
+    //make decision for where to go
     decision: () => {
         //pass in a database option -- just switch the text
         req.body.decision === "insertIntoAppointment" ?
@@ -796,6 +808,7 @@ quickCalBackEnd =  {
         console.log("different file");
     },
 
+    //end connection
     endConn: () => {
         conn.end();
     }
