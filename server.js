@@ -1,22 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var conn = require("../db/conn");
 
+//created a module for this and front end ... beep beep
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-
-    res.render('index', {
-        title: 'Express'
-    });
-
-});
-
-
-//post method node js -- postgres database
-router.post("/", function(req, res, next) {
-
-    //insert into -- do insert ignore postgres -- or just select first to avoid multiple appointments -- leave phone number to call
+//insert into -- do insert ignore postgres -- or just select first to avoid multiple appointments -- leave phone number to call
     if (req.body.insertIntoAppointment === "true") {
 
         //var timelist = []...if !includes time get the fuck out
@@ -69,10 +54,3 @@ router.post("/", function(req, res, next) {
             conn.end();
         });
     }
-
-
-});
-
-
-
-module.exports = router;
