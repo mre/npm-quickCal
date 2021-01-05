@@ -1,6 +1,8 @@
 
 //dude. trents gonna be pished dude.
 
+//dont need a global store beacuse not on inital dude. shick beaners productionz
+
 class quickCalFrontEnd {
        
     /*
