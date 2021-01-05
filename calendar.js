@@ -746,7 +746,7 @@ class quickCalFrontEnd {
     */
 
 
-quickCalBackEnd =  {
+const quickCalBackEnd =  {
 
     insertInto: (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
         const text = 'INSERT INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
