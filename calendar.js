@@ -416,7 +416,7 @@ class quickCalFrontEnd {
 
         var originalSet = [...this.timeList]; 
                   
-        for(let i = 0; i < this.alottedSlots.length; i++) {
+        for(let i = 0; i < this.alottedSlots.length; i++) { //change to object look at history... reduces from NAlottedSlots to O(N)timeList * O(1)alottedslotss -- MUCH BETTER look at history
             if(this.alottedSlots[i].day === day) { 
                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
@@ -448,7 +448,7 @@ class quickCalFrontEnd {
 
         var compareDay = day.toString();
 
-        for(let i = 0; i < this.alottedSlots.length; i++) {  
+        for(let i = 0; i < this.alottedSlots.length; i++) {  //change to object look at history... reduces from NAlottedSlots to O(N)timeList * O(1)alottedslotss -- MUCH BETTER look at history
             if(this.alottedSlots[i].day === compareDay) {  
                  originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
