@@ -1,10 +1,17 @@
-//module exports this. -- sectionalize and just push to one and pull as one
-//add times they can not book
-//add times and days they can only book -- narrow to exact 
 
-class Calendar {
+//rough skeleton for how this works. not even close to done. good 4 days in. gonna keep it runnin.
+
+
+class quickCalFrontEnd {
        
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CONFIG CALENDAR, STYLE, CLASSES, AND STRIPE
+    /*
+
+        configure everthing
+        *config style
+        *config calendar options
+        *default and custon
+        
+    */
        
     //default configuration that allows every functionality of calendar
     defaultConfig = (getBookedFile, apptFile, searchAppointmentFile, redirectUrl, timeList, redirectMessage, greetingMessage) => {
@@ -31,7 +38,7 @@ class Calendar {
         this.hidePastDays = hidePastDays; 
         this.redirectUrl = redirectUrl; 
         this.displayForm = dontShowForm; 
-        this.timeList = timeList; //must be array
+        this.timeList = timeList; 
         this.redirectMessage = redirectMessage;
         this.greetingMessage = greetingMessage;
         this.triggerStart();
@@ -149,7 +156,15 @@ class Calendar {
         this.theme = theme;
     } 
         
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////SET EVERYTHING UP AND START
+    /*
+
+        initing everything
+        *create skeleton
+        *events on skeleton
+        *set globals
+        *first hit
+        
+    */
     
     //set events, globals then display calendar
     triggerStart = () => {
@@ -253,7 +268,16 @@ class Calendar {
     }
 
     
-    //FUNCTIONS OF CALENDAR ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /*
+
+        functions of this calendar
+        *display
+        *move next/back/to
+        *click and move
+        *hide days 
+        *remove before
+
+    */
     
     //display calendar
     getCalendar = (date) => {
@@ -388,7 +412,7 @@ class Calendar {
 
         var originalSet = [...this.timeList]; 
                   
-        for(let i = 0; i < this.alottedSlots.length; i++) { //reduce this look up with obj
+        for(let i = 0; i < this.alottedSlots.length; i++) {
             if(this.alottedSlots[i].day === day) { 
                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
@@ -434,12 +458,13 @@ class Calendar {
 
         var compareDay = day.toString();
 
-        for(let i = 0; i < this.alottedSlots.length; i++) {  //reduce this look up with obj
+        for(let i = 0; i < this.alottedSlots.length; i++) {  
             if(this.alottedSlots[i].day === compareDay) {  
                  originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
         };
         
+
         if(originalSet.length === 0) { return this.goBackToCalendar() };
                   
         for(let i = 0; i < originalSet.length; i++) {
@@ -536,7 +561,7 @@ class Calendar {
             url: this.fileToPushAppointment, 
 
             data: {
-                insertIntoAppointment: "true",
+                decision: "insertIntoAppointment",
                 day: parseInt(day.value),
                 dayName: dayName.value,
                 monthName: monthName.value,
@@ -565,8 +590,12 @@ class Calendar {
         });
         
     }
+
+
+    //grab and push in
+    showCheckMark = () => {}
     
-    
+
     //load in taken times for this month and year -- global affecting ajax request wtf
     loadInTakenTimes = () => {
 
@@ -579,7 +608,7 @@ class Calendar {
             url: this.fileToGetBooked,
 
             data: {
-                getBooked: "true",
+                decision: "getBooked",
                 globalYear: this.currentYearG,
                 globalMonthIndex: this.currentIndexOfMonthG
             },
@@ -590,7 +619,7 @@ class Calendar {
 
                 this.alottedSlots = [];
                    
-                for(let i = 0; i < result.rows.length; i++) { //use obj to reduce look up
+                for(let i = 0; i < result.rows.length; i++) { 
                     this.alottedSlots.push({ 
                         year: result.rows[i].year, 
                         monthName: result.rows[i].monthName,
@@ -621,7 +650,6 @@ class Calendar {
         if(this.searchEmailFilePath === false) return; 
         
         if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {  
-            //please fill in email
             return;
         };
 
@@ -632,7 +660,7 @@ class Calendar {
             url: this.searchAppointmentFilePath, 
 
             data: {
-                displayAppointmentInformation: "true",
+                decision: "displayAppointmentInformation",
                 email: email,
                 password: password
             },
@@ -640,6 +668,8 @@ class Calendar {
             dataType: "json",
 
             success: function(result, status, xhr) {
+
+                //just display and add cancel in here
 
                 console.log(result.valid.rows);
                  
@@ -654,8 +684,18 @@ class Calendar {
         });
         
     }
+
+    //submit remove appointment if no good return error
+    removeAppointment = () => {}
+
  
-    //EXTENSIONS ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /*
+
+        EXTENSIONS
+        *gets todays day
+        *checks for before today
+        
+    */
 
     //whenevr you call new date refer to this
     todaysDate = () => {
@@ -671,26 +711,95 @@ class Calendar {
     //check for before today 
     checkBeforeToday = (day, year, monthIndex, monthName) => {
         if((monthIndex === this.todaysDate().month && year === this.todaysDate().year && day < this.todaysDate().day) ||
-        (monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
-        (year < this.todaysDate().year)) {
+            (monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
+            (year < this.todaysDate().year)) {
             return true;
         }
             return false;
     }
 
-
-    //grab and push in
-    showCheckMark = () => {}
-    
-    //submit remove appointment if no good return error
-    removeAppointment = () => {}
-
     //prevent overload -- obf
     keepSearchTriesOnServerOverLoadRedirect = () => {}
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////// live chatshow
 
     //show configuration properties not showing
     showNoLoad = (message) => { console.log(message); }
 
+
 }
+
+
+    /*
+
+        DATABASE
+        *Check for timelist on insert
+        *check for email on insert
+        
+    */
+
+quickCalBackEnd =  {
+
+    insertInto: (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
+        const text = 'INSERT INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
+        const values = [day, dayName, monthName, monthIndex, year, email, time, password, message];
+        conn.query(text, values, (err, response) => {
+            if (err) {
+                console.log(err.stack)
+            } else {
+                return res.json({
+                    result: response.rows[0]
+                });
+            }
+              this.endConn();
+        });
+    },
+
+    //grab booked appointments -- select where month and year -- 
+    getBooked: (globalMonthIndex, globalYear) => {
+        const text = 'SELECT * FROM appointments WHERE "monthIndex" = $1 AND "year" = $2';
+        const values = [globalMonthIndex, globalYear];
+        conn.query(text, values, (err, response) => {
+            if (err) {
+                console.log(err.stack);
+            } else {
+                return res.json({
+                    rows: response.rows
+                });
+            }
+              this.endConn();
+        });
+    },
+
+    //search the appointments set
+    displayAppointment: (password, email) => {
+        const text = 'SELECT "email", "time", "day", "dayName", "year", "monthName", "monthIndex" FROM appointments WHERE "password" = $1 AND "email" = $2';
+        const values = [password, email];
+        conn.query(text, values, (err, response) => {
+            if (err) {
+                console.log(err.stack);
+            } else {
+                return res.json({
+                    valid: response
+                });
+            }
+              this.endConn();
+        });
+    },
+
+    decision: () => {
+        //pass in a database option -- just switch the text
+        req.body.decision === "insertIntoAppointment" ?
+        this.insertInto(req.body.day, req.body.dayName, req.body.monthName, req.body.monthIndex, req.body.year, req.body.email, req.body.time, req.body.password, req.body.message) :
+        req.body.decision === "getBooked" ?
+        this.getBooked(req.body.globalMonthIndex, req.body.globalYear) :
+        req.body.decision === "displayAppointmentInformation" ?
+        this.displayAppointment(req.body.password, req.body.email) :
+        console.log("different file");
+    },
+
+    endConn: () => {
+        conn.end();
+    }
+
+}
+
+    export { quickCalBackEnd, quickCalFrontEnd };
