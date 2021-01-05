@@ -737,7 +737,7 @@ export class quickCalBackEnd  {
 
     }
 
-
+    //inser into appointments
     insertInto = (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
         var myTimeList = [] // whatever you pre defined time list is
         if(!myTimeList.includes(time)) { return res.json({result: "Incorrect time"}) };
@@ -815,7 +815,7 @@ export class quickCalBackEnd  {
         }
     }
 
-
+    //end connection
     endConn = () => {
         conn.end();
     }
