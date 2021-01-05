@@ -746,9 +746,12 @@ class quickCalFrontEnd {
     */
 
 
+//database -- this is ugly. change this 
 const quickCalBackEnd =  {
 
     insertInto: (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
+        //timelist here
+        //var timelist = []...if !includes time get the fuck out -- also do insert ingnore into this or just select
         const text = 'INSERT INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
         const values = [day, dayName, monthName, monthIndex, year, email, time, password, message];
         conn.query(text, values, (err, response) => {
@@ -759,11 +762,11 @@ const quickCalBackEnd =  {
                     result: response.rows[0]
                 });
             }
-              this.endConn();
+            this.endConn();
         });
     },
 
-    //grab booked appointments
+    //grab booked appointments -- select where month and year -- 
     getBooked: (globalMonthIndex, globalYear) => {
         const text = 'SELECT * FROM appointments WHERE "monthIndex" = $1 AND "year" = $2';
         const values = [globalMonthIndex, globalYear];
@@ -771,11 +774,9 @@ const quickCalBackEnd =  {
             if (err) {
                 console.log(err.stack);
             } else {
-                return res.json({
-                    rows: response.rows
-                });
+                return res.json({ rows: response.rows });
             }
-              this.endConn();
+            this.endConn();
         });
     },
 
@@ -787,27 +788,40 @@ const quickCalBackEnd =  {
             if (err) {
                 console.log(err.stack);
             } else {
-                return res.json({
-                    valid: response
-                });
+                return res.json({ valid: response });
             }
-              this.endConn();
+            this.endConn();
         });
     },
-       
-    //make decision for where to go
+
     decision: () => {
-        //pass in a database option -- just switch the text
-        req.body.decision === "insertIntoAppointment" ?
-        this.insertInto(req.body.day, req.body.dayName, req.body.monthName, req.body.monthIndex, req.body.year, req.body.email, req.body.time, req.body.password, req.body.message) :
-        req.body.decision === "getBooked" ?
-        this.getBooked(req.body.globalMonthIndex, req.body.globalYear) :
-        req.body.decision === "displayAppointmentInformation" ?
-        this.displayAppointment(req.body.password, req.body.email) :
-        console.log("different file");
+        switch(req.body.decision) {
+            case "insertIntoAppointment":
+            this.insertInto(
+                req.body.day,
+                req.body.dayName,
+                req.body.monthName,
+                req.body.monthIndex,
+                req.body.year,
+                req.body.email,
+                req.body.time,
+                req.body.password,
+                req.body.message);
+            break;
+            case "getBooked":
+            this.getBooked(
+                req.body.globalMonthIndex, 
+                req.body.globalYear);
+            break;
+            case "displayAppointmentInformation":
+            this.displayAppointment(
+                req.body.password,
+                req.body.email);
+            break;
+            default: console.log("different file");
+        }
     },
 
-    //end connection
     endConn: () => {
         conn.end();
     }
