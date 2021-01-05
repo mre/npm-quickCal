@@ -443,6 +443,18 @@ class quickCalFrontEnd {
             TweenMax.to(element, 0.1, {x:"+=20", yoyo:true, repeat:5});
             return;
         }
+           
+        var originalSet = [...this.timeList];
+
+        var compareDay = day.toString();
+
+        for(let i = 0; i < this.alottedSlots.length; i++) {  
+            if(this.alottedSlots[i].day === compareDay) {  
+                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
+            } 
+        };
+        
+        if(originalSet.length === 0) { return this.goBackToCalendar() };
 
         var getDayName = new Date(year, monthIndex, day).toString().split(" ")[0];
 
@@ -459,18 +471,6 @@ class quickCalFrontEnd {
             <h1> ${getDayName} ${monthName} ${day} ${year} </h1>
         `;
 
-        var originalSet = [...this.timeList];
-
-        var compareDay = day.toString();
-
-        for(let i = 0; i < this.alottedSlots.length; i++) {  
-            if(this.alottedSlots[i].day === compareDay) {  
-                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
-            } 
-        };
-        
-        if(originalSet.length === 0) { return this.goBackToCalendar() };
-                  
         for(let i = 0; i < originalSet.length; i++) {
             temp +=`
             <input type="radio" id="${originalSet[i]}" name="timeS" value="${originalSet[i]}" class="form-check-input xx"> 
