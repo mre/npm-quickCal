@@ -1,19 +1,15 @@
 
-//rough skeleton for how this works. not even close to done. good 4 days in. gonna keep it runnin.
-
+//dude. trents gonna be pissed dude.
 
 class quickCalFrontEnd {
        
     /*
 
         configure everthing
-        *config style
-        *config calendar options
-        *default and custom
         
     */
        
-    //default configuration that allows every functionality of calendar
+    //default configuration that allows every functionality of calendar -- add place
     defaultConfig = (getBookedFile, apptFile, searchAppointmentFile, redirectUrl, timeList, redirectMessage, greetingMessage) => {
         this.fileToGetBooked = getBookedFile; 
         this.fileToPushAppointment = apptFile; 
@@ -43,7 +39,6 @@ class quickCalFrontEnd {
         this.greetingMessage = greetingMessage;
         this.triggerStart();
     }
-    
     
     //your configuration for styling calendar
     configStyle = (
@@ -156,18 +151,12 @@ class quickCalFrontEnd {
         this.price = price;
         this.theme = theme;
     } 
-      
-    
+        
     /*
 
         initing everything
-        *create skeleton
-        *events on skeleton
-        *set globals
-        *first hit
         
     */
-    
     
     //set events, globals then display calendar
     triggerStart = () => {
@@ -274,14 +263,8 @@ class quickCalFrontEnd {
     /*
 
         functions of this calendar
-        *display
-        *move next/back/to
-        *click and move
-        *hide days 
-        *remove before
 
     */
-    
     
     //display calendar
     getCalendar = (date) => {
@@ -416,7 +399,7 @@ class quickCalFrontEnd {
 
         var originalSet = [...this.timeList]; 
                   
-        for(let i = 0; i < this.alottedSlots.length; i++) { //change to object look at history... reduces from NAlottedSlots to O(N)timeList * O(1)alottedslotss -- MUCH BETTER look at history
+        for(let i = 0; i < this.alottedSlots.length; i++) {
             if(this.alottedSlots[i].day === day) { 
                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
@@ -432,7 +415,6 @@ class quickCalFrontEnd {
 
     }
 
-    
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
 
@@ -443,18 +425,6 @@ class quickCalFrontEnd {
             TweenMax.to(element, 0.1, {x:"+=20", yoyo:true, repeat:5});
             return;
         }
-           
-        var originalSet = [...this.timeList];
-
-        var compareDay = day.toString();
-
-        for(let i = 0; i < this.alottedSlots.length; i++) {  //change to object look at history... reduces from NAlottedSlots to O(N)timeList * O(1)alottedslotss -- MUCH BETTER look at history
-            if(this.alottedSlots[i].day === compareDay) {  
-                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
-            } 
-        };
-        
-        if(originalSet.length === 0) { return this.goBackToCalendar() };
 
         var getDayName = new Date(year, monthIndex, day).toString().split(" ")[0];
 
@@ -471,6 +441,18 @@ class quickCalFrontEnd {
             <h1> ${getDayName} ${monthName} ${day} ${year} </h1>
         `;
 
+        var originalSet = [...this.timeList];
+
+        var compareDay = day.toString();
+
+        for(let i = 0; i < this.alottedSlots.length; i++) {  
+            if(this.alottedSlots[i].day === compareDay) {  
+                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
+            } 
+        };
+        
+        if(originalSet.length === 0) { return this.goBackToCalendar() };
+                  
         for(let i = 0; i < originalSet.length; i++) {
             temp +=`
             <input type="radio" id="${originalSet[i]}" name="timeS" value="${originalSet[i]}" class="form-check-input xx"> 
@@ -507,7 +489,6 @@ class quickCalFrontEnd {
 
     }
 
-    
     //go back to the calendar    
     goBackToCalendar = () => {
         document.getElementById("toggleDisplayB").style.display = "none";
@@ -690,7 +671,7 @@ class quickCalFrontEnd {
         
     }
 
-    
+
     //submit remove appointment if no good return error
     removeAppointment = () => {}
 
@@ -698,12 +679,10 @@ class quickCalFrontEnd {
     /*
 
         EXTENSIONS
-        *gets todays day
-        *checks for before today
         
     */
 
-    
+
     //whenevr you call new date refer to this
     todaysDate = () => {
         return {
@@ -725,11 +704,18 @@ class quickCalFrontEnd {
             return false;
     }
 
-    
+
+    /*
+
+        Show configuration properties not showing and set a configured cooler for too many requests
+        
+    */
+
+
     //prevent overload -- obf
     keepSearchTriesOnServerOverLoadRedirect = () => {}
 
-    
+
     //show configuration properties not showing
     showNoLoad = (message) => { console.log(message); }
 
@@ -737,19 +723,11 @@ class quickCalFrontEnd {
 }
 
 
-    /*
-
-        DATABASE
-        *Check for timelist on insert
-        *check for email on insert
-        
-    */
-
-
 //database -- this is ugly. change this 
-const quickCalBackEnd =  {
+class quickCalBackEnd  {
 
-    insertInto: (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
+
+    insertInto = (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
         //timelist here
         //var timelist = []...if !includes time get the fuck out -- also do insert ingnore into this or just select
         const text = 'INSERT INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
@@ -758,16 +736,15 @@ const quickCalBackEnd =  {
             if (err) {
                 console.log(err.stack)
             } else {
-                return res.json({
-                    result: response.rows[0]
-                });
+                return res.json({ result: response.rows[0] });
             }
-            this.endConn();
+                this.endConn();
         });
-    },
+    }
+
 
     //grab booked appointments -- select where month and year -- 
-    getBooked: (globalMonthIndex, globalYear) => {
+    getBooked = (globalMonthIndex, globalYear) => {
         const text = 'SELECT * FROM appointments WHERE "monthIndex" = $1 AND "year" = $2';
         const values = [globalMonthIndex, globalYear];
         conn.query(text, values, (err, response) => {
@@ -776,12 +753,13 @@ const quickCalBackEnd =  {
             } else {
                 return res.json({ rows: response.rows });
             }
-            this.endConn();
+                this.endConn();
         });
-    },
+    }
+
 
     //search the appointments set
-    displayAppointment: (password, email) => {
+    displayAppointment = (password, email) => {
         const text = 'SELECT "email", "time", "day", "dayName", "year", "monthName", "monthIndex" FROM appointments WHERE "password" = $1 AND "email" = $2';
         const values = [password, email];
         conn.query(text, values, (err, response) => {
@@ -790,11 +768,15 @@ const quickCalBackEnd =  {
             } else {
                 return res.json({ valid: response });
             }
-            this.endConn();
+                this.endConn();
         });
-    },
+    }
 
-    decision: () => {
+
+    //hit this decision -- hopefully 
+    decision = (decision, body) => {
+        //pass in a database option
+        //add a location search -- slap in dashboard or allow their own
         switch(req.body.decision) {
             case "insertIntoAppointment":
             this.insertInto(
@@ -820,12 +802,22 @@ const quickCalBackEnd =  {
             break;
             default: console.log("different file");
         }
-    },
+    }
 
-    endConn: () => {
+
+    endConn = () => {
         conn.end();
     }
 
-}
 
-    export { quickCalBackEnd, quickCalFrontEnd };
+}
+    //common moduel syntax
+    export default { quickCalBackEnd, quickCalFrontEnd }; 
+    //module.exports = {quickCalBackEnd, quickCalFrontEnd};
+
+    //es6
+    //export {quickCalBackEnd, quickCalFrontEnd};
+
+
+
+
