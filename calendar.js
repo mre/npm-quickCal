@@ -469,7 +469,6 @@ class quickCalFrontEnd {
             } 
         };
         
-
         if(originalSet.length === 0) { return this.goBackToCalendar() };
                   
         for(let i = 0; i < originalSet.length; i++) {
