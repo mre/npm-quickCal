@@ -1,9 +1,5 @@
 
-//dude. trents gonna be pished dude.
-
-//dont need a global store beacuse not on inital dude. shick beaners productionz
-
-class quickCalFrontEnd {
+export class quickCalFrontEnd {
        
     /*
 
@@ -417,6 +413,7 @@ class quickCalFrontEnd {
 
     }
 
+
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
 
@@ -726,13 +723,20 @@ class quickCalFrontEnd {
 
 
 //database -- this is ugly. change this 
-class quickCalBackEnd  {
+export class quickCalBackEnd  {
+
+
+    //determine datavase being used
+    database = () => {
+ 
+
+    }
 
 
     insertInto = (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
-        //timelist here
-        //var timelist = []...if !includes time get the fuck out -- also do insert ingnore into this or just select
-        const text = 'INSERT INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
+        var myTimeList = [] // whatever you pre defined time list is
+        if(!myTimeList.includes(time)) { return res.json({result: "Incorrect time"}) };
+        const text = 'INSERT IGNORE INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
         const values = [day, dayName, monthName, monthIndex, year, email, time, password, message];
         conn.query(text, values, (err, response) => {
             if (err) {
@@ -776,7 +780,7 @@ class quickCalBackEnd  {
 
 
     //hit this decision -- hopefully 
-    decision = (decision, body) => {
+    decision = (decision, body, database) => {
         //pass in a database option
         //add a location search -- slap in dashboard or allow their own
         switch(req.body.decision) {
@@ -811,14 +815,9 @@ class quickCalBackEnd  {
         conn.end();
     }
 
-
+    
 }
-    //common moduel syntax
-    export default { quickCalBackEnd, quickCalFrontEnd }; 
-    //module.exports = {quickCalBackEnd, quickCalFrontEnd};
-
-    //es6
-    //export {quickCalBackEnd, quickCalFrontEnd};
+ 
 
 
 
