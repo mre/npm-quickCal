@@ -1,5 +1,5 @@
 
-//dude. trents gonna be pissed dude.
+//dude. trents gonna be pished dude.
 
 class quickCalFrontEnd {
        
