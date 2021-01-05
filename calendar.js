@@ -9,7 +9,7 @@ class quickCalFrontEnd {
         configure everthing
         *config style
         *config calendar options
-        *default and custon
+        *default and custom
         
     */
        
