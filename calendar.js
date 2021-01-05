@@ -1,4 +1,9 @@
 
+//add an extra condition for when they click today .. splice any times past the current
+
+//add a helper function to remove past appointments -- sql
+
+
 export class quickCalFrontEnd {
        
     /*
