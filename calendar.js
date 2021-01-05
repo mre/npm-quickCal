@@ -386,7 +386,7 @@ class Calendar {
 
         var originalSet = [...this.timeList]; 
                   
-        for(let i = 0; i < this.alottedSlots.length; i++) {
+        for(let i = 0; i < this.alottedSlots.length; i++) { //reduce this look up with obj
             if(this.alottedSlots[i].day === day) { 
                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
@@ -432,7 +432,7 @@ class Calendar {
 
         var compareDay = day.toString();
 
-        for(let i = 0; i < this.alottedSlots.length; i++) {  
+        for(let i = 0; i < this.alottedSlots.length; i++) {  //reduce this look up with obj
             if(this.alottedSlots[i].day === compareDay) {  
                  originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
@@ -588,7 +588,7 @@ class Calendar {
 
                 this.alottedSlots = [];
                    
-                for(let i = 0; i < result.rows.length; i++) { 
+                for(let i = 0; i < result.rows.length; i++) { //use obj to reduce look up
                     this.alottedSlots.push({ 
                         year: result.rows[i].year, 
                         monthName: result.rows[i].monthName,
