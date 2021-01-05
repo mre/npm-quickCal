@@ -158,7 +158,7 @@ class Calendar {
     }
 
         
-    //static event listeners
+    //static event listeners -- stick events in react component 
     events = () => {
         this.skeleton = document.getElementById("skeleton");
         this.fillSkeleton(); 
@@ -200,7 +200,7 @@ class Calendar {
     }
 
     
-    //fill the calendar
+    //fill the calendar -- stick this john in react component
     fillSkeleton = () => {
         this.skeleton.style.cssText = `margin: auto; text-align: center; font-family: Times New Roman", Times, serif;`;
         this.skeleton.innerHTML = `
@@ -385,7 +385,7 @@ class Calendar {
             return;
         }
 
-        var originalSet = this.timeList; 
+        var originalSet = [...this.timeList]; 
                   
         for(let i = 0; i < this.alottedSlots.length; i++) {
             if(this.alottedSlots[i].day === day) { 
@@ -405,8 +405,6 @@ class Calendar {
 
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
-
-        console.log(this.alottedSlots);
 
         if(this.displayForm === false)  return; 
             
@@ -431,7 +429,7 @@ class Calendar {
             <h1> ${getDayName} ${monthName} ${day} ${year} </h1>
         `;
 
-        var originalSet = this.timeList; //why the f is timeList removing value when on right side .. like wtf dude... like trents gonna be pissed. like dude he needs his beanies organized dude. fucking stupid dude.
+        var originalSet = [...this.timeList];
 
         var compareDay = day.toString();
 
