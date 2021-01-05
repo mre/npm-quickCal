@@ -1,5 +1,4 @@
-//module exports this.
-//change response.rows on server to just response to aoid extra .rows and error handling. dumb
+//module exports this. -- sectionalize and just push to one and pull as one
 
 class Calendar {
        
