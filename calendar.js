@@ -1,4 +1,6 @@
 //module exports this. -- sectionalize and just push to one and pull as one
+//add times they can not book
+//add times and days they can only book -- narrow to exact 
 
 class Calendar {
        
