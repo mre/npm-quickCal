@@ -3,15 +3,16 @@
 
 //add a helper function to remove past appointments -- sql
 
-
-export class quickCalFrontEnd {
-       
+class quickCalFrontEnd {
+      
+    
     /*
 
         configure everthing
         
     */
        
+
     //default configuration that allows every functionality of calendar -- add place
     defaultConfig = (getBookedFile, apptFile, searchAppointmentFile, redirectUrl, timeList, redirectMessage, greetingMessage) => {
         this.fileToGetBooked = getBookedFile; 
@@ -43,6 +44,7 @@ export class quickCalFrontEnd {
         this.triggerStart();
     }
     
+
     //your configuration for styling calendar
     configStyle = (
         cssNextButton,
@@ -701,8 +703,8 @@ export class quickCalFrontEnd {
     //check for before today 
     checkBeforeToday = (day, year, monthIndex, monthName) => {
         if((monthIndex === this.todaysDate().month && year === this.todaysDate().year && day < this.todaysDate().day) ||
-            (monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
-            (year < this.todaysDate().year)) {
+           (monthIndex < this.todaysDate().month && year === this.todaysDate().year) ||
+           (year < this.todaysDate().year)) {
             return true;
         }
             return false;
@@ -727,21 +729,23 @@ export class quickCalFrontEnd {
 }
 
 
+    /*
+
+        Backend.. run class and hit decision...easy as pie
+        
+    */
+
 //database -- this is ugly. change this 
-export class quickCalBackEnd  {
+class quickCalBackEnd  {
 
 
     //determine datavase being used
-    database = () => {
- 
+    database = () => { }
 
-    }
 
-    //inser into appointments
+    //insert into database
     insertInto = (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
-        var myTimeList = [] // whatever you pre defined time list is
-        if(!myTimeList.includes(time)) { return res.json({result: "Incorrect time"}) };
-        const text = 'INSERT IGNORE INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
+        const text = 'INSERT INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
         const values = [day, dayName, monthName, monthIndex, year, email, time, password, message];
         conn.query(text, values, (err, response) => {
             if (err) {
@@ -785,37 +789,38 @@ export class quickCalBackEnd  {
 
 
     //hit this decision -- hopefully 
-    decision = (decision, body, database) => {
-        //pass in a database option
-        //add a location search -- slap in dashboard or allow their own
-        switch(req.body.decision) {
+    decision = (decision, body, db) => {
+        switch(decision) {
             case "insertIntoAppointment":
             this.insertInto(
-                req.body.day,
-                req.body.dayName,
-                req.body.monthName,
-                req.body.monthIndex,
-                req.body.year,
-                req.body.email,
-                req.body.time,
-                req.body.password,
-                req.body.message);
+                db,
+                body.day,
+                body.dayName,
+                body.monthName,
+                body.monthIndex,
+                body.year,
+                body.email,
+                body.time,
+                body.password,
+                body.message);
             break;
             case "getBooked":
             this.getBooked(
-                req.body.globalMonthIndex, 
-                req.body.globalYear);
+                db,
+                body.globalMonthIndex, 
+                body.globalYear);
             break;
             case "displayAppointmentInformation":
             this.displayAppointment(
-                req.body.password,
-                req.body.email);
+                db,
+                body.password,
+                body.email);
             break;
             default: console.log("different file");
         }
     }
 
-    //end connection
+
     endConn = () => {
         conn.end();
     }
@@ -823,6 +828,10 @@ export class quickCalBackEnd  {
     
 }
  
+
+module.exports = { quickCalFrontEnd, quickCalBackEnd };
+
+
 
 
 
