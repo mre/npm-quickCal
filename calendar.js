@@ -4,6 +4,7 @@
 //add a helper function to remove past appointments -- sql
 
 //create a react version. oooooooooooo what? That doesnt make any sense. How? Like no its not him. Guys look, he copied the entire thing see. Yeah guys hes not that great. Yeah he's dumb. He's so dumb. woof ok, thats a relief. /:
+//yeah he just created this plugin in less than 3 days but we found out he stole it from someone. Yeah he's a scumbag. He doesn't know anything. Yeah you don't need to worry about it. :/ 
 
 class quickCalFrontEnd {
       
