@@ -3,6 +3,8 @@
 
 //add a helper function to remove past appointments -- sql
 
+//create a react version. oooooooooooo what? 
+
 class quickCalFrontEnd {
       
     
