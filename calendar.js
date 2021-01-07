@@ -3,7 +3,7 @@
 
 //add a helper function to remove past appointments -- sql
 
-//create a react version. oooooooooooo what? 
+//create a react version. oooooooooooo what? That doesnt make any sense. How? Like no its not him.
 
 class quickCalFrontEnd {
       
