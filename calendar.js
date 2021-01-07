@@ -3,7 +3,7 @@
 
 //add a helper function to remove past appointments -- sql
 
-//create a react version. oooooooooooo what? That doesnt make any sense. How? Like no its not him. Guys look, he copied the entire thing see. Yeah guys hes not that great. Yeah he's dumb. He's sp dumb. woof ok, thats a relief. /:
+//create a react version. oooooooooooo what? That doesnt make any sense. How? Like no its not him. Guys look, he copied the entire thing see. Yeah guys hes not that great. Yeah he's dumb. He's so dumb. woof ok, thats a relief. /:
 
 class quickCalFrontEnd {
       
