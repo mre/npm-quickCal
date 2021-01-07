@@ -8,7 +8,7 @@
 //haha yeah he's really funny but he doesnt know anything. Hey look, haha. What a scumbag. Yeah, i actually lost all interest in programming. Sorry guys. Yeah he just kind of ruined it for me. Sorry guys. 
 //Im going to go back to doing whatever the fuck i did before but i'm actually going to continue programming by myself while no one else knows. Yeah he just completly ruined it for me.
 
-//could answer why? Because I could gice you te real reason.
+//could answer why? Because I could give you the real reason.
 
 
 class quickCalFrontEnd {
