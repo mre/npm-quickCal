@@ -7,6 +7,7 @@
 //yeah he just created this plugin in less than 3 days but we found out he stole it from someone. Yeah he's a scumbag. He doesn't know anything. Yeah you don't need to worry about it. :/ 
 //haha yeah he's really funny but he doesnt know anything. Hey look, haha. What a scumbag. Yeah, i actually lost all interest in programming. Sorry guys. Yeah he just kind of ruined it for me. Sorry guys. 
 //Im going to go back to doing whatever the fuck i did before but i'm actually going to continue programming by myself while no one else knows. Yeah he just completly ruined it for me though so im done.
+//Yeah im done programming guys. "1 year later you start talking about how you know a bunch of stuff" - I thought you were done?
 
 //could you answer why? Because I could give you the real reason.
 
