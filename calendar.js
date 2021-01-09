@@ -754,22 +754,29 @@ class quickCalBackEnd  {
      }
      
      resetHits = () => { 
-           //listen for timer end and reset timer
+           //listen for timer end and destroy timer and reset hits
      }
 
     //determine datavase being used
-    database = () => { }
+    database = () => {
+    
+    }
+    
+    //stripeConfig
+    stripeConfig = () => {
+    
+    }
 
-
+    
     //insert into database
     insertInto = (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
         const text = 'INSERT INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
         const values = [day, dayName, monthName, monthIndex, year, email, time, password, message];
         conn.query(text, values, (err, response) => {
+            this.hits++;
             if (err) {
                 console.log(err.stack)
             } else {
-                this.hits++;
                 return res.json({ result: response.rows[0] });
             }
         });
@@ -781,6 +788,7 @@ class quickCalBackEnd  {
         const text = 'SELECT * FROM appointments WHERE "monthIndex" = $1 AND "year" = $2';
         const values = [globalMonthIndex, globalYear];
         conn.query(text, values, (err, response) => {
+            this.hits++;
             if (err) {
                 console.log(err.stack);
             } else {
@@ -796,10 +804,10 @@ class quickCalBackEnd  {
         const text = 'SELECT "email", "time", "day", "dayName", "year", "monthName", "monthIndex" FROM appointments WHERE "password" = $1 AND "email" = $2';
         const values = [password, email];
         conn.query(text, values, (err, response) => {
+            this.hits++;
             if (err) {
                 console.log(err.stack);
             } else {
-                this.hits++;
                 return res.json({ valid: response });
             }
         });
@@ -808,7 +816,15 @@ class quickCalBackEnd  {
 
     //hit this decision -- hopefully 
     decision = (decision, body, db) => {
-        if(!this.checkHits()) {  return res.json({ error: "Please give 'timer(seconds)' before making any more requests to the server. Thanks" });  }; //set a local and run a timer
+          
+        //set a local and run a timer  
+        if(!this.checkHits()) {  
+              return res.json({ 
+                    error: "Please give 'timer(seconds)' before making any more requests to the server. Thanks"
+              });  
+        };
+          
+        //make decisions on where to go  
         switch(decision) {
             case "insertIntoAppointment":
             this.insertInto(
