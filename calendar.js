@@ -721,7 +721,7 @@ class quickCalFrontEnd {
     */
 
 
-    //prevent overload -- obf
+    //prevent overload -- obf -- based off hits in server.. run this when count overloaded.
     keepSearchTriesOnServerOverLoadRedirect = () => {}
 
 
@@ -752,7 +752,10 @@ class quickCalBackEnd  {
                  return false;
            }
      }
-
+     
+     resetHits = () => { 
+           //listen for timer end and reset timer
+     }
 
     //determine datavase being used
     database = () => { }
