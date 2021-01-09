@@ -740,6 +740,18 @@ class quickCalFrontEnd {
 
 //database -- this is ugly. change this 
 class quickCalBackEnd  {
+      
+     hits = (configuredHits) => { 
+           this.max = configuredHits; 
+           this.hits = 0;
+     }
+     
+     
+     checkHits = () => {
+           if(this.hits > this.max) { 
+                 return false;
+           }
+     }
 
 
     //determine datavase being used
@@ -754,9 +766,9 @@ class quickCalBackEnd  {
             if (err) {
                 console.log(err.stack)
             } else {
+                this.hits++;
                 return res.json({ result: response.rows[0] });
             }
-                this.endConn();
         });
     }
 
@@ -769,9 +781,9 @@ class quickCalBackEnd  {
             if (err) {
                 console.log(err.stack);
             } else {
+                this.hits++;
                 return res.json({ rows: response.rows });
             }
-                this.endConn();
         });
     }
 
@@ -784,15 +796,16 @@ class quickCalBackEnd  {
             if (err) {
                 console.log(err.stack);
             } else {
+                this.hits++;
                 return res.json({ valid: response });
             }
-                this.endConn();
         });
     }
 
 
     //hit this decision -- hopefully 
     decision = (decision, body, db) => {
+        if(!this.checkHits()) {  return res.json({ error: "Please give 'timer(seconds)' before making any more requests to the server. Thanks" });  }; //set a local and run a timer
         switch(decision) {
             case "insertIntoAppointment":
             this.insertInto(
