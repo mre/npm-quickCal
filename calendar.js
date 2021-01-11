@@ -5,6 +5,8 @@
 
 //convert to react
 
+//implement a drag and drop
+
 
 class quickCalFrontEnd {
       
