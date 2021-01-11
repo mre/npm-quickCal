@@ -768,7 +768,7 @@ class quickCalBackEnd  {
     }
 
     
-    //insert into database
+    //insert into database iif time not in timelist return.
     insertInto = (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
         const text = 'INSERT INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
         const values = [day, dayName, monthName, monthIndex, year, email, time, password, message];
@@ -785,7 +785,7 @@ class quickCalBackEnd  {
 
     //grab booked appointments -- select where month and year -- 
     getBooked = (globalMonthIndex, globalYear) => {
-        const text = 'SELECT * FROM appointments WHERE "monthIndex" = $1 AND "year" = $2';
+        const text = 'SELECT * FROM appointments WHERE "monthIndex" = $1 AND "year" = $2'; //AND TIME LIST IN []
         const values = [globalMonthIndex, globalYear];
         conn.query(text, values, (err, response) => {
             this.hits++;
@@ -801,7 +801,7 @@ class quickCalBackEnd  {
 
     //search the appointments set
     displayAppointment = (password, email) => {
-        const text = 'SELECT "email", "time", "day", "dayName", "year", "monthName", "monthIndex" FROM appointments WHERE "password" = $1 AND "email" = $2';
+        const text = 'SELECT "email", "time", "day", "dayName", "year", "monthName", "monthIndex" FROM appointments WHERE "password" = $1 AND "email" = $2'; 
         const values = [password, email];
         conn.query(text, values, (err, response) => {
             this.hits++;
