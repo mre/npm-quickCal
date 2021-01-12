@@ -237,21 +237,23 @@ class quickCalFrontEnd {
         </div>
 
         <table class="table table-dark" style = "margin-right: auto; margin-left: auto; border-spacing: 0px;" id = "errorShake">
-        <thead>
-            <tr>
-            <th scope="col">mon</th>
-            <th scope="col">tue</th>
-            <th scope="col">wed</th>
-            <th scope="col">thu</th>
-            <th scope="col">fri</th>
-            <th scope="col">sat</th>
-            <th scope="col">sun</th>
-            </tr>
-        </thead>
 
-        <tbody id = "calendar"></tbody>
+              <thead>
+                  <tr>
+                  <th scope="col">mon</th>
+                  <th scope="col">tue</th>
+                  <th scope="col">wed</th>
+                  <th scope="col">thu</th>
+                  <th scope="col">fri</th>
+                  <th scope="col">sat</th>
+                  <th scope="col">sun</th>
+                  </tr>
+              </thead>
 
-        <tfoot></tfoot>
+              <tbody id = "calendar"></tbody>
+
+              <tfoot></tfoot>
+
         </table>
 
         <div style = "margin-bottom: 10px; margin-top: 20px;">
@@ -275,10 +277,8 @@ class quickCalFrontEnd {
 
    </div>
 
-   <div id = "toggleDisplayB"></div>
-
-      `;
-    }
+   <div id = "toggleDisplayB"></div>`;
+   }
 
     
     /*
