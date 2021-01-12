@@ -220,8 +220,10 @@ class quickCalFrontEnd {
     
     //fill the calendar -- stick this john in react component
     fillSkeleton = () => {
-        this.skeleton.style.cssText = `margin: auto; text-align: center; font-family: Times New Roman", Times, serif;`;
-        this.skeleton.innerHTML = `
+          
+         this.skeleton.style.cssText = `margin: auto; text-align: center; font-family: Times New Roman", Times, serif;`;
+          
+         this.skeleton.innerHTML = `
 
          <div id = "toggleDisplay">
 
@@ -278,6 +280,7 @@ class quickCalFrontEnd {
          </div>
 
    <div id = "toggleDisplayB"></div>`;
+          
    }
 
     
@@ -420,7 +423,7 @@ class quickCalFrontEnd {
 
         var originalSet = [...this.timeList]; 
                   
-        for(let i = 0; i < this.alottedSlots.length; i++) {
+        for(let i = 0; i < this.alottedSlots.length; i++) { //change to object l.u
             if(this.alottedSlots[i].day === day) { 
                 originalSet.splice(originalSet.indexOf(this.alottedSlots[i].time), 1); 
             } 
