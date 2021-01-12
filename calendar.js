@@ -757,26 +757,36 @@ class quickCalFrontEnd {
 //database -- this is ugly. change this 
 class quickCalBackEnd  {
       
-     hits = (configuredHits) => { 
-           this.max = configuredHits; 
-           this.hits = 0;
-     }
+      
+    config = (configHits, configTimer, configDatabase) => { 
+           this.max = configHits;
+           this.cooler = configTimer;
+           this.database = configDatabase;
+    }
+    
+    
+    hits = () => {
+          this.hits = 0;
+    }
      
      
-     checkHits = () => {
+    checkHits = () => {
            if(this.hits > this.max) { 
                  return false;
            }
-     }
+                 return true;
+    }
      
-     resetHits = () => { 
+    
+    resetHits = () => { 
            //listen for timer end and destroy timer and reset hits
-     }
+    }
 
     //determine datavase being used
     database = () => {
     
     }
+    
     
     //stripeConfig
     stripeConfig = () => {
