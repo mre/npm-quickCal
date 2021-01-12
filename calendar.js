@@ -222,16 +222,20 @@ class quickCalFrontEnd {
     fillSkeleton = () => {
         this.skeleton.style.cssText = `margin: auto; text-align: center; font-family: Times New Roman", Times, serif;`;
         this.skeleton.innerHTML = `
-        <div id = "toggleDisplay">
+
+   <div id = "toggleDisplay">
+
         <div style = "margin-bottom: 0px;">
             <button id = "back" class = "btn" style = "color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px"><</button>
             <button id = "next" class = "btn" style = "margin-left: 5px; color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px ">></button>
             <button id = "today" class = "btn" style = "margin-left: 5px; color: black; background-color: white; border: none; cursor: pointer; font-family: Times New Roman, Times, serif; font-size: 18px">today</button>
         </div>
+
         <div style = "margin-bottom: 10px;">
             <small id = "date" style = "margin-left: 5px"></small>
             <small id = "errorBooked"> </small>
         </div>
+
         <table class="table table-dark" style = "margin-right: auto; margin-left: auto; border-spacing: 0px;" id = "errorShake">
         <thead>
             <tr>
@@ -244,9 +248,12 @@ class quickCalFrontEnd {
             <th scope="col">sun</th>
             </tr>
         </thead>
+
         <tbody id = "calendar"></tbody>
+
         <tfoot></tfoot>
         </table>
+
         <div style = "margin-bottom: 10px; margin-top: 20px;">
             <input placeholder = "email" type = "text" id = "displayAppointmentEmail"> </input>
             <br>
@@ -256,6 +263,7 @@ class quickCalFrontEnd {
             <br>
             <button id = "searchMyAppointment"> Search Appointment </button>
         </div>
+
         <div id = "appointmentInfo" hidden>
             <p id = "time"></p>
             <p id = "day"></p>
@@ -264,8 +272,11 @@ class quickCalFrontEnd {
             <p "message"></p>
             <button id = "appointmentId"></button>
         </div>
-        </div>
-        <div id = "toggleDisplayB"></div>
+
+   </div>
+
+   <div id = "toggleDisplayB"></div>
+
       `;
     }
 
