@@ -514,6 +514,7 @@ class quickCalFrontEnd {
 
     }
 
+    
     //go back to the calendar    
     goBackToCalendar = () => {
         document.getElementById("toggleDisplayB").style.display = "none";
