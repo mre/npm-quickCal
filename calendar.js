@@ -1,11 +1,11 @@
 
-//add an extra condition for when they click today .. splice any times past the current
+//add an extra condition for when they click today.. just to get time and splice any times before the current time.
 
-//add a helper function to remove past appointments -- sql
+//add a helper function to remove past appointments -- sql they would probably have to do that
 
 //convert to react
 
-//implement a drag and drop
+//implement a drag and drop... this would only be for live events and not for bookings... if the user decides to add on back end
 
 
 class quickCalFrontEnd {
