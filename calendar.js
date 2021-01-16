@@ -819,7 +819,6 @@ class quickCalBackEnd  {
             if (err) {
                 console.log(err.stack);
             } else {
-                this.hits++;
                 return res.json({ rows: response.rows });
             }
         });
