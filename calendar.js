@@ -7,6 +7,8 @@
 
 //implement a drag and drop
 
+//maybe load in all events for the year at once... would avoid reading more data... if year change load in...
+
 
 class quickCalFrontEnd {
       
