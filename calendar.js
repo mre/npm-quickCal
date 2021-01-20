@@ -9,6 +9,8 @@
 
 //maybe load in all events for the year at once... would avoid reading more data... if year change load in...
 
+//increase cell size on onclick...append form... onhover decrease cell size if not reference element... func(focus) { !elem ? decrease }
+
 
 class quickCalFrontEnd {
       
