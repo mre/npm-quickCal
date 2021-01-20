@@ -85,31 +85,34 @@ class quickCalFrontEnd {
     }
 
 
-    //your configuration for adding classes -- rid array
+    //your configuration for adding classes
     configClasses = (                
-        cssNextButtonArr,
-        cssBackButtonArr,
-        cssTodayButtonArr, 
-        cssSubmitButtonArr, 
-        cssSearchEmailInputArr, 
-        cssEmailInputArr, 
-        cssMessageInputArr, 
-        cssPasswordInputArr, 
-        cssCellsArrArr, 
-        cssDateTextArr, 
-        cssDayTextArr, 
-        cssGreetingMessageArr) => {
-        for(let i = 0; i < cssNextButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < cssBackButtonArr.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        cssNextButton,
+        cssBackButton,
+        cssTodayButton, 
+        cssSubmitButton, 
+        cssSearchEmailInput, 
+        cssEmailInput, 
+        cssMessageInput, 
+        cssPasswordInput, 
+        cssCells, 
+        cssDateText, 
+        cssDayText, 
+        cssGreetingMessage) => {
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("todayButton").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("today").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
     }
 
 
@@ -133,29 +136,28 @@ class quickCalFrontEnd {
     }
 
 
-    //default configuration for classes -- rid array
+    //default configuration for classes
     defaultClasses = () => {
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        var nextButton = ["btn", "btn-light"];
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
-        for(let i = 0; i < nextButton.length; i++) { document.getElementById("nextButton").classList.add(arr[i]); }
+        var nextButton = "btn btn-light";
+        var nextButton = "btn btn-light";
+        var nextButton = "btn btn-light";
+        var nextButton = "btn btn-light";
+        var nextButton = "btn btn-light";
+        var nextButton = "btn btn-light";
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("todayButton").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
+        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
+        document.getElementById("today").style.cssText = `${cssTodayButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
+        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
+        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
     }
     
     
@@ -704,6 +706,11 @@ class quickCalFrontEnd {
 
     //submit remove appointment if no good return error
     removeAppointment = () => {}
+    
+    //stripe element
+    setStripeButton = () => {
+    //call this when click on cell and loaded in form... at bottom!
+    }
 
  
     /*
