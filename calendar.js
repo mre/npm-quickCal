@@ -30,7 +30,7 @@
             if(this.alottedSlots['${day}-${month}-${this.timelist[i]'}]) { originalSet.splice(this.timelist[i]) }
         }
         
-        // should reduce to o(1) * timelist! -- whoosh -- its a.t baby raised eyebrow
+        // should reduce to o(1) * timelist! -- whoosh -- its a.t baby raised eyebrow whoa.
         
   */
 
