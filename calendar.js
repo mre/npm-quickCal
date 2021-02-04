@@ -11,6 +11,8 @@
 
 //increase cell size on onclick...append form... onhover decrease cell size if not reference element... func(focus) { !elem ? decrease }
 
+//create a weekly and daily view... set a state identifier for toggling between each... for display calendar...push a switch eith type and toggle view...might need to break up into different classes wtf. maybe just use functions js SUX!
+
 
 class quickCalFrontEnd {
       
