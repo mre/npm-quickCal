@@ -36,6 +36,10 @@
 
 //grab a cup of joe and call it a day. boop
 
+//thats a lot of comments and a little code a.t -- what happened?
+
+//sorry gotta run. "sideways turn with joe in hand" -- whoosh
+
 
 
 class quickCalFrontEnd {
