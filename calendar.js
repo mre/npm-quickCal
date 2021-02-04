@@ -11,13 +11,28 @@
 
 //increase cell size on onclick...append form... onhover decrease cell size if not reference element... func(focus) { !elem ? decrease }
 
-//create a weekly and daily view... set a state identifier for toggling between each... for display calendar...push a switch eith type and toggle view...might need to break up into different classes wtf. maybe just use functions js SUX!
+//create a weekly and daily view... set a state identifier for toggling between each... for display calendar...push a switch eith type and toggle view...might need to break up into different classes wtf. maybe just use functions. js SUX!
 
 //append a draggable element, when drag on element that is not reference, call function and update db...no need to reload as will stick
 
 //create an optional poll.... true or false. if true keep pulling at chosen count and push
 
 //put the css in different classes.... should not be here
+
+//switch alotted slots to object
+  /*
+
+        alottedlots = { dayIndex-monthIndex-time: { dayIndex: x, monthIndex: y, year: z } }
+        
+        originalSet = [...timelist]
+        
+        for(let i = 0; i < this.timelist.length; i++) {
+            if(this.alottedSlots['${day}-${month}-${this.timelist[i]'}]) { originalSet.splice(this.timelist[i]) }
+        }
+        
+        // should reduce to o(1) * timelist! -- whoosh -- its a.t baby raised eyebrow
+        
+  */
 
 //grab a cup of joe and call it a day. boop
 
