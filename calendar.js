@@ -34,6 +34,8 @@
         
   */
 
+//for database query convert to string and return string... function(type) if return string
+
 //grab a cup of joe and call it a day. boop
 
 //thats a lot of comments and a little code a.t -- what happened?
