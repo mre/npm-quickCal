@@ -62,6 +62,8 @@ prob dont need arry for this.... but whatver not important
 <p> It is a dynamic set with the upper bound of rows being (the dynamic amount of days for the year and month from db) * (the amount of times allocated in your configuration for each day in db)</p>
 <p> so if the amount of days in the month is 30 and your configuration has 3 times set that is... daysN*timesN or up to 90 sets loaded in at once if a booked schedule </p>
 <p>alloted slots is all the rows loaded in. it is an array now but i will change to reduce look up from N to O(1)*timeslist</p>
+<p>db:  days * timelist -- 2n with larger second -- monthly</p>
+<p>search: o(1)alottedslots * timelist - monthly</p>
 <h1>Working Example</h1>
 <p>A working example will be shown when complete </p>
 <h1>Dependencies</h1>
