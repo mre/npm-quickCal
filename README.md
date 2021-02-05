@@ -64,7 +64,7 @@ prob dont need arry for this.... but whatver not important
 <p>alloted slots is all the rows loaded in. it is an array now but i will change to reduce look up from N to O(1)*timeslist</p>
 <p>db:  days * timelist -- 2n with larger second -- monthly</p>
 <p>search: o(1)alottedslots * O(N)timelist - monthly</p>
-<p>reads have a count attached incase the user decides to keep pressing...it will set a session and return "STOP THAT" =\|/= </p>
+<p>reads has a count attached incase the user decides to keep pressing...it will set a session and return "STOP THAT" =\|/= </p>
 <h1>Working Example</h1>
 <p>A working example will be shown when complete </p>
 <h1>Dependencies</h1>
