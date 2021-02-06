@@ -87,6 +87,7 @@ class quickCalFrontEnd {
         
     */
     
+
     //set events, globals then display calendar
     triggerStart = () => {
         this.events(); 
@@ -209,6 +210,7 @@ class quickCalFrontEnd {
 
     */
 
+
     //reads choice and runs a different set -- shick binnies industries - tounge out
     toggleView() {
 
@@ -234,7 +236,7 @@ class quickCalFrontEnd {
 
         var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).getDay(); 
 
-        let displayType = this.toggleView();
+        let displayType = this.toggleView(); //this is going to change how the calendar is displayed and how information is loaded and appended...i may have to use another class for this... i dont know yet
 
         this.cal.innerHTML = ``;
         var elem = this.cal;
