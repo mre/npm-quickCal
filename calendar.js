@@ -80,120 +80,6 @@ class quickCalFrontEnd {
         this.triggerStart();
     }
     
-
-    //your configuration for styling calendar
-    configStyle = (
-        cssNextButton,
-        cssBackButton,
-        cssTodayButton, 
-        cssSubmitButton, 
-        cssSearchEmailInput, 
-        cssEmailInput, 
-        cssMessageInput, 
-        cssPasswordInput, 
-        cssCells, 
-        cssDateText, 
-        cssDayText, 
-        cssGreetingMessage) => {
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("todayButton").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("today").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-    }
-
-
-    //your configuration for adding classes
-    configClasses = (                
-        cssNextButton,
-        cssBackButton,
-        cssTodayButton, 
-        cssSubmitButton, 
-        cssSearchEmailInput, 
-        cssEmailInput, 
-        cssMessageInput, 
-        cssPasswordInput, 
-        cssCells, 
-        cssDateText, 
-        cssDayText, 
-        cssGreetingMessage) => {
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("todayButton").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("today").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-    }
-
-
-    //default configuration settings for style
-    defaultStyle = (color, font, input) => {
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("today").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("today").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        //info box = th.style.cssText = ` padding: 7px border: 1px solid black; width: 10px; height: 10px;`;
-    }
-
-
-    //default configuration for classes
-    defaultClasses = () => {
-        var nextButton = "btn btn-light";
-        var nextButton = "btn btn-light";
-        var nextButton = "btn btn-light";
-        var nextButton = "btn btn-light";
-        var nextButton = "btn btn-light";
-        var nextButton = "btn btn-light";
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("todayButton").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("nextButton").style.cssText = `${cssNextButton}`;
-        document.getElementById("backButton").style.cssText = `${cssBackButton}`;
-        document.getElementById("today").style.cssText = `${cssTodayButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-        document.getElementById("submitButton").style.cssText = `${cssSubmitButton}`;
-        document.getElementById("searchEmailInput").style.cssText = `${cssSearchEmailInput}`;
-    }
-    
-    
-    //set up a configuration in stripe
-    stripeConfig = (pubKey, price, theme) => { 
-        this.publicKey = pubKey;
-        this.price = price;
-        this.theme = theme;
-    } 
         
     /*
 
@@ -201,6 +87,7 @@ class quickCalFrontEnd {
         
     */
     
+
     //set events, globals then display calendar
     triggerStart = () => {
         this.events(); 
@@ -322,15 +209,34 @@ class quickCalFrontEnd {
         functions of this calendar
 
     */
+
+
+    //reads choice and runs a different set -- shick binnies industries - tounge out
+    toggleView() {
+
+        let choice = document.getElementById("choice").value;
+
+        if(choice === "weekly") {
+             this.toggle = "weekly"; 
+        } else if(choice === "monthly") {
+             this.toggle = "monthly"; 
+        } else if(choice === "yearly") {
+            this.toggle = "yearly"; 
+        }
+
+    }
     
     //display calendar
     getCalendar = (date) => {
+
     
         this.currentMonthNameG = date.toString().split(" ")[1].toLowerCase(); 
         this.currentYearG = date.getFullYear(); 
         this.currentIndexOfMonthG = date.getMonth(); 
 
         var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).getDay(); 
+
+        let displayType = this.toggleView(); //this is going to change how the calendar is displayed and how information is loaded and appended...i may have to use another class for this... i dont know yet
 
         this.cal.innerHTML = ``;
         var elem = this.cal;
@@ -369,6 +275,7 @@ class quickCalFrontEnd {
             th.innerText = i;
             th.onclick = () => { this.showForm(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG); };
             th.onmouseover = () => { this.addNumber(i); this.eliminateBookedEvents(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG);  }
+            //add a draggable with some limitations
             tr.append(th);
             thCount+=1; 
 
@@ -622,7 +529,7 @@ class quickCalFrontEnd {
 
             success: function(result, status, xhr) {
 
-                alert("show check mark");
+                showCheckMark();
                 
             },
 
@@ -638,7 +545,9 @@ class quickCalFrontEnd {
 
 
     //grab and push in
-    showCheckMark = () => {}
+    showCheckMark = () => {
+        //grab calendarId and replace with a acheck mark... dont let them do anything else
+    }
     
 
     //load in taken times for this month and year -- global affecting ajax request wtf
@@ -714,9 +623,7 @@ class quickCalFrontEnd {
 
             success: function(result, status, xhr) {
 
-                //just display and add cancel in here
-
-                console.log(result.valid.rows);
+                //just display and add cancel button in here
                  
             },
 
@@ -732,11 +639,10 @@ class quickCalFrontEnd {
 
 
     //submit remove appointment if no good return error
-    removeAppointment = () => {}
-    
-    //stripe element
-    setStripeButton = () => {
-    //call this when click on cell and loaded in form... at bottom!
+    removeAppointment = () => {
+
+        //some soap call
+
     }
 
  
@@ -776,159 +682,26 @@ class quickCalFrontEnd {
     */
 
 
-    //prevent overload -- obf -- based off hits in server.. run this when count overloaded.
-    keepSearchTriesOnServerOverLoadRedirect = () => {}
+    //prevent overload pused from function that reads and displayes... ajax option
+    keepSearchTriesOnServerOverLoadRedirect = () => {
+        console.log(
+        "error the server was configured for a maximum of x reads, please try again later. Thank you" +
+        "grab device id and push to store in case they fuck with session."
+        );
+    }
 
 
     //show configuration properties not showing
-    showNoLoad = (message) => { console.log(message); }
+    showNoLoad = (message) => { 
+        console.log(message);
+     }
 
 
 }
 
-
-    /*
-
-        Backend.. run class and hit decision...easy as pie
-        
-    */
-
-//database -- this is ugly. change this 
-class quickCalBackEnd  {
-      
-      
-    config = (configHits, configTimer, configDatabase) => { 
-           this.max = configHits;
-           this.cooler = configTimer;
-           this.database = configDatabase;
-    }
-    
-    
-    hits = () => {
-          this.hits = 0;
-    }
-     
-     
-    checkHits = () => {
-           if(this.hits > this.max) { 
-                 return false;
-           }
-                 return true;
-    }
-     
-    
-    resetHits = () => { 
-           //listen for timer end and destroy timer and reset hits
-    }
-
-    //determine datavase being used
-    database = () => {
-    
-    }
-    
-    
-    //stripeConfig
-    stripeConfig = () => {
-    
-    }
-
-    
-    //insert into database iif time not in timelist return.
-    insertInto = (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
-        const text = 'INSERT INTO appointments ("day", "dayName", "monthName", "monthIndex", "year", "email", "time", "password", "message") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
-        const values = [day, dayName, monthName, monthIndex, year, email, time, password, message];
-        conn.query(text, values, (err, response) => {
-            this.hits++;
-            if (err) {
-                console.log(err.stack)
-            } else {
-                return res.json({ result: response.rows[0] });
-            }
-        });
-    }
-
-
-    //grab booked appointments -- select where month and year -- 
-    getBooked = (globalMonthIndex, globalYear) => {
-        const text = 'SELECT * FROM appointments WHERE "monthIndex" = $1 AND "year" = $2'; //AND TIME LIST IN []
-        const values = [globalMonthIndex, globalYear];
-        conn.query(text, values, (err, response) => {
-            this.hits++;
-            if (err) {
-                console.log(err.stack);
-            } else {
-                return res.json({ rows: response.rows });
-            }
-        });
-    }
-
-
-    //search the appointments set
-    displayAppointment = (password, email) => {
-        const text = 'SELECT "email", "time", "day", "dayName", "year", "monthName", "monthIndex" FROM appointments WHERE "password" = $1 AND "email" = $2'; 
-        const values = [password, email];
-        conn.query(text, values, (err, response) => {
-            this.hits++;
-            if (err) {
-                console.log(err.stack);
-            } else {
-                return res.json({ valid: response });
-            }
-        });
-    }
-
-
-    //hit this decision -- hopefully 
-    decision = (decision, body, db) => {
-          
-        //set a local and run a timer  
-        if(!this.checkHits()) {  
-              return res.json({ 
-                    error: "Please give 'timer(seconds)' before making any more requests to the server. Thanks"
-              });  
-        };
-          
-        //make decisions on where to go  
-        switch(decision) {
-            case "insertIntoAppointment":
-            this.insertInto(
-                db,
-                body.day,
-                body.dayName,
-                body.monthName,
-                body.monthIndex,
-                body.year,
-                body.email,
-                body.time,
-                body.password,
-                body.message);
-            break;
-            case "getBooked":
-            this.getBooked(
-                db,
-                body.globalMonthIndex, 
-                body.globalYear);
-            break;
-            case "displayAppointmentInformation":
-            this.displayAppointment(
-                db,
-                body.password,
-                body.email);
-            break;
-            default: console.log("different file");
-        }
-    }
-
-
-    endConn = () => {
-        conn.end();
-    }
-
-    
-}
  
 
-module.exports = { quickCalFrontEnd, quickCalBackEnd };
+module.exports = quickCalFrontEnd;
 
 
 
