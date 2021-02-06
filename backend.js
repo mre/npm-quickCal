@@ -12,10 +12,10 @@ class quickCalBackEnd  {
           this.readAmount = 0;
     }
      
-    
+
     checkReads = () => {
 
-        if(req.session.errStatus = true) {
+        if(req.session.errStatus === true) {
             return false
         }
 
@@ -74,6 +74,7 @@ class quickCalBackEnd  {
     
     //insert into database iif time not in timelist return.
     insertInto = (day, dayName, monthName, monthIndex, year, email, time, password, message) => {
+
         const text = this.databaseString(this.configDatabase, "InsertInto");
         const values = [day, dayName, monthName, monthIndex, year, email, time, password, message];
         conn.query(text, values, (err, response) => {
@@ -83,6 +84,7 @@ class quickCalBackEnd  {
                 return response.rows[0];
             }
         });
+        
     }
 
 
@@ -103,11 +105,13 @@ class quickCalBackEnd  {
                 return response.rows;
             }
         });
+
     }
 
 
     //search the appointments set
     displayAppointment = (password, email) => {
+
         const text = this.databaseString(this.configDatabase, "displayAppointment");
         const values = [password, email];
         conn.query(text, values, (err, response) => {
@@ -117,6 +121,7 @@ class quickCalBackEnd  {
                 return response;
             }
         });
+
     }
 
 

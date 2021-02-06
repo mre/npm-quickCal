@@ -1,3 +1,5 @@
+    //this is obvouosly not complete
+    
     //your configuration for styling calendar
     configStyle = (
         cssNextButton,
