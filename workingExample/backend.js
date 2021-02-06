@@ -12,7 +12,7 @@ class quickCalBackEnd  {
           this.readAmount = 0;
     }
      
-    //
+    
     checkReads = () => {
 
         if(req.session.errStatus = true) {
