@@ -122,18 +122,18 @@ class quickCalFrontEnd {
         this.currentYearG = null;
         this.alottedSlots = [];
         this.amountOfDays = { 
-        jan: { month: 31 },
-        feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28 },
-        mar: { month: 31 },
-        apr: { month: 30 },
-        may: { month: 31 },
-        jun: { month: 30 },
-        jul: { month: 31 },
-        aug: { month: 31 },
-        sep: { month: 30 },
-        oct: { month: 31 },
-        nov: { month: 30 },
-        dec: { month: 31 },
+            jan: { month: 31 },
+            feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28 },
+            mar: { month: 31 },
+            apr: { month: 30 },
+            may: { month: 31 },
+            jun: { month: 30 },
+            jul: { month: 31 },
+            aug: { month: 31 },
+            sep: { month: 30 },
+            oct: { month: 31 },
+            nov: { month: 30 },
+            dec: { month: 31 },
         }
     }
 
