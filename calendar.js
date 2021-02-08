@@ -1,43 +1,4 @@
 
-//add an extra condition for when they click today.. just to get time and splice any times before the current time.
-
-//add a helper function to remove past appointments -- sql they would probably have to do that
-
-//convert to react
-
-//implement a drag and drop... this would only be for live events and not for bookings... if the user decides to add on back end
-
-//maybe load in all events for the year at once... would avoid reading more data... if year change load in...
-
-//increase cell size on onclick...append form... onhover decrease cell size if not reference element... func(focus) { !elem ? decrease }
-
-//create a weekly and daily view... set a state identifier for toggling between each... for display calendar...push a switch with type and toggle view...might need to break up into different classes wtf. maybe just use functions.
-
-//append a draggable element, when drag on element that is not reference, call function and update db...no need to reload as will stick
-
-//create an optional poll.... true or false. if true keep pulling at chosen count and push
-
-//put the css in different classes.... should not be here
-
-//switch alotted slots to object
-  /*
-
-        alottedlots = { dayIndex-monthIndex-time: { dayIndex: x, monthIndex: y, year: z } }
-        
-        originalSet = [...timelist]
-        
-        for(let i = 0; i < this.timelist.length; i++) {
-            if(this.alottedSlots['${day}-${month}-${this.timelist[i]'}]) { originalSet.splice(this.timelist[i]) }
-        }
-        
-        // should reduce to o(1) * timelist
-        
-  */
-
-//for database query convert to string and return string... function(type) if return string
-
-
-
 
 class quickCalFrontEnd {
       
@@ -702,6 +663,46 @@ class quickCalFrontEnd {
  
 
 module.exports = quickCalFrontEnd;
+
+//add an extra condition for when they click today.. just to get time and splice any times before the current time.
+
+//add a helper function to remove past appointments -- sql they would probably have to do that
+
+//convert to react
+
+//implement a drag and drop... this would only be for live events and not for bookings... if the user decides to add on back end
+
+//maybe load in all events for the year at once... would avoid reading more data... if year change load in...
+
+//increase cell size on onclick...append form... onhover decrease cell size if not reference element... func(focus) { !elem ? decrease }
+
+//create a weekly and daily view... set a state identifier for toggling between each... for display calendar...push a switch with type and toggle view...might need to break up into different classes wtf. maybe just use functions.
+
+//append a draggable element, when drag on element that is not reference, call function and update db...no need to reload as will stick
+
+//create an optional poll.... true or false. if true keep pulling at chosen count and push
+
+//put the css in different classes.... should not be here
+
+//switch alotted slots to object
+  /*
+
+        alottedlots = { dayIndex-monthIndex-time: { dayIndex: x, monthIndex: y, year: z } }
+        
+        originalSet = [...timelist]
+        
+        for(let i = 0; i < this.timelist.length; i++) {
+            if(this.alottedSlots['${day}-${month}-${this.timelist[i]'}]) { originalSet.splice(this.timelist[i]) }
+        }
+        
+        // should reduce to o(1) * timelist
+        
+  */
+
+//for database query convert to string and return string... function(type) if return string
+
+
+
 
 
 
