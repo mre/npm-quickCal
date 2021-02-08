@@ -647,7 +647,7 @@ class quickCalFrontEnd {
     keepSearchTriesOnServerOverLoadRedirect = () => {
         console.log(
         "error the server was configured for a maximum of x reads, please try again later. Thank you" +
-        "grab device id and push to store in case they fuck with session."
+        "grab device id and push to store(push uniqe appData pull unique appData) in case they fuck with session."
         );
     }
 
