@@ -82,6 +82,7 @@ class quickCalFrontEnd {
         this.currentMonthNameG = null;
         this.currentYearG = null;
         this.alottedSlots = [];
+        this.displayType = document.getElementById("choice").value; // add this in select - monthly, weekly, daily
         this.amountOfDays = { 
         jan: { month: 31 },
         feb: { month: ((this.currentYearG % 4 == 0) && (this.currentYearG % 100 != 0)) || (this.currentYearG % 400 == 0) ? 29 : 28 },
@@ -171,21 +172,6 @@ class quickCalFrontEnd {
 
     */
 
-
-    //reads choice and runs a different set -- shick binnies industries - tounge out
-    toggleView() {
-
-        let choice = document.getElementById("choice").value;
-
-        if(choice === "weekly") {
-             this.toggle = "weekly"; 
-        } else if(choice === "monthly") {
-             this.toggle = "monthly"; 
-        } else if(choice === "yearly") {
-            this.toggle = "yearly"; 
-        }
-
-    }
     
     //display calendar
     getCalendar = (date) => {
@@ -196,9 +182,18 @@ class quickCalFrontEnd {
         this.currentIndexOfMonthG = date.getMonth(); 
 
         var startOn = new Date(this.currentYearG, this.currentIndexOfMonthG, 1).getDay(); 
-
-        let displayType = this.toggleView(); //this is going to change how the calendar is displayed and how information is loaded and appended...i may have to use another class for this... i dont know yet
-
+          
+        //toogle set displayed -- might just stikc in above function and run three seperate classes considering things will probably change  
+        switch(this.displayType) {
+              case "weekly": runSet();
+              break;
+              case "weekly": runSet();
+              break;
+              case "weekly": runSet();
+              break;
+              default: return; //not in set reset and re run      
+        }
+            
         this.cal.innerHTML = ``;
         var elem = this.cal;
         var thCount = 0;
